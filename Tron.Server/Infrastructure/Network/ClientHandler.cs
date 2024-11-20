@@ -2,6 +2,7 @@
 using System.Net.Sockets;
 using System.Reflection.PortableExecutable;
 using Tron.Common.Extensions;
+using Tron.Common.Resources;
 using Tron.Server.Domain;
 
 namespace Tron.Server.Infrastructure.Network
@@ -12,10 +13,10 @@ namespace Tron.Server.Infrastructure.Network
         private EndPoint _client;
         private IDbManager _dbManager;
 
-        internal ClientHandler(Socket server, EndPoint client, IDbManager dbManager)
+        internal ClientHandler(Connection connection, IDbManager dbManager)
         {
-            _server = server;
-            _client = client;
+            _server = connection.Server;
+            _client = connection.Client;
             _dbManager = dbManager;
         }
 
@@ -24,19 +25,27 @@ namespace Tron.Server.Infrastructure.Network
             string message = _server.ReceiveFrom(ref _client);
             string[] query = message.Split('/');
 
-            switch (query[0])
+            switch ((Protocol)int.Parse(query[0]))
             {
-                case "Host":
+                case Protocol.Host:
                     WaitingLobby waitingLobby = new WaitingLobby(_server, _client, 0, false, 0);
                     _dbManager.AddWaitingLobby(waitingLobby);
                     break;
 
-                case "Guest":
+                case Protocol.Guest:
                     List<WaitingLobby> waitingLobbies = _dbManager.GetWaitingLobbies();
+                    if (waitingLobbies != null)
+                    {
+                        _server.SendTo(_client, waitingLobbies.ToString()!);
+                    }
+                    else
+                    {
+                        _server.SendTo(_client, Protocol.NoLobbies.ToString());
+                    }
                     break;
 
                 default:
-                    //throw new придумать эксепшен
+                    _server.SendTo(_client, Protocol.Resend.ToString());
                     break;
             }
         }

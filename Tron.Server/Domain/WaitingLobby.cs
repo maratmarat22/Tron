@@ -27,5 +27,10 @@ namespace Tron.Server.Domain
             _private = @private;
             _code = code;
         }
+
+        public override string ToString()
+        {
+            return $"{_players.Count}/{_maxPlayers}/{_private}";
+        }
     }
 }
