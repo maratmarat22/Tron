@@ -1,4 +1,4 @@
-﻿namespace Tron.Common.Infrastructure
+﻿namespace Tron.Common.Infrastructure.Files
 {
     public class FileReader
     {

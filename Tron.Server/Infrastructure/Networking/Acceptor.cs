@@ -1,18 +1,16 @@
 ﻿using System.Net;
 using System.Net.Sockets;
-using Tron.Common.Domain;
-using Tron.Common.Extensions;
-using Tron.Server.Domain;
+using Tron.Common.Infrastructure.Networking;
 
-namespace Tron.Server.Infrastructure
+namespace Tron.Server.Infrastructure.Networking
 {
-    internal class UdpListener
+    internal class Acceptor
     {
         private Socket _listener;
         private IPAddress _serverIp;
         private int _freePort;
 
-        internal UdpListener((string ip, int port) serverSocket)
+        internal Acceptor((string ip, int port) serverSocket)
         {
             _serverIp = IPAddress.Parse(serverSocket.ip);
             _freePort = serverSocket.port;
@@ -29,11 +27,11 @@ namespace Tron.Server.Infrastructure
         //    _listener.SendTo(everyone, $"{Protocol.Reset}/{socket}");
         //}
 
-        internal Connection Listen(IDbManager dbManager)
+        internal Connection Accept()
         {
             EndPoint anyPoint = new IPEndPoint(IPAddress.Any, 0);
 
-            byte[] data = null;
+            byte[] data = new byte[1024];
             _ = _listener.ReceiveFrom(data, ref anyPoint);
 
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);

@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Text;
 
-namespace Tron.Common.Extensions
+namespace Tron.Common.Infrastructure.Networking
 {
     public static class StringSocket
     {

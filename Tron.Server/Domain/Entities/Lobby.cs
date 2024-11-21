@@ -1,23 +1,23 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 
-namespace Tron.Server.Domain
+namespace Tron.Server.Domain.Entities
 {
     internal class Lobby
     {
         private Socket _lobbyMaster;
 
-        private EndPoint _lobbyHost;
+        private Host _lobbyHost;
 
-        private List<EndPoint> _players;
+        private List<Player> _players;
 
         private int _maxPlayers;
 
         private bool _private;
 
-        private int _code;
+        private int _password;
 
-        internal Lobby(Socket lobbyMaster, EndPoint lobbyHost, int maxPlayers, bool @private, int code)
+        internal Lobby(Socket lobbyMaster, EndPoint lobbyHost, int maxPlayers, bool @private, int password)
         {
             _lobbyMaster = lobbyMaster;
             _lobbyHost = lobbyHost;
@@ -25,7 +25,7 @@ namespace Tron.Server.Domain
             _players.Add(lobbyHost);
             _maxPlayers = maxPlayers;
             _private = @private;
-            _code = code;
+            _password = password;
         }
 
         public override string ToString()

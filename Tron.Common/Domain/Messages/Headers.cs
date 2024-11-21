@@ -1,4 +1,4 @@
-﻿namespace Tron.Common.Domain
+﻿namespace Tron.Common.Domain.Messages
 {
     public enum Headers
     {
@@ -9,6 +9,7 @@
         Guest = 4,
         Resend = 5,
         NoLobbies = 6,
+        Lobbies,
         ShowLobbies = 7
     }
 }
