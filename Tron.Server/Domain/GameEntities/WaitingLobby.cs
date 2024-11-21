@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 
-namespace Tron.Server.Domain
+namespace Tron.Server.Domain.GameEntities
 {
     internal class WaitingLobby
     {
@@ -26,6 +26,11 @@ namespace Tron.Server.Domain
             _maxPlayers = maxPlayers;
             _private = @private;
             _code = code;
+        }
+
+        public override string ToString()
+        {
+            return $"{_players.Count}/{_maxPlayers}/{_private}";
         }
     }
 }

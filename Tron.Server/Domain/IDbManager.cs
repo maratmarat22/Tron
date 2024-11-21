@@ -1,4 +1,6 @@
-﻿namespace Tron.Server.Domain
+﻿using Tron.Server.Domain.GameEntities;
+
+namespace Tron.Server.Domain
 {
     internal interface IDbManager
     {
