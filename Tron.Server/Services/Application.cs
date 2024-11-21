@@ -1,10 +1,8 @@
 ﻿using Tron.Common.Infrastructure;
 using Tron.Server.Domain;
-using Tron.Server.Infrastructure.Network;
-using Tron.Server.Infrastructure.Database;
-using Tron.Server.Domain.NetworkEntities;
+using Tron.Server.Infrastructure;
 
-namespace Tron.Server
+namespace Tron.Server.Services
 {
     internal class Application
     {
@@ -15,7 +13,7 @@ namespace Tron.Server
             //bool socketResetted = false;
             //try
             //{
-                serverSocket = reader.ReadSocket(@"../../../../Tron.Common/Resources/ServerSocket.txt");
+            serverSocket = reader.ReadSocket(@"../../../../Tron.Common/Resources/ServerSocket.txt");
             //}
             //catch
             //{
@@ -35,7 +33,7 @@ namespace Tron.Server
 
             while (true)
             {
-                Connection connection = listener.Listen(dbManager);
+                MultiConnection connection = listener.Listen(dbManager);
                 ClientHandler handler = new ClientHandler(connection, dbManager);
                 _ = Task.Run(() => handler.Handle());
             }

@@ -14,7 +14,7 @@ namespace Tron.Common.Extensions
             addresser.SendTo(buffer, addressee);
         }
 
-        public static string ReceiveFrom(this Socket addressee, ref EndPoint addresser)
+        public static string ReceiveFrom(this Socket addressee, EndPoint addresser)
         {
             byte[] buffer = new byte[1024];
             int bytesRead = addressee.ReceiveFrom(buffer, ref addresser);

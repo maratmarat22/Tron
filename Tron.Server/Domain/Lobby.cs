@@ -1,9 +1,9 @@
 ﻿using System.Net.Sockets;
 using System.Net;
 
-namespace Tron.Server.Domain.GameEntities
+namespace Tron.Server.Domain
 {
-    internal class WaitingLobby
+    internal class Lobby
     {
         private Socket _lobbyMaster;
 
@@ -17,7 +17,7 @@ namespace Tron.Server.Domain.GameEntities
 
         private int _code;
 
-        internal WaitingLobby(Socket lobbyMaster, EndPoint lobbyHost, int maxPlayers, bool @private, int code)
+        internal Lobby(Socket lobbyMaster, EndPoint lobbyHost, int maxPlayers, bool @private, int code)
         {
             _lobbyMaster = lobbyMaster;
             _lobbyHost = lobbyHost;

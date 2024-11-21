@@ -1,6 +1,6 @@
-﻿namespace Tron.Common.Resources
+﻿namespace Tron.Common.Domain
 {
-    public enum Protocol
+    public enum Headers
     {
         Connect = 0,
         Disconnect = 1,
@@ -8,6 +8,7 @@
         Host = 3,
         Guest = 4,
         Resend = 5,
-        NoLobbies = 6
+        NoLobbies = 6,
+        ShowLobbies = 7
     }
 }

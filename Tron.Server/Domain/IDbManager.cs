@@ -1,12 +1,10 @@
-﻿using Tron.Server.Domain.GameEntities;
-
-namespace Tron.Server.Domain
+﻿namespace Tron.Server.Domain
 {
     internal interface IDbManager
     {
-        internal List<WaitingLobby> GetWaitingLobbies();
+        internal List<Lobby> GetWaitingLobbies();
 
-        internal void AddWaitingLobby(WaitingLobby waitingLobby);
+        internal void AddWaitingLobby(Lobby waitingLobby);
 
         internal List<string> GetTopTen();
     }

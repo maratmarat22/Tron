@@ -1,4 +1,6 @@
-﻿namespace Tron.Server
+﻿using Tron.Server.Services;
+
+namespace Tron.Server
 {
     internal class Program
     {

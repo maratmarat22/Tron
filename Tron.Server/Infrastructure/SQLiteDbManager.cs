@@ -1,6 +1,6 @@
 ﻿using Tron.Server.Domain;
 
-namespace Tron.Server.Infrastructure.Database
+namespace Tron.Server.Infrastructure
 {
     internal class SQLiteDbManager : IDbManager
     {
