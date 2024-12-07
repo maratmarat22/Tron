@@ -1,12 +1,12 @@
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.deps.json
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.dll
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.AssemblyInfoInputs.cache
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.AssemblyInfo.cs
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.csproj.CoreCompileInputs.cache
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.deps.json
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.dll
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\bin\Debug\net8.0\Tron.Common.pdb
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.sourcelink.json
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.dll
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\refint\Tron.Common.dll
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\ref\Tron.Common.dll
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Common\obj\Debug\net8.0\Tron.Common.sourcelink.json

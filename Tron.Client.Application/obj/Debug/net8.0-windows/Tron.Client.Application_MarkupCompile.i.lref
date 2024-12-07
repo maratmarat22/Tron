@@ -1,12 +1,9 @@
-﻿
+﻿C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.i.cs
 FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\App.xaml;;
 FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\MainWindow.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Menu\MenuPage.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Multiplayer\CreateLobbyPage.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Multiplayer\CreateOrJoinPage.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Multiplayer\JoinLobbyPage.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Settings\SettingsPage.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Tracks\LargeTrack.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Tracks\MediumTrack.xaml;;
-FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Pages\Tracks\SmallTrack.xaml;;
+FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Views\Menu\CreateLobbyPage.xaml;;
+FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Views\Menu\JoinLobbyPage.xaml;;
+FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Views\Menu\MainMenuPage.xaml;;
+FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Views\Menu\MpMenuPage.xaml;;
+FC:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\Views\Menu\SettingsPage.xaml;;
 
