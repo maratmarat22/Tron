@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Tron.Client.Networking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0ebc36116cb8cf9c8469fb3cf69c72bd5c737b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34468b8e19b25190076f82732c1e36ca45c1bda8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Tron.Client.Networking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Tron.Client.Networking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

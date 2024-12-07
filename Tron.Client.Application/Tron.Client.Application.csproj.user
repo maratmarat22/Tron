@@ -7,28 +7,19 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Pages\Tracks\LargeTrack.xaml.cs">
+    <Compile Update="Views\Menu\CreateLobbyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\Tracks\MediumTrack.xaml.cs">
+    <Compile Update="Views\Menu\MainMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\Menu\MenuPage.xaml.cs">
+    <Compile Update="Views\Menu\MpMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\Multiplayer\CreateLobbyPage.xaml.cs">
+    <Compile Update="Views\Menu\JoinLobbyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\Multiplayer\CreateOrJoinPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Pages\Multiplayer\JoinLobbyPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Pages\Settings\SettingsPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Pages\Tracks\SmallTrack.xaml.cs">
+    <Compile Update="Views\Menu\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -36,28 +27,19 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Tracks\LargeTrack.xaml">
+    <Page Update="Views\Menu\CreateLobbyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Tracks\MediumTrack.xaml">
+    <Page Update="Views\Menu\MainMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Menu\MenuPage.xaml">
+    <Page Update="Views\Menu\MpMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Multiplayer\CreateLobbyPage.xaml">
+    <Page Update="Views\Menu\JoinLobbyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Multiplayer\CreateOrJoinPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Pages\Multiplayer\JoinLobbyPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Pages\Settings\SettingsPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Pages\Tracks\SmallTrack.xaml">
+    <Page Update="Views\Menu\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
