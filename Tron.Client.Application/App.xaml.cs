@@ -1,7 +1,7 @@
 ﻿using Tron.Client.Networking;
 using Tron.Common.Config.Utilities;
 using Tron.Common.Messages.General;
-using Tron.Common.Networking.P2P;
+using Tron.Common.Networking;
 
 namespace Tron.Client.Application
 {
@@ -34,7 +34,7 @@ namespace Tron.Client.Application
 
         public bool ConnectionEstablished { get; set; }
 
-        private UdpUnicaster _unicaster;
+        private UdpUnicaster? _unicaster;
 
         public App()
         {
@@ -53,6 +53,11 @@ namespace Tron.Client.Application
         public void SendToServer(Message message)
         {
             _unicaster.Send(message);
+        }
+
+        public Message ReceiveFromServer(Message message)
+        {
+            return _unicaster.Receive();
         }
     }
 }

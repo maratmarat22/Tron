@@ -1,19 +1,23 @@
 ﻿using System.Net;
-using Tron.Common.Networking.P2P;
-using Tron.Server.Networking.P2P;
-using Tron.Server.Persistence.QueryHandlers;
+using Tron.Common.Messages.General;
+using Tron.Common.Networking;
+using Tron.Server.Core.Domain.Entities;
+using Tron.Server.Core.Domain.Services;
+using Tron.Server.Core.MessageProcessing;
+using Tron.Server.Networking;
+using Tron.Server.Persistence.QueryProcessing;
 
 namespace Tron.Server.Core
 {
     internal class Application
     {
-        private IDbQueryHandler _queryHandler;
-        private IPEndPoint _point;
-        private UdpAcceptor _acceptor;
+        private readonly IDbQueryProcessor _queryProcessor;
+        private readonly IPEndPoint _point;
+        private readonly UdpAcceptor _acceptor;
 
-        internal Application(IDbQueryHandler queryHandler, (string address, int port) socket)
+        internal Application(IDbQueryProcessor queryProcessor, (string address, int port) socket)
         {
-            _queryHandler = queryHandler;
+            _queryProcessor = queryProcessor;
             _point = new IPEndPoint(IPAddress.Parse(socket.address), socket.port);
             _acceptor = new UdpAcceptor(_point);
         }
@@ -23,8 +27,48 @@ namespace Tron.Server.Core
             while (true)
             {
                 UdpUnicaster unicaster = _acceptor.Accept();
-                Session session = new Session(_queryHandler, unicaster);
-                Task.Run(session.Run);
+
+                Task.Run(() =>
+                {
+                    MessageProcessorPool pool = new(_queryProcessor, unicaster);
+
+                    while (true)
+                    {
+                        Message message = unicaster.Receive();
+                        ILobbyMessageProcessor processor = pool.Acquire(message.Header);
+                        (Proceed proceed, Lobby? lobby) = processor.Process(message);
+                        
+                        if (proceed == Proceed.True)
+                        {
+                            UdpMulticaster multicaster = new(unicaster);
+                            ProcessGame(lobby!, multicaster);
+                        }
+                    }
+                });
+            }
+        }
+
+        private void ProcessGame(Lobby lobby, UdpMulticaster multicaster)
+        {
+            PlayerAwaitingService awaiting = new(lobby);
+
+            while (true)
+            {
+                (Proceed proceed, GameState state) = awaiting.Run();
+                
+                if (proceed == Proceed.True)
+                {
+                    GameplayService gameplay = new(lobby);
+                    (proceed, state) = gameplay.Run();
+
+                    if (proceed == Proceed.True)
+                    {
+                        _queryProcessor.UpdateTopTen(state.Winner.Name, state.Winner.Points);
+                        awaiting = new(state.Lobby);
+                    }
+                    else break;
+                }
+                else break;
             }
         }
     }

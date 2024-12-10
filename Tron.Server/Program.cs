@@ -1,19 +1,19 @@
 ﻿using Tron.Common.Config.Utilities;
 using Tron.Server.Core;
-using Tron.Server.Persistence.QueryHandlers;
+using Tron.Server.Persistence.QueryProcessing;
 
 namespace Tron.Server
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            SocketReader reader = new SocketReader();
-            (string address, int port) socket = reader.Read(@"../../../../Tron.Common/Config/Data/ServerSocket.txt");
+            SocketReader reader = new();
+            (string address, int port) acceptor = reader.Read(@"../../../../Tron.Common/Config/Data/ServerSocket.txt");
 
-            IDbQueryHandler dbQueryHandler = new SQLiteQueryHandler(@"../../../Persistence/Data/tron.db");            
+            IDbQueryProcessor dbQueryProcessor = new SQLiteQueryProcessor(@"../../../Persistence/Data/tron.db");            
 
-            Application application = new Application(dbQueryHandler, socket);
+            Application application = new(dbQueryProcessor, acceptor);
             application.Run();
         }
     }
