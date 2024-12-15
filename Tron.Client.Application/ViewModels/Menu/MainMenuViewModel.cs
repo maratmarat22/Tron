@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
 using System.Windows.Navigation;
-using Tron.Client.Application.ViewModels.Abstract;
+using Tron.Client.Application.ViewModels;
 using Tron.Client.Application.Views.Menu;
+using Tron.Client.Application.Views.Gameplay;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
@@ -29,7 +30,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnInitSp()
         {
-            
+            _nav.Navigate(new ArenaPage(_nav, 2, Mode.Singleplayer));
         }
 
         private void OnNavToMpMenu()

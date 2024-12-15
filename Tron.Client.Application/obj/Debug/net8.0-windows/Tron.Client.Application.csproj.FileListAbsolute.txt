@@ -36,3 +36,5 @@ C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Tron.Client.Application.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Tron.Client.Application.genruntimeconfig.cache
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\ref\Tron.Client.Application.dll
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\Gameplay\ArenaPage.g.cs
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\Gameplay\ArenaPage.baml

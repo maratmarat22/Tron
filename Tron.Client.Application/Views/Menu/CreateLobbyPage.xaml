@@ -52,7 +52,7 @@
                        Foreground="White"
                        HorizontalAlignment="Center">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Blue"
+                    <DropShadowEffect Color="LightYellow"
                                       BlurRadius="20"
                                       ShadowDepth="0"
                                       Opacity="1" />
@@ -95,7 +95,7 @@
                Margin="20,0">
 
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Blue"
+                    <DropShadowEffect Color="LightYellow"
                       BlurRadius="20"
                       ShadowDepth="0"
                       Opacity="1" />
@@ -129,7 +129,7 @@
                        Foreground="White"
                        HorizontalAlignment="Center">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Blue"
+                    <DropShadowEffect Color="Violet"
                                       BlurRadius="20"
                                       ShadowDepth="0"
                                       Opacity="1" />
@@ -170,7 +170,7 @@
                Margin="20,0">
 
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Blue"
+                    <DropShadowEffect Color="Violet"
                       BlurRadius="20"
                       ShadowDepth="0"
                       Opacity="1" />

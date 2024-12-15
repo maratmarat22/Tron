@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "UG8PqoMRSDM=",
+  "dgSpecHash": "6H9NQA4OACg=",
   "success": true,
   "projectFilePath": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Tron.Server.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\akhmy\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.0\\microsoft.data.sqlite.core.9.0.0.nupkg.sha512",
+    "C:\\Users\\akhmy\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
+    "C:\\Users\\akhmy\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }

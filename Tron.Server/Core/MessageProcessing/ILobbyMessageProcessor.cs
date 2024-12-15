@@ -1,4 +1,4 @@
-﻿using Tron.Common.Messages.General;
+﻿using Tron.Common.Messages;
 using Tron.Server.Core.Domain.Entities;
 
 namespace Tron.Server.Core.MessageProcessing

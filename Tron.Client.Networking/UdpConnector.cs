@@ -1,26 +1,30 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using Tron.Common.Messages;
 using Tron.Common.Networking;
 
 namespace Tron.Client.Networking
 {
     public class UdpConnector
     {
-        private IPEndPoint _acceptor;
+        private EndPoint _acceptor;
 
-        public UdpConnector((string address, int port) acceptor)
+        public UdpConnector(IPAddress address, int port)
         {
-            _acceptor = new IPEndPoint(IPAddress.Parse(acceptor.address), acceptor.port);
+            _acceptor = new IPEndPoint(address, port);
         }
 
         public UdpUnicaster Connect()
         {
-            UdpClient local = new UdpClient();
+            Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            local.Bind(new IPEndPoint(IPAddress.Loopback, 49152));
 
-            local.SendString(_acceptor, "hi");
-            string data = local.ReceiveString(_acceptor);
-            string[] segments = data.Split('/');
-            IPEndPoint remote = new IPEndPoint(IPAddress.Parse(segments[0]), int.Parse(segments[1]));
+            local.SendTo(_acceptor, new Message(Header.Connect));
+
+            EndPointMessage redirect = (EndPointMessage)local.ReceiveFrom(_acceptor);
+            IPEndPoint remote = new IPEndPoint(redirect.Address, redirect.Port);
+            
+            local.SendTo(remote, new Message(Header.Connect));
 
             return new UdpUnicaster(local, remote);
         }

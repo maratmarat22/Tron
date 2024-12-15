@@ -22,8 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\Audio\" />
-    <Folder Include="ViewModels\Game\" />
-    <Folder Include="Views\Game\" />
   </ItemGroup>
 
   <ItemGroup>

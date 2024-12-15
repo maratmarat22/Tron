@@ -1,6 +1,6 @@
-﻿using Tron.Common.Messages.General;
-using Tron.Common.Messages.PreGame;
+﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
+using Tron.Server.Core;
 using Tron.Server.Core.Domain.Entities;
 using Tron.Server.Persistence.QueryProcessing;
 
@@ -19,9 +19,9 @@ namespace Tron.Server.Core.MessageProcessing
 
         public (Proceed, Lobby?) Process(Message message)
         {
-            GetLobbiesMessage msg = (GetLobbiesMessage)message;
+            ReadLobbiesMessage msg = (ReadLobbiesMessage)message;
             int maxPlayers1 = msg.MaxPlayers;
-            bool @private1 = msg.Private;
+            bool @private1 = msg.IsPrivate;
 
             string[] lobbies = _queryProcessor.ReadLobbies();
             ReturnLobbiesMessage response = new(Header.ReturnLobbies, [.. lobbies]);

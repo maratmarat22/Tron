@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using System.Windows.Navigation;
-using Tron.Client.Application.ViewModels.Abstract;
+using Tron.Client.Application.ViewModels;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {

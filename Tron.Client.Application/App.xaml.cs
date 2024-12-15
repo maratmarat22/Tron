@@ -1,6 +1,6 @@
 ﻿using Tron.Client.Networking;
 using Tron.Common.Config.Utilities;
-using Tron.Common.Messages.General;
+using Tron.Common.Messages;
 using Tron.Common.Networking;
 
 namespace Tron.Client.Application
@@ -44,8 +44,8 @@ namespace Tron.Client.Application
         public void ConnectToServer()
         {
             SocketReader reader = new SocketReader();
-            (string address, int port) socket = reader.Read(@"../../../Tron.Common/Config/Data/ServerSocket");
-            UdpConnector connector = new UdpConnector(socket);
+            (string address, int port) acceptor = reader.Read(@"../../../../Tron.Common/Config/Data/ServerSocket.txt");
+            UdpConnector connector = new UdpConnector(acceptor);
             _unicaster = connector.Connect();
             ConnectionEstablished = true;
         }

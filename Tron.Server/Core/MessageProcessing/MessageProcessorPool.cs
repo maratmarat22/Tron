@@ -1,4 +1,4 @@
-﻿using Tron.Common.Messages.General;
+﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
 using Tron.Server.Persistence.QueryProcessing;
 
@@ -23,7 +23,7 @@ namespace Tron.Server.Core.MessageProcessing
             return header switch
             {
                 Header.CreateLobby => _createLobby ??= new CreateLobbyMessageProcessor(_queryProcessor, _unicaster),
-                Header.GetLobbies => _getLobbies ??= new GetLobbiesMessageProcessor(_queryProcessor, _unicaster),
+                Header.ReadLobbies => _getLobbies ??= new GetLobbiesMessageProcessor(_queryProcessor, _unicaster),
                 Header.JoinLobby => _joinLobby ??= new JoinLobbyMessageProcessor(_queryProcessor, _unicaster),
                 _ => throw new NotImplementedException()
             };
