@@ -14,6 +14,6 @@ namespace Tron.Server.Persistence.QueryProcessing
 
         internal string[] ReadTopTen();
 
-        internal void UpdateTopTen(string player, int points);
+        internal void UpdateTopTen(Lobby lobby);
     }
 }

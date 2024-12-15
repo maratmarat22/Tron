@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Tron.Common.Messages.General;
+using Tron.Common.Messages;
 using Tron.Common.Networking;
 using Tron.Server.Core.Domain.Entities;
 using Tron.Server.Core.Domain.Services;
@@ -12,63 +12,64 @@ namespace Tron.Server.Core
     internal class Application
     {
         private readonly IDbQueryProcessor _queryProcessor;
-        private readonly IPEndPoint _point;
+        private readonly EndPoint _point;
         private readonly UdpAcceptor _acceptor;
 
-        internal Application(IDbQueryProcessor queryProcessor, (string address, int port) socket)
+        internal Application(IDbQueryProcessor queryProcessor, IPAddress address, int port)
         {
             _queryProcessor = queryProcessor;
-            _point = new IPEndPoint(IPAddress.Parse(socket.address), socket.port);
-            _acceptor = new UdpAcceptor(_point);
+            _point = new IPEndPoint(address, port);
+            _acceptor = new UdpAcceptor((IPEndPoint)_point);
         }
 
         internal void Run()
-        {
+        {   
             while (true)
             {
                 UdpUnicaster unicaster = _acceptor.Accept();
 
                 Task.Run(() =>
                 {
-                    MessageProcessorPool pool = new(_queryProcessor, unicaster);
-
-                    while (true)
-                    {
-                        Message message = unicaster.Receive();
-                        ILobbyMessageProcessor processor = pool.Acquire(message.Header);
-                        (Proceed proceed, Lobby? lobby) = processor.Process(message);
-                        
-                        if (proceed == Proceed.True)
-                        {
-                            UdpMulticaster multicaster = new(unicaster);
-                            ProcessGame(lobby!, multicaster);
-                        }
-                    }
+                    ProcessClient(unicaster);
                 });
             }
         }
 
-        private void ProcessGame(Lobby lobby, UdpMulticaster multicaster)
+        private void ProcessClient(UdpUnicaster unicaster)
         {
-            PlayerAwaitingService awaiting = new(lobby);
+            MessageProcessorPool pool = new(_queryProcessor, unicaster);
 
             while (true)
             {
-                (Proceed proceed, GameState state) = awaiting.Run();
-                
+                Message message = unicaster.Receive();
+                ILobbyMessageProcessor processor = pool.Acquire(message.Header);
+                (Proceed proceed, Lobby? lobby) = processor.Process(message);
+
                 if (proceed == Proceed.True)
                 {
-                    GameplayService gameplay = new(lobby);
-                    (proceed, state) = gameplay.Run();
+                    UdpMulticaster multicaster = new(unicaster);
 
-                    if (proceed == Proceed.True)
+                    PlayerAwaitingService awaiting = new(lobby!, multicaster);
+
+                    while (true)
                     {
-                        _queryProcessor.UpdateTopTen(state.Winner.Name, state.Winner.Points);
-                        awaiting = new(state.Lobby);
+                        proceed = awaiting.Run();
+
+                        if (proceed == Proceed.True)
+                        {
+                            GameplayService gameplay = new(lobby!, multicaster);
+                            proceed = gameplay.Run();
+
+                            if (proceed == Proceed.True)
+                            {
+                                _queryProcessor.UpdateTopTen(lobby);
+                                awaiting = new(lobby, multicaster);
+                            }
+                            else break;
+                        }
+                        else break;
                     }
-                    else break;
                 }
-                else break;
             }
         }
     }

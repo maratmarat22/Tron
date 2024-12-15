@@ -1,16 +1,16 @@
 ﻿using System.Net;
 using System.Net.Sockets;
-using Tron.Common.Messages.General;
+using Tron.Common.Messages;
 
 namespace Tron.Common.Networking
 {
     public class UdpUnicaster
     {
-        public UdpClient Local { get; private set; }
+        public Socket Local { get; private set; }
 
         public IPEndPoint Remote { get; private set; }
 
-        public UdpUnicaster(UdpClient local, IPEndPoint remote)
+        public UdpUnicaster(Socket local, IPEndPoint remote)
         {
             Local = local;
             Remote = remote;
@@ -18,13 +18,12 @@ namespace Tron.Common.Networking
 
         public void Send(Message message)
         {
-            Local.SendString(Remote, message.ToString());
+            Local.SendTo(Remote, message);
         }
 
         public Message Receive()
         {
-            string message = Local.ReceiveString(Remote);
-            return new Message(message);
+            return Local.ReceiveFrom(Remote);
         }
     }
 }

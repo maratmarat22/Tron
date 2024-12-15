@@ -1,5 +1,6 @@
-﻿using Tron.Common.Messages.General;
+﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
+using Tron.Server.Core;
 using Tron.Server.Core.Domain.Entities;
 using Tron.Server.Persistence.QueryProcessing;
 
@@ -18,7 +19,7 @@ namespace Tron.Server.Core.MessageProcessing
 
         public (Proceed, Lobby) Process(Message message)
         {
-            return Proceed.True;
+            return (Proceed.True, null);
         }
     }
 }

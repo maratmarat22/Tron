@@ -13,6 +13,7 @@ namespace Tron.Client.Application
         {
             InitializeComponent();
             NavigationService nav = PageContainer.NavigationService;
+            ((App)(System.Windows.Application.Current)).ConnectToServer();
             PageContainer.Navigate(new MainMenuPage(nav));
         }
     }

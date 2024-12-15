@@ -1,4 +1,5 @@
-﻿using Tron.Server.Core.Domain.Entities;
+﻿using Microsoft.Data.Sqlite;
+using Tron.Server.Core.Domain.Entities;
 
 namespace Tron.Server.Persistence.QueryProcessing
 {
@@ -13,6 +14,32 @@ namespace Tron.Server.Persistence.QueryProcessing
 
         public int CreateLobby(Lobby lobby)
         {
+            //using (SqliteConnection connection = new(_connectionString))
+            //{
+            //    var query = $"INSERT INTO lobbies (id, master, host, players, max_players, private, password) values (@id, @master, @host, @players, @max_players, @private, @password)";
+            //    connection.Open();
+
+            //    SqliteCommand command = new SqliteCommand(query, connection);
+
+            //    using (SqliteTransaction transaction = connection.BeginTransaction())
+            //    {
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+            //        command.Parameters.AddWithValue();
+                    
+            //        command.ExecuteNonQuery();
+            //        command.Parameters.Clear();
+
+            //        transaction.Commit();
+            //    }
+
+            //    connection.Close();
+            //}
+
             return 0;
         }
 
@@ -36,9 +63,9 @@ namespace Tron.Server.Persistence.QueryProcessing
             return new string[0];
         }
 
-        public void UpdateTopTen(string player, int points)
+        public void UpdateTopTen(Lobby lobby)
         {
-        
+
         }
     }
 }

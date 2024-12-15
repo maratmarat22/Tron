@@ -1,4 +1,5 @@
 ﻿using Tron.Server.Core.Domain.Entities;
+using Tron.Server.Networking;
 
 namespace Tron.Server.Core.Domain.Services
 {
@@ -6,19 +7,22 @@ namespace Tron.Server.Core.Domain.Services
     {
         internal Lobby Lobby { get; private set; }
         
-        internal PlayerAwaitingService(Lobby lobby)
+        internal UdpMulticaster Multicaster { get; private set; }
+
+        internal PlayerAwaitingService(Lobby lobby, UdpMulticaster multicaster)
         {
             Lobby = lobby;
+            Multicaster = multicaster;
         }
         
-        internal (Proceed, GameState) Run()
+        internal Proceed Run()
         {
             while (true)
             {
-                break;
+                
             }
 
-            return (Proceed.True, new GameState());
+            return Proceed.True;
         }
     }
 }

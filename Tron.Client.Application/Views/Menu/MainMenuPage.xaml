@@ -41,7 +41,8 @@
             Height="100"
             Margin="0,0,800,230"
             BorderThickness="0"
-            BorderBrush="White">
+            BorderBrush="White"
+            Command="{Binding InitSpCommand}">
 
             <Button.Background>
                 <SolidColorBrush Color="#BB000000"/>

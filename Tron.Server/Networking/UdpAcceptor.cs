@@ -1,37 +1,43 @@
 ﻿using System.Net;
 using System.Net.Sockets;
+using Tron.Common.Messages;
 using Tron.Common.Networking;
 
 namespace Tron.Server.Networking
 {
     internal class UdpAcceptor
     {
-        private readonly UdpClient _acceptor;
+        private readonly Socket _acceptor;
         private readonly IPAddress _address;
         private int _availablePort;
 
         internal UdpAcceptor(IPEndPoint point)
         {
-            _acceptor = new UdpClient(point);
+            _acceptor = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            _acceptor.Bind(point);
             _address = point.Address;
             _availablePort = point.Port + 1;
         }
 
         internal UdpUnicaster Accept()
         {
-            IPEndPoint client = new(IPAddress.Any, 0);
-            _ = _acceptor.Receive(ref client);
+            EndPoint remote = new IPEndPoint(IPAddress.Any, 0);
+            _ = _acceptor.ReceiveFrom(ref remote);
 
-            UdpClient server = ProvideUdpClient();
+            Socket local = ProvideSocket();
+            IPEndPoint localPoint = (IPEndPoint)local.LocalEndPoint!;
+            EndPointMessage redirect = new(Header.Redirect, localPoint.Address, localPoint.Port);
 
-            NotifyClient(server, client);
+            _acceptor.SendTo(remote, redirect);
 
-            return new UdpUnicaster(server, client);
+            _ = local.ReceiveFrom(remote);
+
+            return new UdpUnicaster(local, (IPEndPoint)remote);
         }
 
-        private UdpClient ProvideUdpClient()
+        private Socket ProvideSocket()
         {
-            UdpClient? server = null;
+            Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             bool portAvailable = false;
 
             while (!portAvailable)
@@ -39,7 +45,7 @@ namespace Tron.Server.Networking
                 try
                 {
                     IPEndPoint point = new(_address, _availablePort);
-                    server = new UdpClient(point);
+                    local.Bind(point);
                     portAvailable = true;
                 }
                 catch (SocketException)
@@ -50,12 +56,7 @@ namespace Tron.Server.Networking
                 ++_availablePort;
             }
 
-            return server!;
-        }
-
-        private void NotifyClient(UdpClient server, IPEndPoint client)
-        {
-            server.SendString(client, server.Client.LocalEndPoint!.ToString()!);
+            return local!;
         }
     }
 }
