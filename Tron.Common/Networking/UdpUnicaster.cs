@@ -6,24 +6,29 @@ namespace Tron.Common.Networking
 {
     public class UdpUnicaster
     {
-        public Socket Local { get; private set; }
+        public System.Net.Sockets.Socket Local { get; private set; }
 
-        public IPEndPoint Remote { get; private set; }
+        private EndPoint _remote;
+        public ref EndPoint Remote
+        {
+            get => ref _remote;
+        }
 
-        public UdpUnicaster(Socket local, IPEndPoint remote)
+        public UdpUnicaster(System.Net.Sockets.Socket local, EndPoint remote)
         {
             Local = local;
-            Remote = remote;
+            _remote = remote;
+            Remote = _remote;
         }
 
         public void Send(Message message)
         {
-            Local.SendTo(Remote, message);
+            Local.SafeSendTo(message, Remote);
         }
 
-        public Message Receive()
+        public Message Receive(params Header[] expected)
         {
-            return Local.ReceiveFrom(Remote);
+            return Local.SafeReceiveFrom(ref Remote, expected);
         }
     }
 }

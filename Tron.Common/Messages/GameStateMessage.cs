@@ -27,7 +27,7 @@ namespace Tron.Common.Messages
 
         public GameStateMessage(Dictionary<Color, PlayerCoordinates> gameState)
         {
-            Header = Header.GameState;
+            Header = Header.GAME_STATE;
             GameState = gameState;
         }
 

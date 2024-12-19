@@ -6,6 +6,7 @@
     
     <Application.Resources>
         <FontFamily x:Key="Tiny">pack://application:,,,/Resources/Fonts/#Tiny5</FontFamily>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
 
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightGray"/>

@@ -20,7 +20,7 @@ namespace Tron.Server.Core.MessageProcessing
         public (Proceed, Lobby) Process(Message message)
         {
             CreateLobbyMessage msg = (CreateLobbyMessage)message;
-            Lobby lobby = new(0, msg.MaxPlayers, msg.IsPrivate, msg.Password);
+            Lobby lobby = new(0, msg.MaxPlayers, msg.IsPrivate, msg.Password, null);
             _queryProcessor.CreateLobby(lobby);
 
             return (Proceed.True, lobby);

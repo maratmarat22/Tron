@@ -14,19 +14,31 @@ namespace Tron.Client.Networking
             _acceptor = new IPEndPoint(address, port);
         }
 
-        public UdpUnicaster Connect()
+        public UdpUnicaster? TryConnect()
         {
             Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            local.Bind(new IPEndPoint(IPAddress.Loopback, 49152));
+            if (local.TryBind(IPAddress.Loopback, 5000))
+            {
+                try
+                {
+                    local.SafeSendTo(new Message(Header.CONNECT), _acceptor);
+                }
+                catch (SocketException)
+                {
+                    local.Close();
+                    local.Dispose();
+                    return null;
+                }
 
-            local.SendTo(_acceptor, new Message(Header.Connect));
+                EndPointMessage redirect = (EndPointMessage)local.SafeReceiveFrom(ref _acceptor, Header.REDIRECT);
+                IPEndPoint remote = new IPEndPoint(redirect.Address, redirect.Port);
 
-            EndPointMessage redirect = (EndPointMessage)local.ReceiveFrom(_acceptor);
-            IPEndPoint remote = new IPEndPoint(redirect.Address, redirect.Port);
-            
-            local.SendTo(remote, new Message(Header.Connect));
+                local.SafeSendTo(new Message(Header.CONNECT), remote);
 
-            return new UdpUnicaster(local, remote);
+                return new UdpUnicaster(local, remote);
+            }
+
+            return null;
         }
     }
 }

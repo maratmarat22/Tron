@@ -7,11 +7,11 @@ namespace Tron.Server.Networking
 {
     internal class UdpMulticaster
     {
-        public Socket Local { get; private set; }
+        public System.Net.Sockets.Socket Local { get; private set; }
 
-        public List<IPEndPoint> Remotes { get; private set; }
+        public List<EndPoint> Remotes { get; private set; }
 
-        internal UdpMulticaster(Socket local, params IPEndPoint[] remotes)
+        internal UdpMulticaster(System.Net.Sockets.Socket local, params IPEndPoint[] remotes)
         {
             Local = local;
             Remotes = [.. remotes];
@@ -21,6 +21,19 @@ namespace Tron.Server.Networking
         {
             Local = unicaster.Local;
             Remotes = [unicaster.Remote];
+        }
+
+        internal void SendAll(Message message)
+        {
+            foreach (IPEndPoint remote in Remotes)
+            {
+                Local.SafeSendTo(message, remote);
+            }
+        }
+
+        internal Message ReceiveAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

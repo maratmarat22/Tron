@@ -24,7 +24,7 @@ namespace Tron.Server.Core.MessageProcessing
             bool @private1 = msg.IsPrivate;
 
             string[] lobbies = _queryProcessor.ReadLobbies();
-            ReturnLobbiesMessage response = new(Header.ReturnLobbies, [.. lobbies]);
+            ReturnLobbiesMessage response = new(Header.RETURN_LOBBIES, [.. lobbies]);
             _unicaster.Send(response);
 
             return (Proceed.False, null);
