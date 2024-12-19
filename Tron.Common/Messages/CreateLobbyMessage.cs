@@ -17,7 +17,7 @@
 
         public CreateLobbyMessage(int maxPlayers, bool isPrivate, string password)
         {
-            Header = Header.CreateLobby;
+            Header = Header.CREATE_LOBBY;
             MaxPlayers = maxPlayers;
             IsPrivate = isPrivate;
             Password = password;

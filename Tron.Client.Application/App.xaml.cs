@@ -1,4 +1,5 @@
-﻿using Tron.Client.Networking;
+﻿using System.Net;
+using Tron.Client.Networking;
 using Tron.Common.Config.Utilities;
 using Tron.Common.Messages;
 using Tron.Common.Networking;
@@ -10,6 +11,8 @@ namespace Tron.Client.Application
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        private (string address, int port) _acceptor;
+        
         private int _musicVolume;
         public int MusicVolume
         { 
@@ -38,16 +41,23 @@ namespace Tron.Client.Application
 
         public App()
         {
+            SocketReader reader = new SocketReader();
+            _acceptor = reader.Read(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+
             ConnectionEstablished = false;
         }
         
-        public void ConnectToServer()
+        public bool TryConnectToServer()
         {
-            SocketReader reader = new SocketReader();
-            (string address, int port) acceptor = reader.Read(@"../../../../Tron.Common/Config/Data/ServerSocket.txt");
-            UdpConnector connector = new UdpConnector(acceptor);
-            _unicaster = connector.Connect();
-            ConnectionEstablished = true;
+            if (ConnectionEstablished) return true;
+            else
+            {
+                UdpConnector connector = new UdpConnector(IPAddress.Parse(_acceptor.address), _acceptor.port);
+                _unicaster = connector.TryConnect();
+
+                ConnectionEstablished = _unicaster != null;
+                return ConnectionEstablished;
+            }
         }
 
         public void SendToServer(Message message)

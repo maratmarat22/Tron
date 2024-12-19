@@ -11,10 +11,10 @@
 
         public ChangeColorMessage(Header header, Color color)
         {
-            Header = Header.ChangeColor;
+            Header = Header.CHANGE_COLOR;
             Color = color;
         }
 
-        public override string ToString() => Header.ToString() + '/' + Color.ToString();
+        public override string ToString() => ((int)Header).ToString() + '/' + ((int)Color).ToString();
     }
 }

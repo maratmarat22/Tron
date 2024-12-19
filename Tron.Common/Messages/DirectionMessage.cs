@@ -11,7 +11,7 @@
 
         public DirectionMessage(Direction direction)
         {
-            Header = Header.Direction;
+            Header = Header.DIRECTION;
             Direction = direction;
         }
 

@@ -11,7 +11,7 @@
 
         public JoinLobbyMessage(int lobbyId)
         {
-            Header = Header.JoinLobby;
+            Header = Header.JOIN_LOBBY;
             LobbyId = lobbyId;
         }
 

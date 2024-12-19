@@ -13,7 +13,7 @@ namespace Tron.Common.Messages
 
         public ReturnLobbiesMessage(List<string> lobbies)
         {
-            Header = Header.ReturnLobbies;
+            Header = Header.RETURN_LOBBIES;
             Lobbies = lobbies;
         }
 

@@ -7,22 +7,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Gameplay\ArenaPage.xaml.cs">
+    <Compile Update="Views\ArenaPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Menu\CreateLobbyPage.xaml.cs">
+    <Compile Update="Views\CreateLobbyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Menu\MainMenuPage.xaml.cs">
+    <Compile Update="Views\MainMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Menu\MpMenuPage.xaml.cs">
+    <Compile Update="Views\MpMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Menu\JoinLobbyPage.xaml.cs">
+    <Compile Update="Views\JoinLobbyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Menu\SettingsPage.xaml.cs">
+    <Compile Update="Views\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -30,22 +30,22 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Gameplay\ArenaPage.xaml">
+    <Page Update="Views\ArenaPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Menu\CreateLobbyPage.xaml">
+    <Page Update="Views\CreateLobbyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Menu\MainMenuPage.xaml">
+    <Page Update="Views\MainMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Menu\MpMenuPage.xaml">
+    <Page Update="Views\MpMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Menu\JoinLobbyPage.xaml">
+    <Page Update="Views\JoinLobbyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Menu\SettingsPage.xaml">
+    <Page Update="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -14,7 +14,7 @@
 
         public ReadLobbiesMessage(int maxPlayers, bool isPrivate)
         {
-            Header = Header.ReadLobbies;
+            Header = Header.READ_LOBBIES;
             MaxPlayers = maxPlayers;
             IsPrivate = isPrivate;
         }

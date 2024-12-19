@@ -21,6 +21,6 @@ namespace Tron.Common.Messages
             Port = port;
         }
 
-        public override string ToString() => Header.ToString() + '/' + Address.ToString() + '/' + Port.ToString();
+        public override string ToString() => ((int)Header).ToString() + '/' + Address.ToString() + '/' + Port.ToString();
     }
 }

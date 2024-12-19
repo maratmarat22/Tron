@@ -22,9 +22,9 @@ namespace Tron.Server.Core.MessageProcessing
         {
             return header switch
             {
-                Header.CreateLobby => _createLobby ??= new CreateLobbyMessageProcessor(_queryProcessor, _unicaster),
-                Header.ReadLobbies => _getLobbies ??= new GetLobbiesMessageProcessor(_queryProcessor, _unicaster),
-                Header.JoinLobby => _joinLobby ??= new JoinLobbyMessageProcessor(_queryProcessor, _unicaster),
+                Header.CREATE_LOBBY => _createLobby ??= new CreateLobbyMessageProcessor(_queryProcessor, _unicaster),
+                Header.READ_LOBBIES => _getLobbies ??= new GetLobbiesMessageProcessor(_queryProcessor, _unicaster),
+                Header.JOIN_LOBBY => _joinLobby ??= new JoinLobbyMessageProcessor(_queryProcessor, _unicaster),
                 _ => throw new NotImplementedException()
             };
         }

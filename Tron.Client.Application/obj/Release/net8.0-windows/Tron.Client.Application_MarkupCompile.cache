@@ -10,11 +10,11 @@ none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\App.xaml
-9-202169041
+71852604440
 
-121134328098
+23-101481612
 2002015658082
-MainWindow.xaml;Pages\Menu\MenuPage.xaml;Pages\Multiplayer\CreateLobbyPage.xaml;Pages\Multiplayer\CreateOrJoinPage.xaml;Pages\Multiplayer\JoinLobbyPage.xaml;Pages\Settings\SettingsPage.xaml;Pages\Tracks\LargeTrack.xaml;Pages\Tracks\MediumTrack.xaml;Pages\Tracks\SmallTrack.xaml;
+MainWindow.xaml;Views\Gameplay\ArenaPage.xaml;Views\Menu\CreateLobbyPage.xaml;Views\Menu\JoinLobbyPage.xaml;Views\Menu\MainMenuPage.xaml;Views\Menu\MpMenuPage.xaml;Views\Menu\SettingsPage.xaml;
 
 True
 
