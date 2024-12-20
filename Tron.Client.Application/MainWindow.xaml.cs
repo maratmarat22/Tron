@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Navigation;
-using Tron.Client.Application.Views.Menu;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application
 {

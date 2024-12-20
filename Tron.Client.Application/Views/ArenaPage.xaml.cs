@@ -4,9 +4,10 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tron.Client.Application.Models;
-using Tron.Client.Application.ViewModels;
+using Tron.Client.Application.Services;
+using Tron.Client.Application.ViewModels.Game;
 
-namespace Tron.Client.Application.Views.Gameplay
+namespace Tron.Client.Application.Views
 {
     /// <summary>
     /// Interaction logic for Arena.xaml
@@ -17,7 +18,9 @@ namespace Tron.Client.Application.Views.Gameplay
         {
             DataContext = mode switch
             {
-                GameMode.LOCAL => new LpViewModel(nav),
+                GameMode.SINGLEPLAYER => new SingleplayerViewModel(nav),
+                GameMode.MULTIPLAYER => new MultiplayerViewModel(nav),
+                GameMode.LOCALPLAYER => new LocalplayerViewModel(nav),
                 _ => throw new Exception()
             };
 
@@ -28,9 +31,9 @@ namespace Tron.Client.Application.Views.Gameplay
         {
             CreateArenaGrid();
             Focus();
-            ((IGpViewModel)DataContext).PlayersGrid = PlayersGrid;
-            ((IGpViewModel)DataContext).ArenaGrid = ArenaGrid;
-            ((IGpViewModel)DataContext).InitGameCommand.Execute(null);
+            ((GameplayViewModel)DataContext).PlayersGrid = PlayersGrid;
+            ((GameplayViewModel)DataContext).ArenaGrid = ArenaGrid;
+            ((GameplayViewModel)DataContext).InitGameCommand.Execute(null);
         }
 
         private void CreateArenaGrid()
@@ -81,12 +84,5 @@ namespace Tron.Client.Application.Views.Gameplay
                 Net.Children.Add(line);
             }
         }
-    }
-
-    public enum GameMode
-    {
-        SINGLEPLAYER,
-        MULTIPLAYER,
-        LOCAL
     }
 }
