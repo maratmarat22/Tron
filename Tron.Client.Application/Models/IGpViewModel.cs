@@ -7,6 +7,8 @@ namespace Tron.Client.Application.Models
     {
         internal ICommand InitGameCommand { get; }
 
-        internal Canvas Arena { get; set; }
+        internal Grid PlayersGrid { get; set; }
+
+        internal Grid ArenaGrid { get; set; }
     }
 }

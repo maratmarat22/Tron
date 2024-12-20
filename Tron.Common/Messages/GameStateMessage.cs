@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Tron.Common.Entities;
 
 namespace Tron.Common.Messages
 {
@@ -17,9 +18,9 @@ namespace Tron.Common.Messages
 
                 Color color = (Color)int.Parse(data[0]);
 
-                int x = int.Parse(data[1]);
-                int y = int.Parse(data[2]);
-                PlayerCoordinates coordinates = new(x, y);
+                int row = int.Parse(data[1]);
+                int column = int.Parse(data[2]);
+                PlayerCoordinates coordinates = new(row, column);
 
                 GameState.Add(color, coordinates);
             }

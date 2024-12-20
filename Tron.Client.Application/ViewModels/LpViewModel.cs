@@ -1,12 +1,15 @@
-﻿using System.Drawing;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Services;
+using Tron.Common.Entities;
 using Tron.Common.Messages;
+using System.Windows;
+using System.Windows.Media.Effects;
+using System.Drawing;
 
 namespace Tron.Client.Application.ViewModels
 {
@@ -43,12 +46,21 @@ namespace Tron.Client.Application.ViewModels
 
         public ICommand GoBackCommand { get; }
 
-        public Canvas Arena { get; set; }
+        public Grid PlayersGrid { get; set; }
+
+        public Grid ArenaGrid { get; set; }
+
+        private bool _blackoutVisibility;
+        public bool BlackoutVisibility
+        {
+            get => _blackoutVisibility;
+            set => SetProperty(ref _blackoutVisibility, value);
+        }
 
         internal LpViewModel(NavigationService nav)
         {
-            _player1 = new Player(new Point(0, 0), Colors.Red, Direction.RIGHT);
-            _player2 = new Player(new Point(0, 0), Colors.Blue, Direction.LEFT);
+            _player1 = new Player(new PlayerCoordinates(0, 0), Colors.Red, Direction.RIGHT);
+            _player2 = new Player(new PlayerCoordinates(0, 0), Colors.Blue, Direction.LEFT);
 
             _nav = nav;
 
@@ -66,13 +78,15 @@ namespace Tron.Client.Application.ViewModels
             GoBackCommand = new RelayCommand(OnGoBack);
             SetDirectionCommand = new RelayCommand(OnSetDirection);
             ExtraSetDirectionCommand = new RelayCommand(OnExtraSetDirection);
+
+            BlackoutVisibility = true;
         }
 
         private void OnSetDirection(object? direction)
         {
             if (_service != null)
             {
-                _player1.Direction = (Direction)direction!;
+                _service.SetDirection(_player1, (Direction)direction!);
             }
         }
 
@@ -80,36 +94,99 @@ namespace Tron.Client.Application.ViewModels
         {
             if (_service != null)
             {
-                _player2.Direction = (Direction)direction!;
+                _service.SetDirection(_player2, (Direction)direction!);
             }
         }
 
         private async void OnInitGame()
         {
-            _player1.Position = new((int)(Arena.Width / 2 - 200), (int)(Arena.Height / 2));
-            _player2.Position = new((int)(Arena.Width / 2 + 180), (int)(Arena.Height / 2));
+            DisplayPlayerInfo();
+            
+            _player1.Coordinates = new(ArenaGrid.RowDefinitions.Count / 2, ArenaGrid.ColumnDefinitions.Count / 2 - 30);
+            _player2.Coordinates = new(ArenaGrid.RowDefinitions.Count / 2, ArenaGrid.ColumnDefinitions.Count / 2 + 29);
 
-            Arena.Children.Add(_player1.Shape);
-            Arena.Children.Add(_player2.Shape);
+            ArenaGrid.SetCoordinates(_player1.Shape, _player1.Coordinates);
+            ArenaGrid.SetCoordinates(_player2.Shape, _player2.Coordinates);
 
-            Canvas.SetLeft(_player1.Shape, _player1.Position.X);
-            Canvas.SetTop(_player1.Shape, _player1.Position.Y);
+            ArenaGrid.Children.Add(_player1.Shape);
+            ArenaGrid.Children.Add(_player2.Shape);
 
-            Canvas.SetLeft(_player2.Shape, _player2.Position.X);
-            Canvas.SetTop(_player2.Shape, _player2.Position.Y);
+            StartCountdown();
+            await Task.Delay(TimeSpan.FromSeconds(_countdownTime + 1));
 
-            StartCountDown();
-            await Task.Delay(TimeSpan.FromSeconds(_countdownTime));
-
-            _service = new(Arena, [_player1, _player2]);
+            _service = new(ArenaGrid, [_player1, _player2]);
             _service.Run();
         }
 
-        private void StartCountDown()
+        private void StartCountdown()
         {
             CountdownMessage = (_countdownTime).ToString();
             _timer.Start();
         }
+
+        private void DisplayPlayerInfo()
+        {
+            PlayersGrid.RowDefinitions.Add(new RowDefinition());
+            PlayersGrid.RowDefinitions.Add(new RowDefinition());
+
+            PlayersGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            PlayersGrid.ColumnDefinitions.Add(new ColumnDefinition());
+
+            string[] players = ["PLAYER1", "PLAYER2"];
+            System.Windows.Media.Color[] colors = [Colors.Red, Colors.Blue];
+
+            FontFamily tiny = (FontFamily)((App)System.Windows.Application.Current).Resources["Tiny"];
+            SolidColorBrush white = new SolidColorBrush(Colors.White);
+
+            for (int i = 0; i < players.Length; ++i)
+            {
+                TextBlock nameTextBlock = new TextBlock
+                {
+                    Text = players[i],
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Foreground = white,
+                    FontFamily = tiny,
+                    FontSize = 40,
+                    Effect = new DropShadowEffect
+                    {
+                        Color = colors[i],
+                        Direction = 0,
+                        ShadowDepth = 0,
+                        BlurRadius = 20,
+                        Opacity = 1
+                    }
+                };
+
+                TextBlock winsTextBlock = new TextBlock
+                {
+                    Text = "0",
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Foreground = white,
+                    FontFamily = tiny,
+                    FontSize = 40,
+                    Effect = new DropShadowEffect
+                    {
+                        Color = colors[i],
+                        Direction = 0,
+                        ShadowDepth = 0,
+                        BlurRadius = 20,
+                        Opacity = 1
+                    }
+                };
+
+                PlayersGrid.Children.Add(nameTextBlock);
+                PlayersGrid.Children.Add(winsTextBlock);
+
+                Grid.SetRow(nameTextBlock, i);
+                Grid.SetColumn(nameTextBlock, 0);
+
+                Grid.SetRow(winsTextBlock, i);
+                Grid.SetColumn(winsTextBlock, 1);
+            }
+        }
+
 
         private async void Timer_Tick(object? sender, EventArgs e)
         {
@@ -120,6 +197,7 @@ namespace Tron.Client.Application.ViewModels
             else if (_countdownTime == 1)
             {
                 CountdownMessage = "GO";
+                BlackoutVisibility = false;
                 await Task.Delay(TimeSpan.FromSeconds(1));
                 _timer.Stop();
                 CountdownVisibility = false;

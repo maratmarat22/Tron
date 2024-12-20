@@ -59,7 +59,7 @@ namespace Tron.Client.Application.ViewModels
 
         private void OnInitLocalMp()
         {
-            _nav.Navigate(new ArenaPage(_nav, 2, Mode.Local));
+            _nav.Navigate(new ArenaPage(_nav, 2, GameMode.LOCAL));
         }
 
         private void OnGoBack()

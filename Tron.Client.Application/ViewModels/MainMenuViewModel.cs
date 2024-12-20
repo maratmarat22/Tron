@@ -29,7 +29,7 @@ namespace Tron.Client.Application.ViewModels
 
         private void OnInitSp()
         {
-            _nav.Navigate(new ArenaPage(_nav, 2, Mode.Offline));
+            _nav.Navigate(new ArenaPage(_nav, 2, GameMode.SINGLEPLAYER));
         }
 
         private void OnNavToMpMenu()
