@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\services\\localgameplayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\services\\localgameplayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\lpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\lpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\arenapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\arenapage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,196 +19,108 @@
       "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\arenapage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\settingspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\settingspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\lpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\lpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\createlobbypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\createlobbypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\mpmenupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\mpmenupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\mainmenupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\mainmenupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\mpmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\mpmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\services\\localgameplayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\services\\localgameplayservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\createlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\createlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\joinlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\joinlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\createlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\createlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\tron.client.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\tron.client.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\mpactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\mpactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\igpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\igpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\iactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\iactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\mainmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\mainmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\spviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\spviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CE80113-0A64-4FCC-AD15-4542B67AFBD8}|Tron.Client.Networking\\Tron.Client.Networking.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.networking\\udpconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CE80113-0A64-4FCC-AD15-4542B67AFBD8}|Tron.Client.Networking\\Tron.Client.Networking.csproj|solutionrelative:tron.client.networking\\udpconnector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\spactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\spactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\color.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\readlobbiesmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\readlobbiesmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\playercoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\playercoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\joinlobbymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\joinlobbymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\header.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\header.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\gamestatemessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\gamestatemessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\endpointmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\endpointmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\directionmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\directionmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\returnlobbiesmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\returnlobbiesmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\createlobbymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\createlobbymessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\changecolormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\changecolormessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\ackmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\ackmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\networking\\udpacceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\networking\\udpacceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\networking\\socketextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\networking\\socketextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\core\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\core\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\networking\\udpunicaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\networking\\udpunicaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\mpmenupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\mpmenupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\mainmenupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\mainmenupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\createlobbypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\createlobbypage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\joinlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\joinlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\joinlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\joinlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\persistence\\utilities\\socketreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\persistence\\utilities\\socketreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\views\\createlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\views\\createlobbypage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\gridextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\gridextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\igpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\igpviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\spactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\spactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\mpactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\mpactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\entities\\playercoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\entities\\playercoordinates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\core\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\core\\application.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\core\\clientprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\core\\clientprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\networking\\udpacceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\networking\\udpacceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\networking\\udpmulticaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\networking\\udpmulticaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.server\\core\\proceed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}|Tron.Server\\Tron.Server.csproj|solutionrelative:tron.server\\core\\proceed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\mpmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\mpmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\mainmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\mainmenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\messages\\gamestatemessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\messages\\gamestatemessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.common\\tron.common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7C5F7456-A951-4C79-AA58-4C4443FAC803}|Tron.Common\\Tron.Common.csproj|solutionrelative:tron.common\\tron.common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\viewmodels\\createlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\viewmodels\\createlobbyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|c:\\users\\akhmy\\documents\\projects\\visual studio\\c#\\tron\\tron.client.application\\models\\iactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}|Tron.Client.Application\\Tron.Client.Application.csproj|solutionrelative:tron.client.application\\models\\iactionprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -210,7 +130,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 115,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -218,116 +138,65 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MpMenuPage.xaml",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MpMenuPage.xaml",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml",
+              "RelativeToolTip": "Tron.Client.Application\\Views\\MpMenuPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-20T00:06:50.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SettingsViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\SettingsViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\SettingsViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\SettingsViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\SettingsViewModel.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAzwBQAAAAAAAAAAAAAAA==",
+              "Title": "MpMenuPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T00:19:15.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SettingsPage.xaml",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\SettingsPage.xaml",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\SettingsPage.xaml",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\SettingsPage.xaml",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\SettingsPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-19T00:15:05.769Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MainMenuPage.xaml",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MainMenuPage.xaml",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MainMenuPage.xaml",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MainMenuPage.xaml",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\MainMenuPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-19T00:03:53.92Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RelayCommand.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\RelayCommand.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\RelayCommand.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\RelayCommand.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\RelayCommand.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:14:54.618Z",
+              "WhenOpened": "2024-12-20T00:06:49.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "LpViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\LpViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\LpViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\LpViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\LpViewModel.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAxwM0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T15:53:37.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LocalGameplayService.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Services\\LocalGameplayService.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Services\\LocalGameplayService.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Services\\LocalGameplayService.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Services\\LocalGameplayService.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T15:34:04.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ArenaPage.xaml",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml",
               "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\ArenaPage.xaml",
               "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml",
               "RelativeToolTip": "Tron.Client.Application\\Views\\ArenaPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-17T13:57:10.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SettingsPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\SettingsPage.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\SettingsPage.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\SettingsPage.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\SettingsPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:05:52.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LpViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\LpViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\LpViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\LpViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\LpViewModel.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAA1wCsAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:45:36.629Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ArenaPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:56:26.449Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LocalGameplayService.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Services\\LocalGameplayService.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Services\\LocalGameplayService.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Services\\LocalGameplayService.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Services\\LocalGameplayService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAjwFAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T22:47:38.788Z",
+              "WhenOpened": "2024-12-19T16:36:30.161Z",
               "EditorCaption": ""
             },
             {
@@ -339,37 +208,38 @@
               "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\CreateLobbyPage.xaml",
               "RelativeToolTip": "Tron.Client.Application\\Views\\CreateLobbyPage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-18T21:12:47.379Z",
+              "WhenOpened": "2024-12-19T16:32:08.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MpMenuPage.xaml",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MpMenuPage.xaml",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\MpMenuPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-18T09:38:10.561Z",
+              "DocumentIndex": 2,
+              "Title": "ArenaPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Views\\ArenaPage.xaml.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T16:43:22.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "MpMenuViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAQwEYAAAAAAAAAAAAAAA==",
+              "Title": "GridExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\GridExtensions.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\GridExtensions.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\GridExtensions.cs",
+              "RelativeToolTip": "Tron.Client.Application\\GridExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T09:20:26.548Z",
+              "WhenOpened": "2024-12-19T19:32:58.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 7,
               "Title": "JoinLobbyViewModel.cs",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\JoinLobbyViewModel.cs",
               "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\JoinLobbyViewModel.cs",
@@ -377,181 +247,38 @@
               "RelativeToolTip": "Tron.Client.Application\\ViewModels\\JoinLobbyViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:45:54.05Z",
+              "WhenOpened": "2024-12-19T17:18:45.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Player.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\Player.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Player.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Models\\Player.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:08:46.087Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Lobby.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Lobby.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\Lobby.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Lobby.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Models\\Lobby.cs",
+              "DocumentIndex": 8,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\RelayCommand.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\RelayCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:33:07.139Z",
+              "WhenOpened": "2024-12-19T23:33:12.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "BaseViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:33:09.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CreateLobbyViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:52:01.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 9,
               "Title": "CreateLobbyPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\CreateLobbyPage.xaml.cs",
               "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\CreateLobbyPage.xaml.cs",
               "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\CreateLobbyPage.xaml.cs",
               "RelativeToolTip": "Tron.Client.Application\\Views\\CreateLobbyPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:05:23.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Tron.Client.Application",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Tron.Client.Application.csproj",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Tron.Client.Application.csproj",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Tron.Client.Application.csproj",
-              "RelativeToolTip": "Tron.Client.Application\\Tron.Client.Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-18T22:47:13.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "IGpViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IGpViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\IGpViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IGpViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Models\\IGpViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T21:37:05.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IActionProvider.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IActionProvider.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\IActionProvider.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IActionProvider.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Models\\IActionProvider.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:48:11.846Z",
+              "WhenOpened": "2024-12-19T23:23:27.836Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "MpActionProvider.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\MpActionProvider.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\MpActionProvider.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\MpActionProvider.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Models\\MpActionProvider.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:52:10.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\App.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\App.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\App.xaml.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T09:24:13.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "MainMenuViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T20:17:19.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "SpViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\SpViewModel.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\SpViewModel.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\SpViewModel.cs",
-              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\SpViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:39:40.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "UdpConnector.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Networking\\UdpConnector.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Networking\\UdpConnector.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Networking\\UdpConnector.cs",
-              "RelativeToolTip": "Tron.Client.Networking\\UdpConnector.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:35:07.979Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 12,
               "Title": "SpActionProvider.cs",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\SpActionProvider.cs",
               "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\SpActionProvider.cs",
@@ -559,303 +286,242 @@
               "RelativeToolTip": "Tron.Client.Application\\Models\\SpActionProvider.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:52:08.973Z",
+              "WhenOpened": "2024-12-19T15:33:16.383Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Color.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Color.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\Color.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Color.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\Color.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Player.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\Player.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Player.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Models\\Player.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwBsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:43:00.652Z",
+              "WhenOpened": "2024-12-19T15:33:26.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ReadLobbiesMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ReadLobbiesMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\ReadLobbiesMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ReadLobbiesMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\ReadLobbiesMessage.cs",
+              "DocumentIndex": 11,
+              "Title": "IGpViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IGpViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\IGpViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IGpViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Models\\IGpViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T18:17:52.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\BaseViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:28:48.053Z",
+              "WhenOpened": "2024-12-19T15:36:36.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Message.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Message.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\Message.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Message.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\Message.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAWwEsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T07:50:23.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "PlayerCoordinates.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\PlayerCoordinates.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\PlayerCoordinates.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\PlayerCoordinates.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\PlayerCoordinates.cs",
+              "DocumentIndex": 15,
+              "Title": "MpActionProvider.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\MpActionProvider.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\MpActionProvider.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\MpActionProvider.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Models\\MpActionProvider.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T19:05:35.03Z",
+              "WhenOpened": "2024-12-19T15:33:13.346Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "JoinLobbyMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\JoinLobbyMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\JoinLobbyMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\JoinLobbyMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\JoinLobbyMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:28:43.957Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Header.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Header.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\Header.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Header.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\Header.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwCUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T07:56:52.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "GameStateMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\GameStateMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\GameStateMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\GameStateMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\GameStateMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:32.264Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "EndPointMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\EndPointMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\EndPointMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\EndPointMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\EndPointMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:33.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "DirectionMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\DirectionMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\DirectionMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\DirectionMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\DirectionMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:34.864Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Direction.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Direction.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\Direction.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\Direction.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\Direction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:35.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "ReturnLobbiesMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ReturnLobbiesMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\ReturnLobbiesMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ReturnLobbiesMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\ReturnLobbiesMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:28:50.561Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "CreateLobbyMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\CreateLobbyMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\CreateLobbyMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\CreateLobbyMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\CreateLobbyMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:54.484Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "ChangeColorMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ChangeColorMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\ChangeColorMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\ChangeColorMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\ChangeColorMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T08:01:02.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "AckMessage.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\AckMessage.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Messages\\AckMessage.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\AckMessage.cs",
-              "RelativeToolTip": "Tron.Common\\Messages\\AckMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T07:59:44.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 19,
               "Title": "UdpAcceptor.cs",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Networking\\UdpAcceptor.cs",
               "RelativeDocumentMoniker": "Tron.Server\\Networking\\UdpAcceptor.cs",
               "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Networking\\UdpAcceptor.cs",
               "RelativeToolTip": "Tron.Server\\Networking\\UdpAcceptor.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:40:02.031Z",
+              "WhenOpened": "2024-12-19T21:12:50.074Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "SocketExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Networking\\SocketExtensions.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Networking\\SocketExtensions.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Networking\\SocketExtensions.cs",
-              "RelativeToolTip": "Tron.Common\\Networking\\SocketExtensions.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAowGQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "PlayerCoordinates.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Entities\\PlayerCoordinates.cs",
+              "RelativeDocumentMoniker": "Tron.Common\\Entities\\PlayerCoordinates.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Entities\\PlayerCoordinates.cs",
+              "RelativeToolTip": "Tron.Common\\Entities\\PlayerCoordinates.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:30:08.537Z",
+              "WhenOpened": "2024-12-19T19:08:39.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Program.cs",
-              "RelativeDocumentMoniker": "Tron.Server\\Program.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Program.cs",
-              "RelativeToolTip": "Tron.Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "ClientProcessor.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\ClientProcessor.cs",
+              "RelativeDocumentMoniker": "Tron.Server\\Core\\ClientProcessor.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\ClientProcessor.cs",
+              "RelativeToolTip": "Tron.Server\\Core\\ClientProcessor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T09:45:44.398Z",
+              "WhenOpened": "2024-12-19T21:11:35.668Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 17,
               "Title": "Application.cs",
               "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\Application.cs",
               "RelativeDocumentMoniker": "Tron.Server\\Core\\Application.cs",
               "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\Application.cs",
               "RelativeToolTip": "Tron.Server\\Core\\Application.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T18:33:24.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "UdpUnicaster.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Networking\\UdpUnicaster.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Networking\\UdpUnicaster.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Networking\\UdpUnicaster.cs",
-              "RelativeToolTip": "Tron.Common\\Networking\\UdpUnicaster.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:51:21.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "MpMenuPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\MpMenuPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:05:47.344Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "JoinLobbyPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\JoinLobbyPage.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\JoinLobbyPage.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\JoinLobbyPage.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\JoinLobbyPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:05:36.725Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "MainMenuPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MainMenuPage.xaml.cs",
-              "RelativeDocumentMoniker": "Tron.Client.Application\\Views\\MainMenuPage.xaml.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Views\\MainMenuPage.xaml.cs",
-              "RelativeToolTip": "Tron.Client.Application\\Views\\MainMenuPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T14:05:42.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "SocketReader.cs",
-              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Persistence\\Utilities\\SocketReader.cs",
-              "RelativeDocumentMoniker": "Tron.Common\\Persistence\\Utilities\\SocketReader.cs",
-              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Persistence\\Utilities\\SocketReader.cs",
-              "RelativeToolTip": "Tron.Common\\Persistence\\Utilities\\SocketReader.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T13:50:53.899Z"
+              "WhenOpened": "2024-12-19T21:12:46.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Proceed.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\Proceed.cs",
+              "RelativeDocumentMoniker": "Tron.Server\\Core\\Proceed.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Core\\Proceed.cs",
+              "RelativeToolTip": "Tron.Server\\Core\\Proceed.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T21:12:48.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UdpMulticaster.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Networking\\UdpMulticaster.cs",
+              "RelativeDocumentMoniker": "Tron.Server\\Networking\\UdpMulticaster.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Server\\Networking\\UdpMulticaster.cs",
+              "RelativeToolTip": "Tron.Server\\Networking\\UdpMulticaster.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T21:12:50.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\AssemblyInfo.cs",
+              "RelativeToolTip": "Tron.Client.Application\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T21:02:14.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MpMenuViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\MpMenuViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T20:20:42.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "MainMenuViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\MainMenuViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T19:36:33.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Lobby.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Lobby.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\Lobby.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\Lobby.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Models\\Lobby.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T18:45:39.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Tron.Common",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Tron.Common.csproj",
+              "RelativeDocumentMoniker": "Tron.Common\\Tron.Common.csproj",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Tron.Common.csproj",
+              "RelativeToolTip": "Tron.Common\\Tron.Common.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-19T19:07:57.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GameStateMessage.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\GameStateMessage.cs",
+              "RelativeDocumentMoniker": "Tron.Common\\Messages\\GameStateMessage.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Common\\Messages\\GameStateMessage.cs",
+              "RelativeToolTip": "Tron.Common\\Messages\\GameStateMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T19:22:52.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CreateLobbyViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
+              "RelativeToolTip": "Tron.Client.Application\\ViewModels\\CreateLobbyViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T17:05:49.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IActionProvider.cs",
+              "DocumentMoniker": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IActionProvider.cs",
+              "RelativeDocumentMoniker": "Tron.Client.Application\\Models\\IActionProvider.cs",
+              "ToolTip": "C:\\Users\\akhmy\\Documents\\Projects\\Visual Studio\\C#\\Tron\\Tron.Client.Application\\Models\\IActionProvider.cs",
+              "RelativeToolTip": "Tron.Client.Application\\Models\\IActionProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T15:33:10.06Z",
+              "EditorCaption": ""
             }
           ]
         },

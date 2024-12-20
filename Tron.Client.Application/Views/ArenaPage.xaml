@@ -32,10 +32,29 @@
           Height="1080"
           Width="1920">
 
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="1080" Width="1920"
+                Panel.ZIndex="1"
+                Visibility="{Binding BlackoutVisibility, Converter={StaticResource BoolToVisibility}}">
+            <Canvas.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Canvas.Background>
+        </Canvas>
+
+        <Grid x:Name="PlayersGrid"
+              Width="400"
+              Height="auto"
+              Margin="0,0,1100,700"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Grid.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Grid.Background>
+        </Grid>
+
         <!-- Кнопка BACK -->
         <Button Width="100"
         Height="100"
-        Margin="0,0,1250,-520"
+        Margin="0,0,1275,-520"
         BorderThickness="0"
         BorderBrush="White"
         Command="{Binding GoBackCommand}">
@@ -66,9 +85,8 @@
                    VerticalAlignment="Center"
                    Width="200"
                    Height="200"
-                   Panel.ZIndex="1"
+                   Panel.ZIndex="2"
                    Visibility="{Binding CountdownVisibility, Converter={StaticResource BoolToVisibility}}">
-            
             <TextBlock.Effect>
                 <DropShadowEffect Color="HotPink"
                           BlurRadius="50"
@@ -82,15 +100,21 @@
             VerticalAlignment="Center"
             BorderBrush="White"
             Height="710"
-            Width="1010">
+            Width="1010"
+            CornerRadius="5"
+            Margin="400,0,0,0">
 
-            <Canvas x:Name="Arena"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Background="Black"
-                Height="700"
-                Width="1000"
-                DataContext="{Binding}"/>
+            <Grid x:Name="ArenaGrid"
+                  Height="700"
+                  Width="1000">
+
+                <Grid.Background>
+                    <SolidColorBrush Color="#BB00AA44"/>
+                </Grid.Background>
+
+                <Canvas x:Name="Net"
+                        Panel.ZIndex="1"/>
+            </Grid>
         </Border>
     </Grid>
 </Page>
