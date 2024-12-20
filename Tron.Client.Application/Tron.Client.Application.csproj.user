@@ -16,7 +16,7 @@
     <Compile Update="Views\MainMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MpMenuPage.xaml.cs">
+    <Compile Update="Views\MultiplayerMenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\JoinLobbyPage.xaml.cs">
@@ -39,7 +39,7 @@
     <Page Update="Views\MainMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\MpMenuPage.xaml">
+    <Page Update="Views\MultiplayerMenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\JoinLobbyPage.xaml">
