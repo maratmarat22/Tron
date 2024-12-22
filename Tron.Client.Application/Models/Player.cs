@@ -1,16 +1,16 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Tron.Client.Application.Services;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
 
 namespace Tron.Client.Application.Models
 {
     internal class Player
     {
         public string Name { get; set; }
-        
-        public int Wins { get; set; }
+
+        public int Lives { get; set; }
 
         public int Score { get; set; }
 
@@ -45,9 +45,8 @@ namespace Tron.Client.Application.Models
         internal Player(string name, PlayerCoordinates coordinates, System.Windows.Media.Color color, Direction direction)
         {
             Name = name;
-            Wins = 0;
+            Lives = (int)GameConstants.LIVES;
             Score = 0;
-            Alive = true;
 
             StartingCoordinates = coordinates;
             Coordinates = StartingCoordinates;

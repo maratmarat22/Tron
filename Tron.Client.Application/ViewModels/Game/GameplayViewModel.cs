@@ -15,12 +15,13 @@ namespace Tron.Client.Application.ViewModels.Game
         protected readonly NavigationService _nav;
 
         protected readonly List<Player> _players;
+
         protected GameplayService? _service;
 
         protected readonly DispatcherTimer _countdownTimer;
         protected int _countdownTime;
-        protected string _countdownMessage;
 
+        private string _countdownMessage;
         public string CountdownMessage
         {
             get => _countdownMessage;
@@ -28,7 +29,6 @@ namespace Tron.Client.Application.ViewModels.Game
         }
 
         private bool _countdownVisibility;
-
         public bool CountdownVisibility
         {
             get => _countdownVisibility;
@@ -36,16 +36,15 @@ namespace Tron.Client.Application.ViewModels.Game
         }
 
         private bool _blackoutVisibility;
-
         public bool BlackoutVisibility
         {
             get => _blackoutVisibility;
             set => SetProperty(ref _blackoutVisibility, value);
         }
 
-        public Grid? PlayersGrid { get; set; }
+        public Grid? PlayerData { get; set; }
 
-        public Grid? ArenaGrid { get; set; }
+        public Grid? Arena { get; set; }
 
         public ICommand InitGameCommand { get; }
 
@@ -54,6 +53,22 @@ namespace Tron.Client.Application.ViewModels.Game
         public ICommand ExtraSetDirectionCommand { get; }
 
         public ICommand GoBackCommand { get; }
+
+        private string _winner;
+        
+        public string Winner
+        {
+            get => _winner;
+            set => SetProperty(ref _winner, value);
+        }
+
+        private Color _winnerColor;
+
+        public Color WinnerColor
+        {
+            get => _winnerColor;
+            set => SetProperty(ref _winnerColor, value);
+        }
 
         internal GameplayViewModel(NavigationService nav)
         {
@@ -67,8 +82,8 @@ namespace Tron.Client.Application.ViewModels.Game
 
             _countdownTime = 3;
             _countdownMessage = _countdownTime.ToString();
-            _countdownVisibility = false;
-            _blackoutVisibility = false;
+            CountdownVisibility = false;
+            BlackoutVisibility = false;
 
             InitGameCommand = new RelayCommand(OnInitGame);
             SetDirectionCommand = new RelayCommand(OnSetDirection);
@@ -76,34 +91,36 @@ namespace Tron.Client.Application.ViewModels.Game
             GoBackCommand = new RelayCommand(OnGoBack);
         }
 
-        protected abstract void OnInitGame();
-
-        protected abstract void OnSetDirection(object? direction);
-
-        protected abstract void OnExtraSetDirection(object? direction);
-
-        protected abstract void OnGoBack();
-
-        protected abstract void AllocatePlayers();
-
-        protected void DisplayPlayerInfo()
+        protected void AllocatePlayers()
         {
-            PlayersGrid!.RowDefinitions.Add(new RowDefinition());
-            PlayersGrid.RowDefinitions.Add(new RowDefinition());
+            _players![0].StartingCoordinates = new(Arena!.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 - 30);
+            _players[1].StartingCoordinates = new(Arena.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 + 29);
+
+            foreach (Player player in _players)
+            {
+                Arena.SetCoordinates(player.Shape, player.Coordinates);
+                Arena.Children.Add(player.Shape);
+            }
+        }
+
+        protected void CreatePlayerData()
+        {
+            PlayerData!.RowDefinitions.Add(new RowDefinition());
+            PlayerData.RowDefinitions.Add(new RowDefinition());
 
             FontFamily tiny = (FontFamily)((App)System.Windows.Application.Current).Resources["Tiny"];
             SolidColorBrush white = new SolidColorBrush(Colors.White);
 
             for (int i = 0; i < _players.Count; ++i)
             {
-                TextBlock nameTextBlock = new TextBlock
+                TextBlock name = new TextBlock
                 {
                     Text = _players[i].Name,
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Foreground = white,
                     FontFamily = tiny,
-                    FontSize = 40,
+                    FontSize = 30,
                     Effect = new DropShadowEffect
                     {
                         Color = _players[i].PlayerColor,
@@ -114,14 +131,14 @@ namespace Tron.Client.Application.ViewModels.Game
                     }
                 };
 
-                TextBlock winsTextBlock = new TextBlock
+                TextBlock lives = new TextBlock
                 {
-                    Text = "0",
+                    Text = ((int)(GameConstants.LIVES)).ToString(),
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Foreground = white,
                     FontFamily = tiny,
-                    FontSize = 20,
+                    FontSize = 30,
                     Effect = new DropShadowEffect
                     {
                         Color = _players[i].PlayerColor,
@@ -132,14 +149,14 @@ namespace Tron.Client.Application.ViewModels.Game
                     }
                 };
 
-                TextBlock scoreTextBlock = new TextBlock
+                TextBlock score = new TextBlock
                 {
                     Text = "0pts",
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Foreground = white,
                     FontFamily = tiny,
-                    FontSize = 20,
+                    FontSize = 30,
                     Effect = new DropShadowEffect
                     {
                         Color = _players[i].PlayerColor,
@@ -150,22 +167,57 @@ namespace Tron.Client.Application.ViewModels.Game
                     }
                 };
 
-                PlayersGrid.Children.Add(nameTextBlock);
-                PlayersGrid.Children.Add(winsTextBlock);
-                PlayersGrid.Children.Add(scoreTextBlock);
+                PlayerData.Children.Add(name);
+                PlayerData.Children.Add(lives);
+                PlayerData.Children.Add(score);
 
-                Grid.SetRow(nameTextBlock, i);
-                Grid.SetColumn(nameTextBlock, 0);
+                Grid.SetRow(name, i);
+                Grid.SetColumn(name, 0);
 
-                Grid.SetRow(winsTextBlock, i);
-                Grid.SetColumn(winsTextBlock, 1);
+                Grid.SetRow(lives, i);
+                Grid.SetColumn(lives, 1);
 
-                Grid.SetRow(scoreTextBlock, i);
-                Grid.SetColumn(scoreTextBlock, 2);
+                Grid.SetRow(score, i);
+                Grid.SetColumn(score, 2);
             }
         }
 
-        protected async Task CountDown()
+        internal void UpdatePlayerData()
+        {
+            foreach (var player in _players)
+            {
+                foreach (object child in PlayerData!.Children)
+                {
+                    if (child is TextBlock textBlock)
+                    {
+                        int row = Grid.GetRow(textBlock);
+                        int column = Grid.GetColumn(textBlock);
+
+                        if (column == 0 && textBlock.Text == player.Name)
+                        {
+                            foreach (object sibling in PlayerData.Children)
+                            {
+                                if (sibling is TextBlock siblingTextBlock && Grid.GetRow(siblingTextBlock) == row)
+                                {
+                                    int siblingColumn = Grid.GetColumn(siblingTextBlock);
+                                    if (siblingColumn == 1)
+                                    {
+                                        siblingTextBlock.Text = player.Lives.ToString();
+                                    }
+                                    else if (siblingColumn == 2)
+                                    {
+                                        siblingTextBlock.Text = player.Score + "pts";
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        internal async Task CountDown()
         {
             BlackoutVisibility = true;
             CountdownVisibility = true;
@@ -193,36 +245,28 @@ namespace Tron.Client.Application.ViewModels.Game
             }
         }
 
-        protected void UpdatePlayerInfo(Player player)
+        protected void DisplayWinner(string? winner, Color color)
         {
-            foreach (object child in PlayersGrid!.Children)
-            {
-                if (child is TextBlock textBlock)
-                {
-                    int row = Grid.GetRow(textBlock);
-                    int column = Grid.GetColumn(textBlock);
+            BlackoutVisibility = true;
 
-                    if (column == 0 && textBlock.Text == player.Name)
-                    {
-                        foreach (object sibling in PlayersGrid.Children)
-                        {
-                            if (sibling is TextBlock siblingTextBlock && Grid.GetRow(siblingTextBlock) == row)
-                            {
-                                int siblingColumn = Grid.GetColumn(siblingTextBlock);
-                                if (siblingColumn == 1)
-                                {
-                                    siblingTextBlock.Text = player.Wins.ToString();
-                                }
-                                else if (siblingColumn == 2)
-                                {
-                                    siblingTextBlock.Text = player.Score + "pts";
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
+            if (winner != null)
+            {
+                Winner = "WINNER\n" + winner;
+                WinnerColor = color;
+            }
+            else
+            {
+                Winner = "DRAW";
+                WinnerColor = Colors.Violet;
             }
         }
+
+        protected abstract void OnInitGame();
+
+        protected abstract void OnSetDirection(object? direction);
+
+        protected abstract void OnExtraSetDirection(object? direction);
+
+        protected abstract void OnGoBack();
     }
 }

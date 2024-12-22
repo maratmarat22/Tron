@@ -1,4 +1,6 @@
-﻿namespace Tron.Common.Messages
+﻿using Tron.Common.Entities;
+
+namespace Tron.Common.Messages
 {
     public class DirectionMessage : Message
     {

@@ -4,8 +4,8 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tron.Client.Application.Models;
-using Tron.Client.Application.Services;
 using Tron.Client.Application.ViewModels.Game;
+using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Views
 {
@@ -31,8 +31,8 @@ namespace Tron.Client.Application.Views
         {
             CreateArenaGrid();
             Focus();
-            ((GameplayViewModel)DataContext).PlayersGrid = PlayersGrid;
-            ((GameplayViewModel)DataContext).ArenaGrid = ArenaGrid;
+            ((GameplayViewModel)DataContext).PlayerData = PlayersGrid;
+            ((GameplayViewModel)DataContext).Arena = ArenaGrid;
             ((GameplayViewModel)DataContext).InitGameCommand.Execute(null);
         }
 

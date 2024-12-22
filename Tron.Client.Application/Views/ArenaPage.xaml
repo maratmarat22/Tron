@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Tron.Client.Application.Views"
-      xmlns:directions="clr-namespace:Tron.Common.Messages;assembly=Tron.Common"
+      xmlns:directions="clr-namespace:Tron.Common.Entities;assembly=Tron.Common"
       mc:Ignorable="d"
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ArenaPage"
@@ -42,15 +42,15 @@
 
         <Grid x:Name="PlayersGrid"
               Width="400"
-              Height="auto"
-              Margin="0,0,1100,700"
+              Height="200"
+              Margin="0,0,975,500"
               HorizontalAlignment="Center"
               VerticalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="75"/>
-                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="125"/>
             </Grid.ColumnDefinitions>
 
             <Grid.Background>
@@ -61,7 +61,7 @@
         <!-- Кнопка BACK -->
         <Button Width="100"
         Height="100"
-        Margin="0,0,1275,-520"
+        Margin="0,0,975,150"
         BorderThickness="0"
         BorderBrush="White"
         Command="{Binding GoBackCommand}">
@@ -95,7 +95,7 @@
                    Panel.ZIndex="2"
                    Visibility="{Binding CountdownVisibility, Converter={StaticResource BoolToVisibility}}">
             <TextBlock.Effect>
-                <DropShadowEffect Color="HotPink"
+                <DropShadowEffect Color="Violet"
                           BlurRadius="50"
                           ShadowDepth="0"
                           Opacity="1" />
@@ -107,13 +107,13 @@
             VerticalAlignment="Center"
             BorderBrush="White"
             Height="710"
-            Width="1010"
+            Width="910"
             CornerRadius="5"
-            Margin="400,0,0,0">
+            Margin="500,0,0,0">
 
             <Grid x:Name="ArenaGrid"
                   Height="700"
-                  Width="1000">
+                  Width="900">
 
                 <Grid.Background>
                     <SolidColorBrush Color="#BB00AA44"/>
@@ -123,5 +123,21 @@
                         Panel.ZIndex="1"/>
             </Grid>
         </Border>
+
+        <TextBlock Text="{Binding Winner}"
+                   FontFamily="{StaticResource Tiny}"
+                   FontSize="150"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   Panel.ZIndex="1">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="{Binding WinnerColor}"
+              BlurRadius="50"
+              ShadowDepth="0"
+              Opacity="1" />
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </Page>
