@@ -4,8 +4,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Tron.Client.Application.Models;
+using Tron.Client.Application.ViewModels.Game;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
 
 namespace Tron.Client.Application.Services
 {
@@ -13,42 +13,43 @@ namespace Tron.Client.Application.Services
     {
         protected NavigationService _nav;
 
-        protected Grid _playersGrid;
+        protected List<Player> _players;
 
-        protected Grid _arenaGrid;
+        protected Grid _playerData;
+
+        protected Grid _arena;
 
         public DispatcherTimer GameTimer { get; }
 
         protected readonly Dictionary<Player, DateTime> _lastDirectionChange;
 
-        protected List<Player> _players;
-
         protected Func<Task> CountDown;
 
-        protected Action<Player> UpdatePlayerInfo;
+        protected Action UpdatePlayerData;
 
-        internal GameplayService(NavigationService nav, Grid playersGrid, Grid arenaGrid, Func<Task> CountDown, Action<Player> UpdatePlayerInfo)
+        protected Action<string?, Color> DisplayWinner;
+
+        internal GameplayService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner)
         {
             _nav = nav;
-            _playersGrid = playersGrid;
-            _arenaGrid = arenaGrid;
+
+            _players = players;
+
+            _playerData = playerData;
+            _arena = arena;
 
             GameTimer = new DispatcherTimer();
-            GameTimer = new DispatcherTimer();
-            GameTimer.Interval = TimeSpan.FromMilliseconds(25);
+            GameTimer.Interval = TimeSpan.FromMilliseconds((int)GameConstants.GAME_TICK);
             GameTimer.Tick += GameTimer_Tick;
 
             _lastDirectionChange = [];
 
-            _players = [];
-
             this.CountDown = CountDown;
-            this.UpdatePlayerInfo = UpdatePlayerInfo;
+            this.UpdatePlayerData = UpdatePlayerData;
+            this.DisplayWinner = DisplayWinner;
         }
 
         internal abstract void Run();
-
-        protected abstract void CheckWinners();
 
         protected abstract void GameTimer_Tick(object? sender, EventArgs e);
 
@@ -58,15 +59,15 @@ namespace Tron.Client.Application.Services
 
             Rectangle trail = new()
             {
-                Width = 5,
-                Height = 5,
+                Width = player.Shape.Width,
+                Height = player.Shape.Width,
                 Fill = new SolidColorBrush(player.TrailColor)
             };
 
             Panel.SetZIndex(trail, 1);
 
-            _arenaGrid.SetCoordinates(trail, player.Coordinates);
-            _arenaGrid.Children.Add(trail);
+            _arena.SetCoordinates(trail, player.Coordinates);
+            _arena.Children.Add(trail);
         }
 
         protected void Move(Player player)
@@ -80,34 +81,42 @@ namespace Tron.Client.Application.Services
                 _ => player.Coordinates
             };
 
-            if (OutOfBounds(player))
+            if (OutBounds(player))
             {
-                Kill(player);
+                Player other = _players!.First(p => !p.Equals(player));
+                --player.Lives;
+                other.Score += (int)GameConstants.ALIVE_SCORE;
+                Restart();
             }
-            else _arenaGrid.SetCoordinates(player.Shape, player.Coordinates);
+            else _arena.SetCoordinates(player.Shape, player.Coordinates);
         }
 
-        protected void CheckCrashes(Player player)
+        protected void CheckCollisions(Player player)
         {
             foreach (Player other in _players)
             {
-                if (OnTrail(player, other))
+                if (Accident(player, other))
                 {
-                    Kill(player);
-                    
-                    if (!other.Equals(player))
-                    {
-                        other.Score += 200;
-                    }
-
-                    CheckWinners();
+                    --player.Lives;
+                    --other.Lives;
+                    Restart();
                     break;
                 }
-                if (Crash(player, other))
+                else if (OnTrail(player, other))
                 {
-                    Kill(player);
-                    Kill(other);
-                    CheckWinners();
+                    --player.Lives;
+                    
+                    if (player.Equals(other))
+                    {
+                        Player alive = _players.First(p => !p.Equals(player));
+                        alive.Score += (int)GameConstants.ALIVE_SCORE;
+                    }
+                    else
+                    {
+                        other.Score += (int)GameConstants.KILL_SCORE;
+                    }
+
+                    Restart();
                     break;
                 }
             }
@@ -115,79 +124,70 @@ namespace Tron.Client.Application.Services
 
         internal void SetDirection(Player player, Direction direction)
         {
-            if (_lastDirectionChange.TryGetValue(player, out DateTime value))
+            if (MoveCooldownPassed(player))
             {
-                TimeSpan timeSinceLastChange = DateTime.Now - value;
-
-                if (timeSinceLastChange < TimeSpan.FromMilliseconds(15)) return;
+                player.Direction = direction switch
+                {
+                    Direction.UP when player.Direction != Direction.DOWN => Direction.UP,
+                    Direction.DOWN when player.Direction != Direction.UP => Direction.DOWN,
+                    Direction.LEFT when player.Direction != Direction.RIGHT => Direction.LEFT,
+                    Direction.RIGHT when player.Direction != Direction.LEFT => Direction.RIGHT,
+                    _ => player.Direction
+                };
             }
-
-            player.Direction = direction switch
-            {
-                Direction.UP when player.Direction != Direction.DOWN => Direction.UP,
-                Direction.DOWN when player.Direction != Direction.UP => Direction.DOWN,
-                Direction.LEFT when player.Direction != Direction.RIGHT => Direction.LEFT,
-                Direction.RIGHT when player.Direction != Direction.LEFT => Direction.RIGHT,
-                _ => player.Direction
-            };
 
             _lastDirectionChange[player] = DateTime.Now;
         }
 
-        protected abstract void Kill(Player player);
-
-        protected bool OutOfBounds(Player player)
+        private bool MoveCooldownPassed(Player player)
         {
-            return player.Coordinates.Row < 0 || player.Coordinates.Column < 0 ||
-                   player.Coordinates.Row > _arenaGrid.RowDefinitions.Count ||
-                   player.Coordinates.Column > _arenaGrid.ColumnDefinitions.Count;
-        }
-
-        protected bool OnTrail(Player player, Player trailOwner)
-        {
-            return trailOwner.Trail.Contains(player.Coordinates) && !player.Coordinates.Equals(player.Trail.Last());
-        }
-
-        protected bool Crash(Player player1, Player player2)
-        {
-            return player1.Coordinates.Equals(player2.Coordinates) && !player1.Equals(player2);
-        }
-
-        protected void CleanTrail(Player player)
-        {
-            List<Rectangle> trailsToRemove = _arenaGrid.Children.OfType<Rectangle>()
-                .Where(trail => ((SolidColorBrush)trail.Fill).Color == player.TrailColor).ToList();
-
-            foreach (Rectangle trail in trailsToRemove)
+            if (_lastDirectionChange.TryGetValue(player, out DateTime value))
             {
-                _arenaGrid.Children.Remove(trail);
+                TimeSpan timeSinceLastChange = DateTime.Now - value;
+
+                return (timeSinceLastChange > TimeSpan.FromMilliseconds(15));
             }
 
-            _arenaGrid.Children.Remove(player.Shape);
+            return true;
+        }
+
+        protected bool OutBounds(Player player)
+        {
+            return player.Coordinates.Row < 0 || player.Coordinates.Column < 0 ||
+                   player.Coordinates.Row > _arena.RowDefinitions.Count ||
+                   player.Coordinates.Column > _arena.ColumnDefinitions.Count;
+        }
+
+        protected bool OnTrail(Player victim, Player killer)
+        {
+            return killer.Trail.Contains(victim.Coordinates) && !victim.Coordinates.Equals(victim.Trail.Last());
+        }
+
+        protected bool Accident(Player player1, Player player2)
+        {
+            return player1.Coordinates.Equals(player2.Coordinates) && !player1.Equals(player2);
         }
 
         protected async void Restart()
         {
             GameTimer.Stop();
 
+            UpdatePlayerData();
             await Task.Delay(TimeSpan.FromSeconds(1));
 
-            Canvas Net = _arenaGrid.Children.OfType<Canvas>().FirstOrDefault(c => c.Name == "Net")!;
-            _arenaGrid.Children.Clear();
-            _arenaGrid.Children.Add(Net);
+            Canvas Net = _arena.Children.OfType<Canvas>().FirstOrDefault(c => c.Name == "Net")!;
+            _arena.Children.Clear();
+            _arena.Children.Add(Net);
 
-            foreach (Player player in _players)
+            foreach (Player player in _players!)
             {
                 player.Alive = true;
                 player.Trail.Clear();
                 player.Coordinates = player.StartingCoordinates;
                 player.Direction = player.StartingDirection;
-            }
 
-            foreach (var player in _players)
-            {
-                _arenaGrid.SetCoordinates(player.Shape, player.Coordinates);
-                _arenaGrid.Children.Add(player.Shape);
+                _arena.SetCoordinates(player.Shape, player.Coordinates);
+                _arena.Children.Add(player.Shape);
             }
 
             Run();

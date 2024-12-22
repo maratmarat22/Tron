@@ -7,17 +7,9 @@ namespace Tron.Client.Application.ViewModels.Game
     {
         private NavigationService _nav;
 
-        private int _playerCount;
-
-        private IActionProvider _provider;
-
         internal SingleplayerViewModel(NavigationService nav)
         {
             _nav = nav;
-            _playerCount = 2;
-            _provider = new SpActionProvider();
         }
-
-
     }
 }

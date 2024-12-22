@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Tron.Common.Messages;
+using Tron.Common.Entities;
 
 namespace Tron.Server.Core.Domain.Entities
 {

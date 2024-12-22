@@ -53,7 +53,7 @@ namespace Tron.Client.Application.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Tron.Client.Application;component/views/multiplayermenupage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Tron.Client.Application;V1.0.0.0;component/views/multiplayermenupage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\MultiplayerMenuPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
