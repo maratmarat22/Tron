@@ -5,7 +5,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.ViewModels.Game;
-using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Views
 {
@@ -14,7 +13,7 @@ namespace Tron.Client.Application.Views
     /// </summary>
     public partial class ArenaPage : Page
     {
-        public ArenaPage(NavigationService nav, int numPlayers, GameMode mode)
+        public ArenaPage(NavigationService nav, GameMode mode)
         {
             DataContext = mode switch
             {

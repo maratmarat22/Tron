@@ -52,13 +52,13 @@ namespace Tron.Common.Messages
             {
                 result = message.Header switch
                 {
+                    Header.REGISTER or Header.LOGIN => new AuthentificationMessage(message.Header, message._segments!),
+                    Header.REDIRECT => new IPEndPointMessage(message.Header, message._segments!),
+                    Header.CONNECT => message,
                     Header.CREATE_LOBBY => new CreateLobbyMessage(message.Header, message._segments!),
                     Header.READ_LOBBIES => new ReadLobbiesMessage(message.Header, message._segments!),
                     Header.JOIN_LOBBY => new JoinLobbyMessage(message.Header, message._segments!),
-                    Header.END_POINT => new EndPointMessage(message.Header, message._segments!),
-                    Header.CONNECT => message,
-                    Header.REDIRECT => new EndPointMessage(message.Header, message._segments!),
-                    Header.ACK => new AckMessage(message.Header, message._segments!),
+                    Header.ACKNOWLEDGE => new AcknowledgeMessage(message.Header, message._segments!),
                     Header.RESEND => message,
                     _ => throw new InvalidCastException()
                 };

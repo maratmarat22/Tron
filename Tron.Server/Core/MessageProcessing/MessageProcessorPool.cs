@@ -1,30 +1,32 @@
 ﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
-using Tron.Server.Persistence.QueryProcessing;
+using Tron.Server.Core.Domain.Entities;
 
 namespace Tron.Server.Core.MessageProcessing
 {
     internal class MessageProcessorPool
     {
-        private readonly IDbQueryProcessor _queryProcessor;
         private readonly UdpUnicaster _unicaster;
         private CreateLobbyMessageProcessor? _createLobby;
-        private GetLobbiesMessageProcessor? _getLobbies;
+        private ReadLobbiesMessageProcessor? _getLobbies;
         private JoinLobbyMessageProcessor? _joinLobby;
 
-        internal MessageProcessorPool(IDbQueryProcessor queryProcessor, UdpUnicaster unicaster)
+        private List<Lobby> _lobbies;
+
+        internal MessageProcessorPool(UdpUnicaster unicaster, List<Lobby> lobbies)
         {
-            _queryProcessor = queryProcessor;
             _unicaster = unicaster;
+
+            _lobbies = lobbies;
         }
 
         internal ILobbyMessageProcessor Acquire(Header header)
         {
             return header switch
             {
-                Header.CREATE_LOBBY => _createLobby ??= new CreateLobbyMessageProcessor(_queryProcessor, _unicaster),
-                Header.READ_LOBBIES => _getLobbies ??= new GetLobbiesMessageProcessor(_queryProcessor, _unicaster),
-                Header.JOIN_LOBBY => _joinLobby ??= new JoinLobbyMessageProcessor(_queryProcessor, _unicaster),
+                Header.CREATE_LOBBY => _createLobby ??= new CreateLobbyMessageProcessor(_unicaster, _lobbies),
+                Header.READ_LOBBIES => _getLobbies ??= new ReadLobbiesMessageProcessor(_unicaster, _lobbies),
+                Header.JOIN_LOBBY => _joinLobby ??= new JoinLobbyMessageProcessor(_unicaster, _lobbies),
                 _ => throw new NotImplementedException()
             };
         }

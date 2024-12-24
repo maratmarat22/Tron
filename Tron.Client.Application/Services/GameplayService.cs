@@ -1,10 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Tron.Client.Application.Models;
-using Tron.Client.Application.ViewModels.Game;
 using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Services
@@ -18,6 +18,8 @@ namespace Tron.Client.Application.Services
         protected Grid _playerData;
 
         protected Grid _arena;
+
+        protected bool[,] _logicalArena;
 
         public DispatcherTimer GameTimer { get; }
 
@@ -37,6 +39,13 @@ namespace Tron.Client.Application.Services
 
             _playerData = playerData;
             _arena = arena;
+            
+            _logicalArena = new bool[_arena.RowDefinitions.Count, _arena.ColumnDefinitions.Count];
+            
+            foreach (Player player in _players)
+            {
+                _logicalArena[player.Coordinates.Row, player.Coordinates.Column] = true;
+            }
 
             GameTimer = new DispatcherTimer();
             GameTimer.Interval = TimeSpan.FromMilliseconds((int)GameConstants.GAME_TICK);
@@ -68,6 +77,7 @@ namespace Tron.Client.Application.Services
 
             _arena.SetCoordinates(trail, player.Coordinates);
             _arena.Children.Add(trail);
+            _logicalArena[player.Coordinates.Row, player.Coordinates.Column] = true;
         }
 
         protected void Move(Player player)
@@ -81,14 +91,18 @@ namespace Tron.Client.Application.Services
                 _ => player.Coordinates
             };
 
-            if (OutBounds(player))
+            if (OutBounds(player.Coordinates))
             {
                 Player other = _players!.First(p => !p.Equals(player));
                 --player.Lives;
                 other.Score += (int)GameConstants.ALIVE_SCORE;
                 Restart();
             }
-            else _arena.SetCoordinates(player.Shape, player.Coordinates);
+            else
+            {
+                _arena.SetCoordinates(player.Shape, player.Coordinates);
+                _logicalArena[player.Coordinates.Row, player.Coordinates.Column] = true;
+            }
         }
 
         protected void CheckCollisions(Player player)
@@ -145,17 +159,16 @@ namespace Tron.Client.Application.Services
             {
                 TimeSpan timeSinceLastChange = DateTime.Now - value;
 
-                return (timeSinceLastChange > TimeSpan.FromMilliseconds(15));
+                return (timeSinceLastChange > TimeSpan.FromMilliseconds((int)GameConstants.MOVE_COOLDOWN));
             }
 
             return true;
         }
 
-        protected bool OutBounds(Player player)
+        protected bool OutBounds(PlayerCoordinates coordinates)
         {
-            return player.Coordinates.Row < 0 || player.Coordinates.Column < 0 ||
-                   player.Coordinates.Row > _arena.RowDefinitions.Count ||
-                   player.Coordinates.Column > _arena.ColumnDefinitions.Count;
+            return coordinates.Row < 0 || coordinates.Column < 0 ||
+                   coordinates.Row >= _arena.RowDefinitions.Count || coordinates.Column >= _arena.ColumnDefinitions.Count;
         }
 
         protected bool OnTrail(Player victim, Player killer)
@@ -178,6 +191,7 @@ namespace Tron.Client.Application.Services
             Canvas Net = _arena.Children.OfType<Canvas>().FirstOrDefault(c => c.Name == "Net")!;
             _arena.Children.Clear();
             _arena.Children.Add(Net);
+            _logicalArena = new bool[_arena.RowDefinitions.Count, _arena.ColumnDefinitions.Count];
 
             foreach (Player player in _players!)
             {

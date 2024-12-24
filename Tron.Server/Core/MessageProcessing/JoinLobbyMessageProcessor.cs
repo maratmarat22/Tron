@@ -1,25 +1,31 @@
 ﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
-using Tron.Server.Core;
 using Tron.Server.Core.Domain.Entities;
-using Tron.Server.Persistence.QueryProcessing;
 
 namespace Tron.Server.Core.MessageProcessing
 {
     internal class JoinLobbyMessageProcessor : ILobbyMessageProcessor
     {
-        private IDbQueryProcessor _queryProcessor;
         private UdpUnicaster _unicaster;
 
-        internal JoinLobbyMessageProcessor(IDbQueryProcessor queryProcessor, UdpUnicaster unicaster)
+        private List<Lobby> _lobbies;
+
+        internal JoinLobbyMessageProcessor(UdpUnicaster unicaster, List<Lobby> lobbies)
         {
-            _queryProcessor = queryProcessor;
             _unicaster = unicaster;
+            _lobbies = lobbies;
         }
 
         public (Proceed, Lobby) Process(Message message)
         {
-            return (Proceed.True, null);
+            JoinLobbyMessage join = (JoinLobbyMessage)message;
+
+            Lobby lobby = _lobbies.Where(lobby => lobby.Hostname == join.LobbyHostname).First();
+            ReturnLobbiesMessage @return = new([lobby.ToString()]);
+
+            _unicaster.Send(@return);
+
+            return (Proceed.True, lobby);
         }
     }
 }

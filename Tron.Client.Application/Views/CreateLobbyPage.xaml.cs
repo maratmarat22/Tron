@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using Tron.Client.Application.ViewModels.Menu;
 
@@ -13,6 +14,11 @@ namespace Tron.Client.Application.Views
         {
             DataContext = new CreateLobbyViewModel(nav);
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((CreateLobbyViewModel)DataContext).PasswordTextBox = PasswordTextBox;
         }
     }
 }

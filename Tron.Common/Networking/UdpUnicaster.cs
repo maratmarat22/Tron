@@ -6,7 +6,7 @@ namespace Tron.Common.Networking
 {
     public class UdpUnicaster
     {
-        public System.Net.Sockets.Socket Local { get; private set; }
+        public Socket Local { get; private set; }
 
         private EndPoint _remote;
         public ref EndPoint Remote
@@ -14,9 +14,10 @@ namespace Tron.Common.Networking
             get => ref _remote;
         }
 
-        public UdpUnicaster(System.Net.Sockets.Socket local, EndPoint remote)
+        public UdpUnicaster(Socket local, EndPoint remote)
         {
             Local = local;
+            //Local.ReceiveTimeout = 3000;
             _remote = remote;
             Remote = _remote;
         }

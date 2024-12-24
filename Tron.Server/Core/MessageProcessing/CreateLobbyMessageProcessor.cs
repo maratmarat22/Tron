@@ -1,27 +1,30 @@
-﻿using Tron.Common.Networking;
-using Tron.Server.Persistence.QueryProcessing;
-using Tron.Server.Core.Domain.Entities;
+﻿using System.Net;
 using Tron.Common.Messages;
-using Tron.Server.Core;
+using Tron.Common.Networking;
+using Tron.Server.Core.Domain.Entities;
 
 namespace Tron.Server.Core.MessageProcessing
 {
     internal class CreateLobbyMessageProcessor : ILobbyMessageProcessor
     {
-        private readonly IDbQueryProcessor _queryProcessor;
         private readonly UdpUnicaster _unicaster;
 
-        internal CreateLobbyMessageProcessor(IDbQueryProcessor queryProcessor, UdpUnicaster unicaster)
+        private List<Lobby> _lobbies;
+
+        internal CreateLobbyMessageProcessor(UdpUnicaster unicaster, List<Lobby> lobbies)
         {
-            _queryProcessor = queryProcessor;
             _unicaster = unicaster;
+            _lobbies = lobbies;
         }
 
         public (Proceed, Lobby) Process(Message message)
         {
-            CreateLobbyMessage msg = (CreateLobbyMessage)message;
-            Lobby lobby = new(0, msg.MaxPlayers, msg.IsPrivate, msg.Password, null);
-            _queryProcessor.CreateLobby(lobby);
+            CreateLobbyMessage create = (CreateLobbyMessage)message;
+            
+            IPEndPoint master = (IPEndPoint)_unicaster.Local.LocalEndPoint!;
+            Lobby lobby = new(master, create.Hostname, create.IsPrivate, create.Password);
+            
+            _lobbies.Add(lobby);
 
             return (Proceed.True, lobby);
         }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Views;
@@ -9,6 +10,8 @@ namespace Tron.Client.Application.ViewModels.Menu
     {
         private NavigationService _nav;
 
+        private App _app;
+
         public ICommand CreateLobbyCommand { get; }
 
         public ICommand JoinLobbyCommand { get; }
@@ -17,53 +20,73 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         public ICommand GoBackCommand { get; }
 
-        private bool _connectionAttemptFailed;
-        public bool ConnectionAttemptFailed
+        private bool _falseConnected;
+
+        public bool NotConnected
         {
-            get => _connectionAttemptFailed;
-            set => SetProperty(ref _connectionAttemptFailed, value);
+            get => _falseConnected;
+            set => SetProperty(ref _falseConnected, value);
         }
 
         internal MultiplayerMenuViewModel(NavigationService nav)
         {
             _nav = nav;
+            _app = (App)(System.Windows.Application.Current);
 
             CreateLobbyCommand = new RelayCommand(OnCreateLobby);
             JoinLobbyCommand = new RelayCommand(OnJoinLobby);
             InitLocalMpCommand = new RelayCommand(OnInitLocalMp);
             GoBackCommand = new RelayCommand(OnGoBack);
 
-            ConnectionAttemptFailed = false;
+            NotConnected = false;
         }
 
         private void OnCreateLobby()
         {
-            if (((App)System.Windows.Application.Current).TryConnectToServer())
+            if (TryConnect())
             {
-                ConnectionAttemptFailed = false;
                 _nav.Navigate(new CreateLobbyPage(_nav));
             }
-            else ConnectionAttemptFailed = true;
         }
 
         private void OnJoinLobby()
         {
-            if (((App)System.Windows.Application.Current).TryConnectToServer())
+            if (TryConnect())
             {
-                ConnectionAttemptFailed = false;
                 _nav.Navigate(new JoinLobbyPage(_nav));
             }
-            else ConnectionAttemptFailed = true;
         }
 
         private void OnInitLocalMp()
         {
-            _nav.Navigate(new ArenaPage(_nav, 2, GameMode.LOCALPLAYER));
+            _nav.Navigate(new ArenaPage(_nav, GameMode.LOCALPLAYER));
         }
 
         private void OnGoBack()
         {
             _nav.GoBack();
+        }
+
+        private bool TryConnect()
+        {
+            if (!string.IsNullOrWhiteSpace(_app.Username))
+            {
+                if (_app.TryLogIn())
+                {
+                    NotConnected = false;
+                    return true;
+                }
+                else
+                {
+                    NotConnected = true;
+                    return false;
+                }
+            }
+            else
+            {
+                _nav.Navigate(new RegisterPage(_nav));
+                return false;
+            }
         }
     }
 }

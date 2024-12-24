@@ -1,61 +1,70 @@
 ﻿using Microsoft.Data.Sqlite;
+using System.Net;
 using Tron.Server.Core.Domain.Entities;
 
 namespace Tron.Server.Persistence.QueryProcessing
 {
     internal class SQLiteQueryProcessor : IDbQueryProcessor
     {
-        private string _connectionString;
+        private readonly string _connectionString;
 
         internal SQLiteQueryProcessor(string path)
         {
-            _connectionString = "Data Source=" + path + ";Version=3";
+            _connectionString = "Data Source=" + path + ";";
         }
 
-        public int CreateLobby(Lobby lobby)
+        public bool TryRegister(string username)
         {
-            //using (SqliteConnection connection = new(_connectionString))
-            //{
-            //    var query = $"INSERT INTO lobbies (id, master, host, players, max_players, private, password) values (@id, @master, @host, @players, @max_players, @private, @password)";
-            //    connection.Open();
+            using (SqliteConnection connection = new(_connectionString))
+            {
+                connection.Open();
 
-            //    SqliteCommand command = new SqliteCommand(query, connection);
+                string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
 
-            //    using (SqliteTransaction transaction = connection.BeginTransaction())
-            //    {
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-            //        command.Parameters.AddWithValue();
-                    
-            //        command.ExecuteNonQuery();
-            //        command.Parameters.Clear();
+                using (SqliteCommand command = new(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
 
-            //        transaction.Commit();
-            //    }
+                    if (Convert.ToInt32(command.ExecuteScalar()) > 0)
+                    {
+                        return false;
+                    }
+                }
 
-            //    connection.Close();
-            //}
+                query = $"INSERT INTO players (username) VALUES (@username)";
 
-            return 0;
+                using (SqliteCommand command = new(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
+                    command.ExecuteNonQuery();
+
+                    return true;
+                }
+            }
         }
 
-        public string[] ReadLobbies()
+        public bool TryLogIn(string username)
         {
-            return new string[0];
-        }
+            using (SqliteConnection connection = new(_connectionString))
+            {
+                connection.Open();
 
-        public void UpdateLobby(Lobby lobby)
-        {
+                string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
 
-        }
+                using (SqliteCommand command = new(query, connection))
+                {
+                    command.Parameters.AddWithValue("@username", username);
 
-        public void DeleteLobby(Lobby lobby)
-        {
-
+                    if (Convert.ToInt32(command.ExecuteScalar()) == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
         }
 
         public string[] ReadTopTen()
@@ -63,9 +72,30 @@ namespace Tron.Server.Persistence.QueryProcessing
             return new string[0];
         }
 
-        public void UpdateTopTen(Lobby lobby)
+        public void UpdatePlayer()
         {
 
+        }
+
+        private string SerializeIPEndPoint(IPEndPoint point)
+        {
+            return point.Address.ToString() + ':' + point.Port.ToString();
+        }
+
+        private IPEndPoint DeserializeIPEndPoint(string point)
+        {
+            string[] segments = point.Split(":");
+            return new IPEndPoint(IPAddress.Parse(segments[0]), int.Parse(segments[1]));
+        }
+
+        private int SerializeBool(bool value)
+        {
+            return value ? 1 : 0;
+        }
+
+        private bool DeserializeBool(int value)
+        {
+            return value == 1;
         }
     }
 }

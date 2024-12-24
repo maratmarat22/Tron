@@ -12,6 +12,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         internal JoinLobbyViewModel(NavigationService nav)
         {
             _nav = nav;
+            
             GoBackCommand = new RelayCommand(OnGoBack);
         }
 

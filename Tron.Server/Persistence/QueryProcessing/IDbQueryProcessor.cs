@@ -4,16 +4,12 @@ namespace Tron.Server.Persistence.QueryProcessing
 {
     internal interface IDbQueryProcessor
     {
-        internal int CreateLobby(Lobby lobby);
+        internal bool TryRegister(string username);
 
-        internal string[] ReadLobbies();
-
-        internal void UpdateLobby(Lobby lobby);
-
-        internal void DeleteLobby(Lobby lobby);
+        internal bool TryLogIn(string username);
 
         internal string[] ReadTopTen();
 
-        internal void UpdateTopTen(Lobby lobby);
+        internal void UpdatePlayer();
     }
 }
