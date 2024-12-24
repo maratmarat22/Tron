@@ -1,40 +1,25 @@
-﻿namespace Tron.Server.Core.Domain.Entities
+﻿using System.Net;
+
+namespace Tron.Server.Core.Domain.Entities
 {
     internal class Lobby
     {
-        internal int Id { get; private set; }
+        internal EndPoint Master { get; }
 
-        internal int MaxPlayers { get; private set; }
+        internal string Hostname { get; }
 
-        internal bool IsPrivate { get; private set; }
+        internal bool IsPrivate { get; }
 
-        internal string Password { get; private set; }
+        internal string Password { get; }
 
-        internal Player Host { get; private set; }
-
-        internal List<Player> Players { get; private set; }
-
-        internal Lobby(int id, int maxPlayers, bool isPrivate, string password, Player host, params Player[] players)
+        internal Lobby(EndPoint master, string hostname, bool isPrivate, string password)
         {
-            Id = id;
-            MaxPlayers = maxPlayers;
+            Master = master;
+            Hostname = hostname;
             IsPrivate = isPrivate;
             Password = password;
-            Host = host;
-            Players = [.. players];
         }
 
-        internal void Add(Player player)
-        {
-            if (Players.Count + 1 <= MaxPlayers)
-            {
-                Players.Add(player);
-            }
-        }
-
-        internal void Remove(Player player)
-        {
-            Players.Remove(player);
-        }
+        public override string ToString() => $"{Master}/{Hostname}/{IsPrivate}/{Password}";
     }
 }

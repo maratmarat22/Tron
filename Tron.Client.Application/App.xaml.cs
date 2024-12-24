@@ -11,63 +11,70 @@ namespace Tron.Client.Application
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        private FileProcessor _processor;
+
         private (string address, int port) _acceptor;
         
-        private int _musicVolume;
-        public int MusicVolume
-        { 
-            get => _musicVolume;
-            set
-            {
-                if (value >= 0 && value <= 100)
-                    _musicVolume = value;
-            }
-        }
-
-        private int _fxVolume;
-        public int FxVolume
-        {
-            get => _fxVolume;
-            set
-            {
-                if (value >= 0 && value <= 100)
-                    _fxVolume = value;
-            }
-        }
-
-        public bool ConnectionEstablished { get; set; }
-
         private UdpUnicaster? _unicaster;
+        private UdpConnector _connector;
 
-        public App()
+        internal bool Volume { get; set; }
+
+        internal bool Connected { get; private set; }
+
+        internal string? Username { get; set; }
+
+        internal App()
         {
-            SocketReader reader = new SocketReader();
-            _acceptor = reader.Read(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+            _processor = new();
+            _acceptor = _processor.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+            _connector = new UdpConnector(IPAddress.Parse(_acceptor.address), _acceptor.port);
 
-            ConnectionEstablished = false;
+            Username = _processor.TryReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
+
+            Volume = true;
+            Connected = false;
         }
-        
-        public bool TryConnectToServer()
+
+        internal void LogUsername()
         {
-            if (ConnectionEstablished) return true;
+            _processor.LogUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
+        }
+
+        internal bool TryRegister(string username)
+        {
+            AuthentificationMessage auth = new(Header.REGISTER, username);
+
+            _unicaster = _connector.TryConnect(auth);
+
+            bool connected = _unicaster != null;
+            Connected = connected;
+            return connected;
+        }
+
+        internal bool TryLogIn()
+        {
+            AuthentificationMessage auth = new(Header.LOGIN, Username!);
+
+            _unicaster = _connector.TryConnect(auth);
+
+            bool connected = _unicaster != null;
+            Connected = connected;
+            return connected;
+        }
+
+        internal bool TryCreateLobby(bool isPrivate, string password)
+        {
+            if (!Connected)
+            {
+                return false;
+            }
             else
             {
-                UdpConnector connector = new UdpConnector(IPAddress.Parse(_acceptor.address), _acceptor.port);
-                _unicaster = connector.TryConnect();
-
-                ConnectionEstablished = _unicaster != null;
-                return ConnectionEstablished;
+                CreateLobbyMessage create = new(Username!, isPrivate, password);
+                _unicaster!.Send(create);
+                return true;
             }
-        }
-
-        public void SendToServer(Message message)
-        {
-            _unicaster.Send(message);
-        }
-
-        public Message ReceiveFromServer(Message message)
-        {
-            return _unicaster.Receive();
         }
     }
 }

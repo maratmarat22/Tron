@@ -1,5 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Navigation;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
@@ -7,29 +9,42 @@ namespace Tron.Client.Application.ViewModels.Menu
     {
         private NavigationService _nav;
 
-        private int _maxPlayers;
+        private App _app;
 
-        public int MaxPlayers
-        {
-            get => _maxPlayers;
-            set
-            {
-                if (value >= 2 && value <= 4)
-                    SetProperty(ref _maxPlayers, value);
-            }
-        }
+        public TextBox? PasswordTextBox { get; set; }
+
+        private bool _isPrivate;
 
         private string _privacyMode;
 
         public string PrivacyMode
         {
             get => _privacyMode;
-            set => SetProperty(ref _privacyMode, value);
+            set
+            {
+                _isPrivate = value == "PRIVATE" ? true : false;
+                SetProperty(ref _privacyMode, value);
+            }
         }
 
-        public ICommand IncreaseMaxPlayersCommand { get; }
+        private bool _passwordTextBlockVisibility;
 
-        public ICommand DecreaseMaxPlayersCommand { get; }
+        public bool PasswordTextBlockVisibility
+        {
+            get => _passwordTextBlockVisibility;
+            set
+            {
+                SetProperty(ref _passwordTextBlockVisibility, value);
+            }
+        }
+
+        private bool _connectionAttemptFailed;
+
+        public bool ConnectionAttemptFailed
+        {
+            get => _connectionAttemptFailed;
+            set => SetProperty(ref _connectionAttemptFailed, value);
+        }
 
         public ICommand ChangePrivacyModeCommand { get; }
 
@@ -40,35 +55,46 @@ namespace Tron.Client.Application.ViewModels.Menu
         internal CreateLobbyViewModel(NavigationService nav)
         {
             _nav = nav;
+            _app = (App)(System.Windows.Application.Current);
 
-            _maxPlayers = 2;
             _privacyMode = "PUBLIC";
 
-            IncreaseMaxPlayersCommand = new RelayCommand(OnIncreaseMaxPlayers);
-            DecreaseMaxPlayersCommand = new RelayCommand(OnDecreaseMaxPlayers);
+            ConnectionAttemptFailed = false;
+
             ChangePrivacyModeCommand = new RelayCommand(OnChangePrivacyMode);
             CreateLobbyCommand = new RelayCommand(OnCreateLobby);
             GoBackCommand = new RelayCommand(OnGoBack);
         }
 
-        private void OnIncreaseMaxPlayers()
-        {
-            ++MaxPlayers;
-        }
-
-        private void OnDecreaseMaxPlayers()
-        {
-            --MaxPlayers;
-        }
-
         private void OnChangePrivacyMode()
         {
-            PrivacyMode = PrivacyMode == "PUBLIC" ? "PRIVATE" : "PUBLIC";
+            if (PrivacyMode == "PUBLIC")
+            {
+                PrivacyMode = "PRIVATE";
+                PasswordTextBlockVisibility = true;
+            }
+            else
+            {
+                PrivacyMode = "PUBLIC";
+                PasswordTextBlockVisibility = false;
+                PasswordTextBox!.Text = null;
+            }
         }
 
-        private void OnCreateLobby()
+        private async void OnCreateLobby()
         {
+            string password = PasswordTextBox!.Text;
 
+            if (_app.TryCreateLobby(_isPrivate, password))
+            {
+                _nav.Navigate(new AwaitingRoomPage(_nav, true));
+            }
+            else
+            {
+                ConnectionAttemptFailed = true;
+                await Task.Delay(TimeSpan.FromSeconds(2));
+                _nav.GoBack();
+            }
         }
 
         private void OnGoBack()

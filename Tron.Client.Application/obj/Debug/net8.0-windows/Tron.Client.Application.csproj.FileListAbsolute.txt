@@ -14,9 +14,7 @@ C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Application.runtimeconfig.json
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Application.dll
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Application.pdb
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Networking.dll
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Common.dll
-C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Networking.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Common.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\App.baml
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\MainWindow.baml
@@ -38,3 +36,9 @@ C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Tron.Client.Application.pdb
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Tron.Client.Application.genruntimeconfig.cache
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\ref\Tron.Client.Application.dll
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\RegisterPage.g.cs
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\RegisterPage.baml
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Networking.dll
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\bin\Debug\net8.0-windows\Tron.Client.Networking.pdb
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\AwaitingRoomPage.g.cs
+C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\obj\Debug\net8.0-windows\Views\AwaitingRoomPage.baml

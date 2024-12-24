@@ -2,19 +2,19 @@
 {
     public class JoinLobbyMessage : Message
     {
-        public int LobbyId { get; }
+        public string LobbyHostname { get; }
 
         public JoinLobbyMessage(Header header, List<string> segments) : base(header, segments)
         {
-            LobbyId = int.Parse(segments[0]);
+            LobbyHostname = segments[0];
         }
 
-        public JoinLobbyMessage(int lobbyId)
+        public JoinLobbyMessage(string lobbyHost)
         {
             Header = Header.JOIN_LOBBY;
-            LobbyId = lobbyId;
+            LobbyHostname = lobbyHost;
         }
 
-        public override string ToString() => Header.ToString() + '/' + LobbyId.ToString();
+        public override string ToString() => $"{(int)Header}/{LobbyHostname}";
     }
 }

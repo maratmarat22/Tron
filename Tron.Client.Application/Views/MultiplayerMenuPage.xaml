@@ -13,7 +13,8 @@
     </Page.Background>
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920">
-        <Border Visibility="{Binding ConnectionAttemptFailed, Converter={StaticResource BoolToVisibility}}"
+
+        <Border Visibility="{Binding NotConnected, Converter={StaticResource BoolToVisibility}}"
                 Width="600"
                 Height="100"
                 HorizontalAlignment="Center"

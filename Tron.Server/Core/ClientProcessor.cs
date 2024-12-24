@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Tron.Common.Messages;
+﻿using Tron.Common.Messages;
 using Tron.Common.Networking;
 using Tron.Server.Core.Domain.Entities;
 using Tron.Server.Core.Domain.Services;
@@ -14,15 +13,19 @@ namespace Tron.Server.Core
         private readonly UdpUnicaster _unicaster;
         private readonly IDbQueryProcessor _queryProcessor;
 
-        internal ClientProcessor(UdpUnicaster unicaster, IDbQueryProcessor queryProcessor)
+        private List<Lobby> _lobbies;
+
+        internal ClientProcessor(UdpUnicaster unicaster, IDbQueryProcessor queryProcessor, List<Lobby> lobbies)
         {
             _unicaster = unicaster;
             _queryProcessor = queryProcessor;
+
+            _lobbies = lobbies;
         }
 
         internal void Process()
         {
-            MessageProcessorPool pool = new(_queryProcessor, _unicaster);
+            MessageProcessorPool pool = new(_unicaster, _lobbies);
 
             while (true)
             {
@@ -47,7 +50,7 @@ namespace Tron.Server.Core
 
                             if (proceed == Proceed.True)
                             {
-                                _queryProcessor.UpdateTopTen(lobby!);
+                                _queryProcessor.UpdatePlayer();
                                 awaiting = new(lobby!, multicaster);
                             }
                             else break;

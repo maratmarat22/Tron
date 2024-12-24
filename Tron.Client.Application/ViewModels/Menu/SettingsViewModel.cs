@@ -7,14 +7,12 @@ namespace Tron.Client.Application.ViewModels.Menu
     {
         private NavigationService _nav;
 
-        private string _volumeSetting;
-        public string VolumeSetting
+        private string? _volumeSetting;
+
+        public string? VolumeSetting
         {
             get => _volumeSetting;
-            set
-            {
-                SetProperty(ref _volumeSetting, value);
-            }
+            set => SetProperty(ref _volumeSetting, value);
         }
 
         public ICommand SwitchVolumeSettingCommand { get; }
@@ -33,7 +31,16 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnSwitchVolumeSetting()
         {
-            VolumeSetting = VolumeSetting == "ON" ? "OFF" : "ON";
+            if (VolumeSetting == "ON")
+            {
+                VolumeSetting = "OFF";
+                ((App)(System.Windows.Application.Current)).Volume = false;
+            }
+            else
+            {
+                VolumeSetting = "ON";
+                ((App)(System.Windows.Application.Current)).Volume = true;
+            }
         }
 
         private void OnGoBack()

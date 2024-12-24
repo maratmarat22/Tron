@@ -14,14 +14,17 @@ namespace Tron.Client.Networking
             _acceptor = new IPEndPoint(address, port);
         }
 
-        public UdpUnicaster? TryConnect()
+        public UdpUnicaster? TryConnect(AuthentificationMessage auth)
         {
             Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            local.ReceiveTimeout = 3000;
+            local.SendTimeout = 3000;
+            
             if (local.TryBind(IPAddress.Loopback, 5000))
             {
                 try
                 {
-                    local.SafeSendTo(new Message(Header.CONNECT), _acceptor);
+                    local.SafeSendTo(auth, _acceptor);
                 }
                 catch (SocketException)
                 {
@@ -30,7 +33,7 @@ namespace Tron.Client.Networking
                     return null;
                 }
 
-                EndPointMessage redirect = (EndPointMessage)local.SafeReceiveFrom(ref _acceptor, Header.REDIRECT);
+                IPEndPointMessage redirect = (IPEndPointMessage)local.SafeReceiveFrom(ref _acceptor, Header.REDIRECT);
                 IPEndPoint remote = new IPEndPoint(redirect.Address, redirect.Port);
 
                 local.SafeSendTo(new Message(Header.CONNECT), remote);

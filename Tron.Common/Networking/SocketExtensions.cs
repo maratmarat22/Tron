@@ -21,26 +21,29 @@ namespace Tron.Common.Networking
             return new Message(Encoding.UTF8.GetString(bytes, 0, length));
         }
 
-        public static void SafeSendTo(this Socket local, Message message, EndPoint remote)
+        public static bool SafeSendTo(this Socket local, Message message, EndPoint remote)
         {
             local.SendTo(message, remote);
 
-            Message response = local.SafeReceiveFrom(ref remote, message.Header);
+            Message? response = local.SafeReceiveFrom(ref remote, message.Header);
 
-            if (response.Header == Header.BAD_REQUEST)
+            if (response != null)
             {
-                
-                //
-                throw new Exception();
-                //
-            
+                if (response.Header == Header.BAD_REQUEST)
+                {
+                    return false;
+                }
+
+                while (response.Header != Header.ACKNOWLEDGE && (response as AcknowledgeMessage)!.AcknowledgedHeader != message.Header)
+                {
+                    local.SendTo(message, remote);
+                    response = local.SafeReceiveFrom(ref remote, message.Header);
+                }
+
+                return true;
             }
 
-            while (response.Header != Header.ACK && (response as AckMessage)!.AckedHeader != message.Header)
-            {
-                local.SendTo(message, remote);
-                response = local.SafeReceiveFrom(ref remote, message.Header);
-            }
+            return false;
         }
 
         public static Message SafeReceiveFrom(this Socket local, ref EndPoint remote, params Header[] expected)
@@ -53,7 +56,7 @@ namespace Tron.Common.Networking
 
                 if (Message.TryDefine(raw, out concrete!))
                 {
-                    if (concrete.Header == Header.ACK && expected.Contains((concrete as AckMessage)!.AckedHeader))
+                    if (concrete.Header == Header.ACKNOWLEDGE && expected.Contains((concrete as AcknowledgeMessage)!.AcknowledgedHeader))
                     {
                         break;
                     }
@@ -62,7 +65,7 @@ namespace Tron.Common.Networking
                         local.SendTo(new Message(Header.BAD_REQUEST), remote);
                     }
 
-                    local.SendTo(new AckMessage(concrete.Header), remote);
+                    local.SendTo(new AcknowledgeMessage(concrete.Header), remote);
                     break;
                 }
 

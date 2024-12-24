@@ -9,10 +9,10 @@ namespace Tron.Server
     {
         static void Main()
         {
-            SocketReader reader = new();
-            (string address, int port) = reader.Read(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+            FileProcessor reader = new();
+            (string address, int port) = reader.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
 
-            IDbQueryProcessor dbQueryProcessor = new SQLiteQueryProcessor(@"../../../Persistence/Data/tron.db");            
+            IDbQueryProcessor dbQueryProcessor = new SQLiteQueryProcessor(@"../../../Persistence/Data/tron.db");
 
             Application application = new(dbQueryProcessor, IPAddress.Parse(address), port);
             application.Run();

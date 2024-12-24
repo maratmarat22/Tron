@@ -1,7 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Tron.Client.Application.Services;
 using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Models

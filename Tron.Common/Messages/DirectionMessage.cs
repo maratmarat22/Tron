@@ -17,6 +17,6 @@ namespace Tron.Common.Messages
             Direction = direction;
         }
 
-        public override string ToString() => Header.ToString() + '/' + Direction.ToString();
+        public override string ToString() => $"{(int)Header}/{(int)Direction}";
     }
 }

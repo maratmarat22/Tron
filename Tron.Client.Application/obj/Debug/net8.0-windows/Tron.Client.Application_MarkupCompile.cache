@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\akhmy\Documents\Projects\Visual Studio\C#\Tron\Tron.Client.Application\App.xaml
-7-661597215
+9-1019104875
 
-31-322305355
+35195975029
 2001112778280
-MainWindow.xaml;Views\ArenaPage.xaml;Views\CreateLobbyPage.xaml;Views\JoinLobbyPage.xaml;Views\MainMenuPage.xaml;Views\MultiplayerMenuPage.xaml;Views\SettingsPage.xaml;
+MainWindow.xaml;Views\ArenaPage.xaml;Views\AwaitingRoomPage.xaml;Views\CreateLobbyPage.xaml;Views\JoinLobbyPage.xaml;Views\MainMenuPage.xaml;Views\MultiplayerMenuPage.xaml;Views\RegisterPage.xaml;Views\SettingsPage.xaml;
 
 False
 

@@ -10,6 +10,9 @@
     <Compile Update="Views\ArenaPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AwaitingRoomPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\CreateLobbyPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\JoinLobbyPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\SettingsPage.xaml.cs">
@@ -33,6 +39,9 @@
     <Page Update="Views\ArenaPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AwaitingRoomPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\CreateLobbyPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -43,6 +52,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\JoinLobbyPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\RegisterPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SettingsPage.xaml">
