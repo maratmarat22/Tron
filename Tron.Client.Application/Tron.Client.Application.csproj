@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Tiny5-Regular.ttf" />
+    <None Remove="Resources\Images\Background.png" />
+    <None Remove="Resources\Images\MenuBackground.jpg" />
+    <None Remove="Resources\Images\MenuBackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Tiny5-Regular.ttf" />
+    <Resource Include="Resources\Images\Background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Audio\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tron.Client.Networking\Tron.Client.Networking.csproj" />
+    <ProjectReference Include="..\Tron.Common\Tron.Common.csproj" />
+  </ItemGroup>
+
+</Project>

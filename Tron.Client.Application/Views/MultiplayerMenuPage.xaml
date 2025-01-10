@@ -1,0 +1,171 @@
+﻿<Page x:Class="Tron.Client.Application.Views.MultiplayerMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tron.Client.Application.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="MultiplayerMenuPage">
+
+    <Page.Background>
+        <ImageBrush ImageSource="../Resources/Images/Background.jpg"/>
+    </Page.Background>
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920">
+
+        <Border Visibility="{Binding ConnectionAttemptFailed, Converter={StaticResource BoolToVisibility}}"
+                Width="600"
+                Height="100"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="900,700,0,0">
+            <Border.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Border.Background>
+
+            <TextBlock Text="CONNECTION ATTEMPT FAILED"
+                   FontSize="40"
+                   Foreground="White"
+                   FontFamily="{StaticResource Tiny}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   >
+            <TextBlock.Effect>
+                <DropShadowEffect Color="HotPink"
+                                      BlurRadius="20"
+                                      ShadowDepth="0"
+                                      Opacity="1"/>
+            </TextBlock.Effect>
+            </TextBlock>
+        </Border>
+
+        <Border Width="1000"
+            Height="170"
+            Margin="0,0,500,600">
+            <Border.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Border.Background>
+
+            <TextBlock Text="MULTIPLAYER"
+                   FontFamily="{StaticResource Tiny}"
+                   TextAlignment="Center"
+                   FontSize="150"
+                   Foreground="White"
+                   HorizontalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="LightGreen"
+                                  BlurRadius="50"
+                                  ShadowDepth="0"
+                                  Opacity="1"/>
+                </TextBlock.Effect>
+            </TextBlock>
+        </Border>
+
+        <!-- CREATE LOBBY -->
+
+        <Button Width="500"
+            Height="100"
+            Margin="0,0,800,230"
+            BorderThickness="0"
+            BorderBrush="White"
+            Command="{Binding CreateLobbyCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="CREATE NEW LOBBY"
+                       FontFamily="{StaticResource Tiny}"
+                       Foreground="White"
+                       FontSize="40">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Blue"
+                                      BlurRadius="20"
+                                      ShadowDepth="0"
+                                      Opacity="1"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
+        <!-- JOIN LOBBY -->
+
+        <Button Width="500"
+            Height="100"
+            Margin="0,0,800,-20"
+            BorderThickness="0"
+            BorderBrush="White"
+            Command="{Binding JoinLobbyCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="JOIN EXISTING LOBBY"
+                       FontFamily="{StaticResource Tiny}"
+                       Foreground="White"
+                       FontSize="40">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Yellow"
+                                      BlurRadius="20"
+                                      ShadowDepth="0"
+                                      Opacity="1"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
+        <!-- LOCAL CO-OP -->
+
+        <Button Width="500"
+            Height="100"
+            Margin="0,0,800,-270"
+            BorderThickness="0"
+            BorderBrush="White"
+            Command="{Binding InitLocalMpCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="LOCAL CO-OP"
+                       FontFamily="{StaticResource Tiny}"
+                       Foreground="White"
+                       FontSize="40">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="Violet"
+                                      BlurRadius="20"
+                                      ShadowDepth="0"
+                                      Opacity="1"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
+        <!-- BACK -->
+
+        <Button Width="500"
+            Height="100"
+            Margin="0,0,800,-520"
+            BorderThickness="0"
+            BorderBrush="White"
+            Command="{Binding GoBackCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#BB000000"/>
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="BACK"
+                       FontFamily="{StaticResource Tiny}"
+                       Foreground="White"
+                       FontSize="40">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="HotPink"
+                                      BlurRadius="20"
+                                      ShadowDepth="0"
+                                      Opacity="1"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
+    </Grid>
+</Page>

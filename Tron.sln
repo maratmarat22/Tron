@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{3FA57DD5-86F2-4751-8B2A-A5CBA335B1E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tron.Common", "Tron.Common\Tron.Common.csproj", "{7C5F7456-A951-4C79-AA58-4C4443FAC803}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{C21A6BAB-A572-41EA-B4A1-B18927615516}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{B1D64A55-1894-4E87-AAC9-FD7521014F5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tron.Server", "Tron.Server\Tron.Server.csproj", "{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{32987783-276C-4491-A9B1-F3A00F001EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tron.Client.Application", "Tron.Client.Application\Tron.Client.Application.csproj", "{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Networking", "Networking", "{6F822035-FEEB-43C6-AD18-A3298E29E83E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tron.Client.Networking", "Tron.Client.Networking\Tron.Client.Networking.csproj", "{987CF38E-8495-4120-BC39-CA7DCC46CC73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C5F7456-A951-4C79-AA58-4C4443FAC803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5F7456-A951-4C79-AA58-4C4443FAC803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5F7456-A951-4C79-AA58-4C4443FAC803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5F7456-A951-4C79-AA58-4C4443FAC803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B44A8E7-5DB6-4151-8AE9-6EA83213705D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB85A4D0-38D8-423C-B8EF-5373853E4ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{987CF38E-8495-4120-BC39-CA7DCC46CC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{987CF38E-8495-4120-BC39-CA7DCC46CC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{987CF38E-8495-4120-BC39-CA7DCC46CC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{987CF38E-8495-4120-BC39-CA7DCC46CC73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7C5F7456-A951-4C79-AA58-4C4443FAC803} = {C21A6BAB-A572-41EA-B4A1-B18927615516}
+		{9B44A8E7-5DB6-4151-8AE9-6EA83213705D} = {3FA57DD5-86F2-4751-8B2A-A5CBA335B1E9}
+		{32987783-276C-4491-A9B1-F3A00F001EDF} = {B1D64A55-1894-4E87-AAC9-FD7521014F5D}
+		{BB85A4D0-38D8-423C-B8EF-5373853E4ABB} = {32987783-276C-4491-A9B1-F3A00F001EDF}
+		{6F822035-FEEB-43C6-AD18-A3298E29E83E} = {B1D64A55-1894-4E87-AAC9-FD7521014F5D}
+		{987CF38E-8495-4120-BC39-CA7DCC46CC73} = {6F822035-FEEB-43C6-AD18-A3298E29E83E}
+	EndGlobalSection
+EndGlobal
