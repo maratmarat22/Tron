@@ -37,11 +37,9 @@ namespace Tron.Server.Core
                 {
                     Task.Run(() =>
                     {
-                        ICaster caster = unicaster;
-
                         Dictionary<string, string?> state = new()
                         {
-                            { "ServerPoint", unicaster.Local.LocalEndPoint!.ToString()! },
+                            { "Server", unicaster.Local.LocalEndPoint!.ToString()! },
                             { "HostName", null },
                             { "GuestName", null },
                             { "HostReady", "False" },
@@ -51,21 +49,31 @@ namespace Tron.Server.Core
 
                         while (true)
                         {
-                            Message? message = caster.Receive();
+                            Message? message = unicaster.Receive();
 
                             if (message != null)
                             {                                
                                 IMessageProcessor processor = _pool.Acquire(message.Header);
 
-                                Message? response = processor.Process(message, state, caster);
+                                Message? response = processor.Process(message, state, unicaster);
 
                                 if (response != null)
                                 {
-                                    caster.Send(response);
+                                    unicaster.Send(response);
 
                                     if (message.Header == Header.CreateLobby)
                                     {
-                                        caster = new Multicaster(unicaster.Local, unicaster.Remote);
+                                        Multicaster multicaster = new(unicaster.Local, unicaster.Remote);
+                                        MulticastService service = new(multicaster, state, _pool);
+                                        service.Run();
+                                    }
+
+                                    else if (message.Header == Header.JoinLobby)
+                                    {
+                                        if (unicaster.Local.TrySendTo(new Message(Header.AddRemote, [response.Payload[0]]), IPEndPoint.Parse(response.Payload[1])))
+                                        {
+                                            unicaster.Send(new Message(Header.Acknowledge, [message.Header.ToString()]));
+                                        }
                                     }
                                 }
                                 else

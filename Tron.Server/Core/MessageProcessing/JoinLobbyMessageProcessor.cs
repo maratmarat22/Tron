@@ -14,18 +14,12 @@ namespace Tron.Server.Core.MessageProcessing
             _lobbies = lobbies;
         }
 
-        public Message Process(Message message, Dictionary<string, string?> state, ICaster caster)
+        public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {
-            string player = caster.Local.RemoteEndPoint!.ToString()!;
-            EndPoint master = IPEndPoint.Parse(message.Payload[0]);
+            string playerPoint = message.Payload[0];
+            string masterPoint = message.Payload[1];
 
-            caster.SendTo(new Message(Header.AddRemote, [player]), master);
-
-            Lobby lobby = _lobbies.Where(l => l.Master.Equals(message.Payload[0])).First();
-
-
-
-            return new Message(Header.Acknowledge, [message.Header.ToString()]);
+            return new Message(Header.AddRemote, [playerPoint, masterPoint]);
         }
     }
 }

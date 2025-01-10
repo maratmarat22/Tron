@@ -58,15 +58,12 @@ namespace Tron.Client.Application
 
         internal bool TryJoinLobby(Message message)
         {
-            if (_unicaster!.Send(message))
+            message.Payload[0] = _unicaster!.Local.LocalEndPoint!.ToString()!;
+            if (AckRequest(message, Point.Server))
             {
-                Message? response = _unicaster.Receive();
-
-                if (response != null)
-                {
-                    _gameUnicaster = new Unicaster(_unicaster.Local, IPEndPoint.Parse(response.Payload[0]));
-                    return true;
-                }
+                _gameUnicaster = new Unicaster(_unicaster!.Local, IPEndPoint.Parse(message.Payload[1]));
+                
+                return true;
             }
 
             return false;

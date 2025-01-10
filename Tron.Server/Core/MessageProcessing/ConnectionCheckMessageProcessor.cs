@@ -5,7 +5,7 @@ namespace Tron.Server.Core.MessageProcessing
 {
     internal class ConnectionCheckMessageProcessor : IMessageProcessor
     {
-        public Message Process(Message message, Dictionary<string, string?> state, ICaster caster)
+        public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {
             return new Message(Header.Acknowledge, [message.Header.ToString()]);
         }

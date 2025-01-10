@@ -5,6 +5,6 @@ namespace Tron.Server.Core.MessageProcessing
 {
     internal interface IMessageProcessor
     {
-        internal Message Process(Message message, Dictionary<string, string?> state, ICaster unicaster);
+        internal Message Process(Message message, Dictionary<string, string?> state, object caster);
     }
 }

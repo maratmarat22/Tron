@@ -194,7 +194,10 @@ namespace Tron.Client.Application.ViewModels.Menu
                 _refreshArgs.Add($"GuestName:{_app.Username}");
             }
 
-            _state = RefreshSessionState();
+            while (_state == null)
+            {
+                _state = RefreshSessionState()!;
+            }
 
             HostName = _state["HostName"];
             GuestName = _state["GuestName"];
@@ -208,14 +211,14 @@ namespace Tron.Client.Application.ViewModels.Menu
             StartCommand = new RelayCommand(OnStart);
             GoBackCommand = new RelayCommand(OnGoBack);
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
-            _state = RefreshSessionState();
+            _state = RefreshSessionState()!;
 
             HostReady = bool.Parse(_state["HostReady"]!);
             GuestReady = bool.Parse(_state["GuestReady"]!);
@@ -236,7 +239,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
         }
 
-        private Dictionary<string, string?> RefreshSessionState()
+        private Dictionary<string, string?>? RefreshSessionState()
         {
             string[]? payload = _app.PayloadRequest(new Message(Header.SessionState, [.. _refreshArgs]), Point.Master);
 
@@ -247,8 +250,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
             else
             {
-                //ошибка го бэк
-                throw new InvalidOperationException();
+                return null;
             }
         }
 

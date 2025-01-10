@@ -116,7 +116,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private async void TryJoinLobby(Lobby lobby)
         {
-            if (_app.TryJoinLobby(new Message(Header.JoinLobby, [lobby.Master])))
+            if (_app.TryJoinLobby(new Message(Header.JoinLobby, ["", lobby.Master])))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, false));
             }

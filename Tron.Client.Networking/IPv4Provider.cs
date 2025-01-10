@@ -14,7 +14,7 @@ namespace Tron.Client.Networking
             {
                 if (networkInterface.OperationalStatus == OperationalStatus.Up &&
                     networkInterface.NetworkInterfaceType != NetworkInterfaceType.Loopback &&
-                    !networkInterface.Description.Contains("VMware"))
+                    !networkInterface.Description.Contains("Virtual"))
                 {
                     IPInterfaceProperties ipProperties = networkInterface.GetIPProperties();
                     UnicastIPAddressInformationCollection unicastAddresses = ipProperties.UnicastAddresses;

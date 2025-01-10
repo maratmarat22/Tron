@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Tron.Client.Application.Views;
-using Tron.Client.Networking;
 using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu

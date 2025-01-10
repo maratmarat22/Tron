@@ -14,7 +14,7 @@ namespace Tron.Server.Core.MessageProcessing
             _lobbies = lobbies;
         }
 
-        public Message Process(Message message, Dictionary<string, string?> state, ICaster caster)
+        public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {
             return new Message(Header.Acknowledge, [message.Header.ToString(), JsonSerializer.Serialize(_lobbies)]);
         }

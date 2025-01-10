@@ -5,7 +5,7 @@ using Tron.Common.Networking;
 
 namespace Tron.Server.Networking
 {
-    internal class Multicaster : ICaster
+    internal class Multicaster
     {
         public Socket Local { get; }
 
@@ -33,18 +33,18 @@ namespace Tron.Server.Networking
             return true;
         }
 
-        public Message? Receive()
+        public (Message?, EndPoint?) Receive()
         {
             EndPoint AnyPointOrServer = new IPEndPoint(IPAddress.Any, 0);
-            
+
             Message? message = Local.TryReceiveFrom(ref AnyPointOrServer);
 
             if (_remotes.Contains(AnyPointOrServer) || (AnyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
             {
-                return message;
+                return (message, AnyPointOrServer);
             }
 
-            return null;
+            return (null, null);
         }
 
         public bool SendTo(Message message, EndPoint remote)
