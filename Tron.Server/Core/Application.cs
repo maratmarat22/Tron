@@ -59,21 +59,23 @@ namespace Tron.Server.Core
 
                                 if (response != null)
                                 {
-                                    unicaster.Send(response);
-
-                                    if (message.Header == Header.CreateLobby)
-                                    {
-                                        Multicaster multicaster = new(unicaster.Local, unicaster.Remote);
-                                        MulticastService service = new(multicaster, state, _pool);
-                                        service.Run();
-                                    }
-
-                                    else if (message.Header == Header.JoinLobby)
+                                    if (message.Header == Header.JoinLobby)
                                     {
                                         if (unicaster.Local.TrySendTo(new Message(Header.AddRemote, [response.Payload[0]]), IPEndPoint.Parse(response.Payload[1])))
                                         {
                                             unicaster.Send(new Message(Header.Acknowledge, [message.Header.ToString()]));
                                         }
+                                    }
+                                    else if (message.Header == Header.CreateLobby)
+                                    {
+                                        unicaster.Send(response);
+                                        Multicaster multicaster = new(unicaster.Local, unicaster.Remote);
+                                        MulticastService service = new(multicaster, state, _pool);
+                                        service.Run();
+                                    }
+                                    else
+                                    {
+                                        unicaster.Send(response);
                                     }
                                 }
                                 else
