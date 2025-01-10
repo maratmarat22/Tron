@@ -16,10 +16,10 @@ namespace Tron.Server.Core.MessageProcessing
 
         public Message Process(Message message, Dictionary<string, string?> state, ICaster caster)
         {
-            EndPoint player = IPEndPoint.Parse(message.Payload[1]);
+            string player = caster.Local.RemoteEndPoint!.ToString()!;
             EndPoint master = IPEndPoint.Parse(message.Payload[0]);
 
-            caster.SendTo(new Message(Header.AddRemote, [message.Payload[1]]), master);
+            caster.SendTo(new Message(Header.AddRemote, [player]), master);
 
             Lobby lobby = _lobbies.Where(l => l.Master.Equals(message.Payload[0])).First();
 

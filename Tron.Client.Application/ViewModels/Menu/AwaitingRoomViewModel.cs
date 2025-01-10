@@ -5,6 +5,7 @@ using System.Windows.Navigation;
 using System.Windows.Threading;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Views;
+using Tron.Client.Networking;
 using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
@@ -207,7 +208,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             StartCommand = new RelayCommand(OnStart);
             GoBackCommand = new RelayCommand(OnGoBack);
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -237,7 +238,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private Dictionary<string, string?> RefreshSessionState()
         {
-            string[]? payload = _app.TrySendToMasterAndGetPayload(new Message(Header.SessionState, [.. _refreshArgs]));
+            string[]? payload = _app.PayloadRequest(new Message(Header.SessionState, [.. _refreshArgs]), Point.Master);
 
             if (payload != null)
             {

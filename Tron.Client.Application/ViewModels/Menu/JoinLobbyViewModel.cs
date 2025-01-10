@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Net;
+using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -6,6 +7,8 @@ using System.Windows.Navigation;
 using Tron.Client.Application.Views;
 using Tron.Common.Entities;
 using Tron.Common.Messages;
+using Tron.Common.Networking;
+using Tron.Client.Networking;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
@@ -72,7 +75,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnFetchLobbies()
         {
-            string[]? payload = _app.TrySendToServerAndGetPayload(new Message(Header.FetchLobbies, []));
+            string[]? payload = _app.PayloadRequest(new Message(Header.FetchLobbies, []), Point.Server);
 
             if (payload != null)
             {
@@ -113,7 +116,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private async void TryJoinLobby(Lobby lobby)
         {
-            if (_app.TrySendToMaster(new Message(Header.JoinLobby, [lobby.Master, _app.Unicaster!.Local.LocalEndPoint!.ToString()!])))
+            if (_app.TryJoinLobby(new Message(Header.JoinLobby, [lobby.Master])))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, false));
             }

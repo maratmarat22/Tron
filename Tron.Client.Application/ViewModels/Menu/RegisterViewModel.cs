@@ -47,10 +47,10 @@ namespace Tron.Client.Application.ViewModels.Menu
 
             if (!string.IsNullOrWhiteSpace(username) && !username.Contains('/'))
             {
-                if (_app.TrySendToServer(new Message(Header.Register, [username])))
+                if (_app.TryConnect(new Message(Header.Register, [username])))
                 {
                     _app.Username = username;
-                    _app.SaveUsername();
+                    _app.LogUsername();
                     OnGoBack();
                 }
                 else

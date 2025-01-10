@@ -25,7 +25,7 @@
             return username;
         }
 
-        public void SaveUsername(string path, string username)
+        public void LogUsername(string path, string username)
         {
             File.WriteAllText(path, username);
         }

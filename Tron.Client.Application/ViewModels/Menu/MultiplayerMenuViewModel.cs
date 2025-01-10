@@ -2,6 +2,7 @@
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Views;
+using Tron.Client.Networking;
 using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
@@ -69,21 +70,20 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private async Task<bool> TryConnect()
         {
-            if (_app.Connected && _app.TrySendToServer(new Message(Header.ConnectionCheck, [])))
+            if (_app.AckRequest(new Message(Header.ConnectionCheck, []), Point.Server))
             {
-                ConnectionAttemptFailed = false;
                 return true;
             }
 
             if (string.IsNullOrWhiteSpace(_app.Username))
             {
                 _nav.Navigate(new RegisterPage(_nav));
+                
                 return false;
             }
 
-            if (_app.TrySendToServer(new Message(Header.LogIn, [_app.Username])))
+            if (_app.TryConnect(new Message(Header.LogIn, [_app.Username])))
             {
-                ConnectionAttemptFailed = false;
                 return true;
             }
 

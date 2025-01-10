@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text.Json;
 using Tron.Client.Networking;
 using Tron.Common.Config.Utilities;
 using Tron.Common.Messages;
@@ -6,24 +7,21 @@ using Tron.Common.Networking;
 
 namespace Tron.Client.Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : System.Windows.Application
     {
         private FileProcessor _processor;
 
         private (string address, int port) _acceptor;
 
-        internal Unicaster? Unicaster { get; set; }
-
         private Connector _connector;
 
-        internal bool Volume { get; set; }
+        private Unicaster? _unicaster;
+
+        private Unicaster? _gameUnicaster;
 
         internal string? Username { get; set; }
 
-        private Unicaster? _gameUnicaster;
+        internal bool Volume { get; set; }
 
         public bool Connected { get; set; }
 
@@ -34,77 +32,69 @@ namespace Tron.Client.Application
             _connector = new Connector(IPAddress.Parse(_acceptor.address), _acceptor.port);
 
             Username = _processor.TryReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
-
             Volume = true;
             Connected = false;
         }
 
-        internal void SaveUsername()
+        internal void LogUsername() => _processor.LogUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
+
+        internal bool TryConnect(Message message)
         {
-            _processor.SaveUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
+            _unicaster = _connector.TryConnect(message);
+            return Connected = _unicaster != null;
         }
 
-        internal bool TrySendToServer(Message message)
+        internal bool TryCreateLobby(Message message)
         {
-            if (message.Header == Header.Register || message.Header == Header.LogIn)
+            if (AckRequest(message, Point.Server))
             {
-                Unicaster = _connector.TryConnect(message);
-
-                return Connected = Unicaster != null;
+                _gameUnicaster = _unicaster;
+                
+                return true;
             }
-            
-            Unicaster!.Send(message);
 
-            Message? response = Unicaster.Receive();
+            return false;
+        }
+
+        internal bool TryJoinLobby(Message message)
+        {
+            if (_unicaster!.Send(message))
+            {
+                Message? response = _unicaster.Receive();
+
+                if (response != null)
+                {
+                    _gameUnicaster = new Unicaster(_unicaster.Local, IPEndPoint.Parse(response.Payload[0]));
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        internal bool AckRequest(Message message, Point point)
+        {
+            Unicaster unicaster = point == Point.Server ? _unicaster! : _gameUnicaster!;
+
+            if (unicaster == null)
+            {
+                return false;
+            }
+
+            unicaster!.Send(message);
+            Message? response = unicaster.Receive();
 
             return response != null &&
                 response.Header == Header.Acknowledge &&
                 response.Payload[0] == message.Header.ToString();
         }
 
-        internal string[]? TrySendToServerAndGetPayload(Message message)
+        internal string[]? PayloadRequest(Message message, Point point)
         {
-            Unicaster!.Send(message);
+            Unicaster unicaster = point == Point.Server ? _unicaster! : _gameUnicaster!;
 
-            Message? response = Unicaster.Receive();
-
-            return response?.Payload;
-        }
-
-        internal bool TrySendToMaster(Message message)
-        {
-            if (message.Header == Header.JoinLobby)
-            {
-                _gameUnicaster = new Unicaster(Unicaster!.Local, IPEndPoint.Parse(message.Payload[0]));
-            }
-            else if (message.Header == Header.CreateLobby)
-            {
-                _gameUnicaster = Unicaster;
-            }
-
-            _gameUnicaster!.Send(message);
-
-            Message? response = _gameUnicaster.Receive();
-
-            return response != null &&
-                response.Header == Header.Acknowledge &&
-                response.Payload[0] == message.Header.ToString();
-        }
-
-        internal string[]? TrySendToMasterAndGetPayload(Message message)
-        {
-            if (message.Header == Header.JoinLobby)
-            {
-                _gameUnicaster = new Unicaster(Unicaster!.Local, IPEndPoint.Parse(message.Payload[0]));
-            }
-            else if (message.Header == Header.CreateLobby)
-            {
-                _gameUnicaster = Unicaster;
-            }
-
-            _gameUnicaster!.Send(message);
-
-            Message? response = _gameUnicaster.Receive();
+            unicaster!.Send(message);
+            Message? response = unicaster.Receive();
 
             return response?.Payload;
         }

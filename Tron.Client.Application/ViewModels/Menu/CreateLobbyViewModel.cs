@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Tron.Client.Application.Views;
+using Tron.Client.Networking;
 using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
@@ -86,9 +87,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         {
             string password = PasswordTextBox!.Text;
 
-            string[]? payload = _app.TrySendToMasterAndGetPayload(new Message(Header.CreateLobby, [_app.Username!, _isPrivate.ToString(), password]))!;
-
-            if (payload != null)
+            if (_app.TryCreateLobby(new Message(Header.CreateLobby, [_app.Username!, _isPrivate.ToString(), password])))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, true));
             }

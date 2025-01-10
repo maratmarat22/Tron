@@ -11,6 +11,7 @@ namespace Tron.Server.Core.MessageProcessing
         private ConnectionCheckMessageProcessor? _check;
         private DeleteLobbyMessageProcessor? _delete;
         private SessionStateMessageProcessor? _state;
+        private AddRemoteMessageProcessor? _add;
 
         private readonly List<Lobby> _lobbies;
 
@@ -29,6 +30,7 @@ namespace Tron.Server.Core.MessageProcessing
                 Header.ConnectionCheck => _check ??= new ConnectionCheckMessageProcessor(),
                 Header.DeleteLobby => _delete ??= new DeleteLobbyMessageProcessor(_lobbies),
                 Header.SessionState => _state ??= new SessionStateMessageProcessor(),
+                Header.AddRemote => _add ??= new AddRemoteMessageProcessor(),
                 _ => throw new NotImplementedException()
             };
         }
