@@ -2,9 +2,8 @@
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
-using Tron.Client.Networking;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
+using Tron.Common.Networking;
 
 namespace Tron.Client.Application.Services
 {
@@ -60,7 +59,17 @@ namespace Tron.Client.Application.Services
             {
                 if (GameTimer.IsEnabled)
                 {
-                    _provider.FetchState();
+                    string[] changes =
+                    [
+                        $"HostX:{_players[0].Coordinates.Row}",
+                        $"GuestX:{_players[1].Coordinates.Row}",
+                        $"HostY:{_players[0].Coordinates.Column}",
+                        $"GuestY:{_players[1].Coordinates.Column}",
+                        $"HostDirection:{_players[0].Direction}",
+                        $"GuestDirection:{_players[1].Direction}"
+                    ];
+
+                    _provider.FetchState(changes);
 
                     SetTrail(player);
                     Move(player);

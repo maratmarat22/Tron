@@ -44,7 +44,13 @@ namespace Tron.Server.Core
                             { "GuestName", null },
                             { "HostReady", "False" },
                             { "GuestReady", "False" },
-                            { "GameStarted", "False" }
+                            { "GameStarted", "False" },
+                            { "HostX", null },
+                            { "HostY", null },
+                            { "GuestX", null },
+                            { "GuestY", null },
+                            { "HostDirection", null },
+                            { "GuestDirection", null },
                         };
 
                         while (true)

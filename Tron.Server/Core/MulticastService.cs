@@ -27,10 +27,7 @@ namespace Tron.Server.Core
                 (Message? message, EndPoint? sender) = _multicaster.Receive();
 
                 if (message != null)
-                {
-                    if (message.Header == Header.LeaveLobby)
-                    { }
-                    
+                {   
                     IMessageProcessor processor = _pool.Acquire(message.Header);
                     Message response = processor.Process(message, _state, _multicaster);
 

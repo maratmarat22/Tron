@@ -17,9 +17,9 @@ namespace Tron.Client.Application.Models
             _players = players;
         }
 
-        internal void FetchState()
+        internal void FetchState(string[] changes)
         {
-            string[] payload = (_app.PayloadRequest(new Message(Header.SessionState, []), Point.Master))!;
+            string[] payload = (_app.PayloadRequest(new Message(Header.SessionState, [string.Join(',', changes)]), Point.Master))!;
             var state = JsonSerializer.Deserialize<Dictionary<string, string?>>(payload[0]);
 
             _players[0].Coordinates = new(int.Parse(state!["HostX"]!), int.Parse(state!["HostY"]!));
