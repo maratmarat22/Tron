@@ -77,10 +77,5 @@ namespace Tron.Client.Application.Services
                 }
             }
         }
-
-        internal override void SetDirection(Player player, Direction direction)
-        {
-            _provider.SetDirection(player, direction);
-        }
     }
 }

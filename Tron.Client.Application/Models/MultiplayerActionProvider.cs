@@ -26,7 +26,7 @@ namespace Tron.Client.Application.Models
             _players[1].Coordinates = new(int.Parse(state!["GuestX"]!), int.Parse(state!["GuestY"]!));
 
             _players[0].Direction = (Direction)Enum.Parse(typeof (Direction), (state!["HostDirection"]!));
-            _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), (state!["HostDirection"]!));
+            _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), (state!["GuestDirection"]!));
         }
 
         internal void SetDirection(Player player, Direction direction)
