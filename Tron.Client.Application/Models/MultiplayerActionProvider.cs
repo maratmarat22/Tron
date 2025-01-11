@@ -17,9 +17,19 @@ namespace Tron.Client.Application.Models
             _players = players;
         }
 
-        internal void FetchState(string[] changes)
+        internal void FetchState(string[]? changes)
         {
-            string[] payload = (_app.PayloadRequest(new Message(Header.SessionState, [string.Join(',', changes)]), Point.Master))!;
+            string[] payload;
+            
+            if (changes != null)
+            {
+                payload = (_app.PayloadRequest(new Message(Header.SessionState, [string.Join(',', changes)]), Point.Master))!;
+            }
+            else
+            {
+                payload = (_app.PayloadRequest(new Message(Header.SessionState, []), Point.Master))!;
+            }
+
             var state = JsonSerializer.Deserialize<Dictionary<string, string?>>(payload[0]);
 
             _players[0].Coordinates = new(int.Parse(state!["HostX"]!), int.Parse(state!["HostY"]!));
@@ -29,9 +39,12 @@ namespace Tron.Client.Application.Models
             _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), (state!["GuestDirection"]!));
         }
 
-        internal void SetDirection(Player player, Direction direction)
+        internal void FetchDirections()
         {
-            _app.PayloadRequest(new Message(Header.SessionState, [$"{player.Name}:{direction}"]), Point.Master);
+            string[] payload = _app.PayloadRequest(new Message(Header.SessionState, []), Point.Master)!;
+
+            _players[0].Direction = (Direction)Enum.Parse(typeof(Direction), payload[0]);
+            _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), payload[1]);
         }
     }
 }

@@ -8,7 +8,14 @@ namespace Tron.Server.Core.MessageProcessing
     {
         public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {
-            bool added = ((Multicaster)caster).AddRemote(IPEndPoint.Parse(message.Payload[0]));
+            try
+            {
+                bool added = ((Multicaster)caster).AddRemote(IPEndPoint.Parse(message.Payload[0]));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
             return new Message(Header.Acknowledge, [message.Header.ToString()]);
         }

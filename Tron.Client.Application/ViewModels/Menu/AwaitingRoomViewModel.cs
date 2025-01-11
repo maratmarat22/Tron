@@ -286,7 +286,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
             if (_enteredAsHost)
             {
-                if (_app.AckRequest(new Message(Header.DeleteLobby, [_state["Server"]!]), Point.Master))
+                if (_app.AckRequest(new Message(Header.DeleteLobby, []), Point.Master))
                 {
                     _nav.GoBack();
                 }

@@ -6,7 +6,7 @@
         KILL_SCORE = 200,
         ALIVE_SCORE = 100,
         
-        GAME_TICK = 10,
+        GAME_TICK = 50,
         MOVE_COOLDOWN = 5,
 
         CHANGE_DIRECTION_CHANCE = 5,

@@ -1,8 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using System.Numerics;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
+using Tron.Client.Networking;
 using Tron.Common.Entities;
+using Tron.Common.Messages;
 using Tron.Common.Networking;
 
 namespace Tron.Client.Application.Services
@@ -11,14 +14,32 @@ namespace Tron.Client.Application.Services
     {
         MultiplayerActionProvider _provider;
 
-        internal MultiplayerService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner)
+        private bool _enteredAsHost;
+
+        private App _app;
+
+        internal MultiplayerService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner, bool enteredAsHost)
             : base(nav, players, playerData, arena, CountDown, UpdatePlayerData, DisplayWinner)
         {
             _provider = new MultiplayerActionProvider(_players.ToArray());
+            _enteredAsHost = enteredAsHost;
+            _app = (App)System.Windows.Application.Current;
         }
 
         internal override async void Run()
         {
+            string[] changes =
+            [
+                $"HostX:{_players[0].Coordinates.Row}",
+                $"HostY:{_players[0].Coordinates.Column}",
+                $"HostDirection:{_players[0].Direction}",
+                $"GuestX:{_players[1].Coordinates.Row}",
+                $"GuestY:{_players[1].Coordinates.Column}",
+                $"GuestDirection:{_players[1].Direction}"
+            ];
+
+            _provider.FetchState(changes);
+
             int deadCount = 0;
             Player? loser = null;
 
@@ -59,22 +80,26 @@ namespace Tron.Client.Application.Services
             {
                 if (GameTimer.IsEnabled)
                 {
-                    string[] changes =
-                    [
-                        $"HostX:{_players[0].Coordinates.Row}",
-                        $"GuestX:{_players[1].Coordinates.Row}",
-                        $"HostY:{_players[0].Coordinates.Column}",
-                        $"GuestY:{_players[1].Coordinates.Column}",
-                        $"HostDirection:{_players[0].Direction}",
-                        $"GuestDirection:{_players[1].Direction}"
-                    ];
-
-                    _provider.FetchState(changes);
-
+                    _provider.FetchDirections();
+                    
                     SetTrail(player);
                     Move(player);
                     CheckCollisions(player);
                 }
+            }
+        }
+
+        internal override void SetDirection(Player player, Direction direction)
+        {
+            base.SetDirection(player, direction);
+
+            if (_enteredAsHost)
+            {
+                _app.PayloadRequest(new Message(Header.SessionState, [$"Host:{player.Direction}"]), Point.Master);
+            }
+            else
+            {
+                _app.PayloadRequest(new Message(Header.SessionState, [$"Guest:{player.Direction}"]), Point.Master);
             }
         }
     }

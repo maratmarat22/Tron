@@ -39,12 +39,12 @@ namespace Tron.Server.Core
                     }
                     if (message.Header == Header.LeaveLobby)
                     {
-                    
+                        break;
                     }
                 }
                 else
                 {
-                    throw new NotFiniteNumberException();
+                    break;
                 }
             }
         }

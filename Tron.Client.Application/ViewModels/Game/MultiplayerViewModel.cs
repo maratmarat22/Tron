@@ -2,20 +2,26 @@
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Services;
+using Tron.Client.Application.Views;
+using Tron.Client.Networking;
 using Tron.Common.Entities;
+using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Game
 {
     internal class MultiplayerViewModel : GameplayViewModel
     {
         private bool _enteredAsHost;
-        
+
+        private App _app;
+
         internal MultiplayerViewModel(NavigationService nav, string hostName, string guestName, bool enteredAsHost) : base(nav)
         {
             _players.Add(new Player(hostName, new PlayerCoordinates(0, 0), Colors.Red, Direction.RIGHT));
             _players.Add(new Player(guestName, new PlayerCoordinates(0, 0), Colors.Blue, Direction.LEFT));
 
             _enteredAsHost = enteredAsHost;
+            _app = (App)System.Windows.Application.Current;
         }
 
         protected override void OnInitGame()
@@ -23,7 +29,7 @@ namespace Tron.Client.Application.ViewModels.Game
             AllocatePlayers();
             CreatePlayerData();
 
-            _service = new MultiplayerService(_nav, _players, PlayerData!, Arena!, CountDown, UpdatePlayerData, DisplayWinner);
+            _service = new MultiplayerService(_nav, _players, PlayerData!, Arena!, CountDown, UpdatePlayerData, DisplayWinner, _enteredAsHost);
             _service.Run();
         }
 
@@ -50,7 +56,19 @@ namespace Tron.Client.Application.ViewModels.Game
         protected override void OnGoBack()
         {
             _service!.GameTimer.Stop();
-            _nav.GoBack();
+
+            if (_enteredAsHost)
+            {
+                if (_app.AckRequest(new Message(Header.DeleteLobby, []), Point.Master))
+                {
+                    _nav.Navigate(new CreateLobbyPage(_nav));
+                }
+            }
+            else
+            {
+                _app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master);
+                _nav.Navigate(new JoinLobbyPage(_nav));
+            }
         }
     }
 }
