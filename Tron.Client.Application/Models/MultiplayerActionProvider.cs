@@ -17,19 +17,19 @@ namespace Tron.Client.Application.Models
             _players = players;
         }
 
-        internal void FetchState(string[]? changes)
+        internal void FetchState(string[] changes)
         {
             string[] payload;
             
-            if (changes != null)
-            {
-                payload = (_app.PayloadRequest(new Message(Header.SessionState, [string.Join(',', changes)]), Point.Master))!;
-            }
-            else
+            if (changes.Length == 0)
             {
                 payload = (_app.PayloadRequest(new Message(Header.SessionState, []), Point.Master))!;
             }
-
+            else
+            {
+                payload = (_app.PayloadRequest(new Message(Header.SessionState, [string.Join(',', changes)]), Point.Master))!;
+            }
+            
             var state = JsonSerializer.Deserialize<Dictionary<string, string?>>(payload[0]);
 
             _players[0].Coordinates = new(int.Parse(state!["HostX"]!), int.Parse(state!["HostY"]!));

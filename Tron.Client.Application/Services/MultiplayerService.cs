@@ -80,8 +80,9 @@ namespace Tron.Client.Application.Services
             {
                 if (GameTimer.IsEnabled)
                 {
-                    _provider.FetchDirections();
-                    
+                    //_provider.FetchDirections();
+                    _provider.FetchState([]);
+
                     SetTrail(player);
                     Move(player);
                     CheckCollisions(player);
