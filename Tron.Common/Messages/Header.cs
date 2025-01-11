@@ -16,7 +16,7 @@
         // In-Lobby
         Ready = 020,
         NotReady = 021,
-        LEAVE_LOBBY = 022,
+        LeaveLobby = 022,
         CHANGE_COLOR = 023,
         CHECK_USERNAME_UNIQUENESS = 024,
         // In-Game

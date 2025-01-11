@@ -52,7 +52,9 @@ namespace Tron.Server.Core
                             Message? message = unicaster.Receive();
 
                             if (message != null)
-                            {                                
+                            {
+                                if(message.Header == Header.Acknowledge)
+                                    { }
                                 IMessageProcessor processor = _pool.Acquire(message.Header);
 
                                 Message? response = processor.Process(message, state, unicaster);

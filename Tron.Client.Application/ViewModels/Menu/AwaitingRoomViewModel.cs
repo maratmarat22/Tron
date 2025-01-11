@@ -220,8 +220,14 @@ namespace Tron.Client.Application.ViewModels.Menu
         {
             _state = RefreshSessionState()!;
 
+            if (_state == null)
+            {
+                OnGoBack();
+            }
+
             HostReady = bool.Parse(_state["HostReady"]!);
             GuestReady = bool.Parse(_state["GuestReady"]!);
+            GuestName = _state["GuestName"];
             GuestReadyCharVisibility = GuestName != null;
 
             if (HostReady && GuestReady && _enteredAsHost)
@@ -270,12 +276,20 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnGoBack()
         {
-            //if (_enteredAsHost)
-            //{
-            //    _app.TrySendToServer(new Message(Header.DeleteLobby, [_state["ServerPoint"]!]));
-            //}
-
-            _nav.GoBack();
+            if (_enteredAsHost)
+            {
+                if (_app.AckRequest(new Message(Header.DeleteLobby, [_state["Server"]!]), Point.Master))
+                {
+                    _nav.GoBack();
+                }
+            }
+            else
+            {
+                if (_app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master))
+                {
+                    _nav.GoBack();
+                }
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Tron.Server.Core.MessageProcessing
 
         public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {
-            _lobbies.RemoveAll(lobby => lobby.Master.Equals(state["Master"]));
+            _lobbies.RemoveAll(lobby => lobby.Master.Equals(state["Server"]));
 
             state["HostName"] = null;
             state["GuestName"] = null;

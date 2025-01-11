@@ -49,7 +49,7 @@ namespace Tron.Server.Networking
 
         public bool SendTo(Message message, EndPoint remote)
         {
-            return true;
+            return Local.TrySendTo(message, remote);
         }
 
         public bool AddRemote(EndPoint remote)

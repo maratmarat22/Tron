@@ -22,18 +22,33 @@ namespace Tron.Server.Core
 
         internal void Run()
         {
-            (Message? message, EndPoint? sender) = _multicaster.Receive();
-
-            if (message != null)
+            while (true)
             {
-                IMessageProcessor processor = _pool.Acquire(message.Header);
-                Message response = processor.Process(message, _state, _multicaster);
+                (Message? message, EndPoint? sender) = _multicaster.Receive();
 
-                _multicaster.SendTo(message, sender!);
-            }
-            else
-            {
-                throw new NotFiniteNumberException();
+                if (message != null)
+                {
+                    if (message.Header == Header.Acknowledge)
+                    { }
+                    
+                    IMessageProcessor processor = _pool.Acquire(message.Header);
+                    Message response = processor.Process(message, _state, _multicaster);
+
+                    _multicaster.SendTo(response, sender!);
+
+                    if (message.Header == Header.DeleteLobby)
+                    {
+                        break;
+                    }
+                    if (message.Header == Header.LeaveLobby)
+                    {
+                    
+                    }
+                }
+                else
+                {
+                    throw new NotFiniteNumberException();
+                }
             }
         }
     }
