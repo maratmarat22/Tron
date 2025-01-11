@@ -65,7 +65,10 @@ namespace Tron.Server.Core
                                     {
                                         if (unicaster.Local.TrySendTo(new Message(Header.AddRemote, [response.Payload[0]]), IPEndPoint.Parse(response.Payload[1])))
                                         {
-                                            unicaster.Send(new Message(Header.Acknowledge, [message.Header.ToString()]));
+                                            if (unicaster.Local.TryReceiveFrom(IPEndPoint.Parse(response.Payload[1])) != null)
+                                            {
+                                                unicaster.Send(new Message(Header.Acknowledge, [message.Header.ToString()]));
+                                            }
                                         }
                                     }
                                     else if (message.Header == Header.CreateLobby)

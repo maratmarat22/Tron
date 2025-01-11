@@ -12,6 +12,7 @@ namespace Tron.Server.Core.MessageProcessing
         private DeleteLobbyMessageProcessor? _delete;
         private SessionStateMessageProcessor? _state;
         private AddRemoteMessageProcessor? _add;
+        private LeaveLobbyMessageProcessor? _leave;
 
         private readonly List<Lobby> _lobbies;
 

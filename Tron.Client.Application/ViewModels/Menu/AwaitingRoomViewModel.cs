@@ -178,6 +178,8 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private List<string> _refreshArgs;
 
+        private DispatcherTimer _timer;
+
         internal AwaitingRoomViewModel(NavigationService nav, bool enteredAsHost)
         {
             _nav = nav;
@@ -210,10 +212,11 @@ namespace Tron.Client.Application.ViewModels.Menu
             SwitchReadyStatusCommand = new RelayCommand(OnSwitchReadyStatus);
             StartCommand = new RelayCommand(OnStart);
             GoBackCommand = new RelayCommand(OnGoBack);
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(100);
-            timer.Tick += Timer_Tick;
-            timer.Start();
+            
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -276,6 +279,8 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnGoBack()
         {
+            _timer.Stop();
+            
             if (_enteredAsHost)
             {
                 if (_app.AckRequest(new Message(Header.DeleteLobby, [_state["Server"]!]), Point.Master))

@@ -28,7 +28,7 @@ namespace Tron.Server.Core
 
                 if (message != null)
                 {
-                    if (message.Header == Header.Acknowledge)
+                    if (message.Header == Header.LeaveLobby)
                     { }
                     
                     IMessageProcessor processor = _pool.Acquire(message.Header);
