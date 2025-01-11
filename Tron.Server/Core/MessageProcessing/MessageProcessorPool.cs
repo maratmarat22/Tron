@@ -13,6 +13,7 @@ namespace Tron.Server.Core.MessageProcessing
         private SessionStateMessageProcessor? _state;
         private AddRemoteMessageProcessor? _add;
         private LeaveLobbyMessageProcessor? _leave;
+        private FetchDirectionsMessageProcessor? _directions;
 
         private readonly List<Lobby> _lobbies;
 
@@ -33,6 +34,7 @@ namespace Tron.Server.Core.MessageProcessing
                 Header.SessionState => _state ??= new SessionStateMessageProcessor(),
                 Header.AddRemote => _add ??= new AddRemoteMessageProcessor(),
                 Header.LeaveLobby => _leave ??= new LeaveLobbyMessageProcessor(),
+                Header.FetchDirections => _directions ??= new FetchDirectionsMessageProcessor(),
                 _ => throw new NotImplementedException()
             };
         }

@@ -95,11 +95,11 @@ namespace Tron.Client.Application.Services
 
             if (_enteredAsHost)
             {
-                _app.PayloadRequest(new Message(Header.SessionState, [$"Host:{player.Direction}"]), Point.Master);
+                _app.PayloadRequest(new Message(Header.SessionState, [$"HostDirection:{player.Direction}"]), Point.Master);
             }
             else
             {
-                _app.PayloadRequest(new Message(Header.SessionState, [$"Guest:{player.Direction}"]), Point.Master);
+                _app.PayloadRequest(new Message(Header.SessionState, [$"GuestDirection:{player.Direction}"]), Point.Master);
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Tron.Server.Core.MessageProcessing
 {
-    internal class GetDirectionsMessageProcessor : IMessageProcessor
+    internal class FetchDirectionsMessageProcessor : IMessageProcessor
     {
         public Message Process(Message message, Dictionary<string, string?> state, object caster)
         {

@@ -42,6 +42,7 @@
         Resend = 203,
         INTERNAL_SERVER_ERROR = 500,
         SessionState,
-        AddRemote
+        AddRemote,
+        FetchDirections
     }
 }

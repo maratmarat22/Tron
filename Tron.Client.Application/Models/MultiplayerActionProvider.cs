@@ -41,7 +41,7 @@ namespace Tron.Client.Application.Models
 
         internal void FetchDirections()
         {
-            string[] payload = _app.PayloadRequest(new Message(Header.SessionState, []), Point.Master)!;
+            string[] payload = _app.PayloadRequest(new Message(Header.FetchDirections, []), Point.Master)!;
 
             _players[0].Direction = (Direction)Enum.Parse(typeof(Direction), payload[0]);
             _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), payload[1]);

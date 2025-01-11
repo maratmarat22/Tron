@@ -214,7 +214,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             GoBackCommand = new RelayCommand(OnGoBack);
             
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(100);
+            _timer.Interval = TimeSpan.FromMilliseconds(10);
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
@@ -255,7 +255,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         {
             string[]? payload = _app.PayloadRequest(new Message(Header.SessionState, [.. _refreshArgs]), Point.Master);
 
-            if (payload != null)
+            if (payload != null && payload.Length > 0)
             {
                 _refreshArgs = [];
                 return JsonSerializer.Deserialize<Dictionary<string, string?>>(payload[0])!;
