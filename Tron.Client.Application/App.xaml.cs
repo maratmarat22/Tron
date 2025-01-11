@@ -2,6 +2,7 @@
 using System.Text.Json;
 using Tron.Client.Networking;
 using Tron.Common.Config.Utilities;
+using Tron.Common.Entities;
 using Tron.Common.Messages;
 using Tron.Common.Networking;
 

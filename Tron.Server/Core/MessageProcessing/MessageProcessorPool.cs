@@ -32,6 +32,7 @@ namespace Tron.Server.Core.MessageProcessing
                 Header.DeleteLobby => _delete ??= new DeleteLobbyMessageProcessor(_lobbies),
                 Header.SessionState => _state ??= new SessionStateMessageProcessor(),
                 Header.AddRemote => _add ??= new AddRemoteMessageProcessor(),
+                Header.LeaveLobby => _leave ??= new LeaveLobbyMessageProcessor(),
                 _ => throw new NotImplementedException()
             };
         }

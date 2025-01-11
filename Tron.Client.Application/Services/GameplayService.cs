@@ -135,7 +135,7 @@ namespace Tron.Client.Application.Services
             }
         }
 
-        internal void SetDirection(Player player, Direction direction)
+        internal virtual void SetDirection(Player player, Direction direction)
         {
             if (MoveCooldownPassed(player))
             {

@@ -227,24 +227,26 @@ namespace Tron.Client.Application.ViewModels.Menu
             {
                 OnGoBack();
             }
-
-            HostReady = bool.Parse(_state["HostReady"]!);
-            GuestReady = bool.Parse(_state["GuestReady"]!);
-            GuestName = _state["GuestName"];
-            GuestReadyCharVisibility = GuestName != null;
-
-            if (HostReady && GuestReady && _enteredAsHost)
-            {
-                StartButtonVisibility = true;
-            }
             else
             {
-                StartButtonVisibility = false;
-            }
+                HostReady = bool.Parse(_state["HostReady"]!);
+                GuestReady = bool.Parse(_state["GuestReady"]!);
+                GuestName = _state["GuestName"];
+                GuestReadyCharVisibility = GuestName != null;
 
-            if (_state["GameStarted"] == "True")
-            {
-                _nav.Navigate(new ArenaPage(_nav, GameMode.Multiplayer));
+                if (HostReady && GuestReady && _enteredAsHost)
+                {
+                    StartButtonVisibility = true;
+                }
+                else
+                {
+                    StartButtonVisibility = false;
+                }
+
+                if (_state["GameStarted"] == "True")
+                {
+                    _nav.Navigate(new ArenaPage(_nav, GameMode.Multiplayer, HostName, GuestName, _enteredAsHost));
+                }
             }
         }
 
@@ -280,7 +282,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         private void OnGoBack()
         {
             _timer.Stop();
-            
+
             if (_enteredAsHost)
             {
                 if (_app.AckRequest(new Message(Header.DeleteLobby, [_state["Server"]!]), Point.Master))
@@ -290,10 +292,8 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
             else
             {
-                if (_app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master))
-                {
-                    _nav.GoBack();
-                }
+                _app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master);
+                _nav.GoBack();
             }
         }
     }
