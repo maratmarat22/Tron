@@ -62,5 +62,10 @@ namespace Tron.Server.Networking
 
             return false;
         }
+
+        public void RemoveRemote(EndPoint remote)
+        {
+            _remotes.Remove(remote);
+        }
     }
 }

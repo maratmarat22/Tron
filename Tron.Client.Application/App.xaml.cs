@@ -146,6 +146,6 @@ namespace Tron.Client.Application
 
         internal bool DeleteLobby() => AckRequest(new Message(Header.DeleteLobby, []), Point.Master);
 
-        internal bool LeaveLobby() => AckRequest(new Message(Header.LeaveLobby, []), Point.Master);
+        internal bool LeaveLobby() => AckRequest(new Message(Header.LeaveLobby, [_gameUnicaster!.Local.ToString()!]), Point.Master);
     }
 }

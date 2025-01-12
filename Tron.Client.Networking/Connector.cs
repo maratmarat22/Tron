@@ -16,11 +16,11 @@ namespace Tron.Client.Networking
 
         public Unicaster? TryConnect(Message auth)
         {
-            Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            //{
-            //    ReceiveTimeout = 1000,
-            //    SendTimeout = 1000
-            //};
+            Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp)
+            {
+                ReceiveTimeout = 1000,
+                SendTimeout = 1000
+            };
 
             bool connected = false;
 
