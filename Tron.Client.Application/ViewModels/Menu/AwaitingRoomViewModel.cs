@@ -214,7 +214,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             GoBackCommand = new RelayCommand(OnGoBack);
             
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(1);
+            _timer.Interval = TimeSpan.FromMilliseconds(100);
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
@@ -246,7 +246,15 @@ namespace Tron.Client.Application.ViewModels.Menu
                 if (_state["GameStarted"] == "True")
                 {
                     _timer.Stop();
-                    _nav.Navigate(new ArenaPage(_nav, GameMode.Multiplayer, HostName, GuestName, _enteredAsHost));
+                    long startTime = long.Parse(_state["StartTime"]!);
+                    
+                    while (true)
+                    {
+                        if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() != startTime)
+                        {
+                            _nav.Navigate(new ArenaPage(_nav, GameMode.Multiplayer, HostName, GuestName, _enteredAsHost));
+                        }
+                    }
                 }
             }
         }
@@ -277,7 +285,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnStart()
         {
-            _refreshArgs.Add("GameStarted:True");
+            _app.StartGame();
         }
 
         private void OnGoBack()

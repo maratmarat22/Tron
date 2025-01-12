@@ -24,8 +24,6 @@ namespace Tron.Client.Application
 
         internal bool Volume { get; set; }
 
-        public bool Connected { get; set; }
-
         internal App()
         {
             _processor = new();
@@ -34,7 +32,6 @@ namespace Tron.Client.Application
 
             Username = _processor.TryReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
             Volume = true;
-            Connected = false;
         }
 
         internal void LogUsername() => _processor.LogUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
@@ -42,7 +39,7 @@ namespace Tron.Client.Application
         internal bool TryConnect(Message message)
         {
             _unicaster = _connector.TryConnect(message);
-            return Connected = _unicaster != null;
+            return _unicaster != null;
         }
 
         internal bool TryCreateLobby(Message message)
@@ -82,9 +79,7 @@ namespace Tron.Client.Application
             unicaster!.Send(message);
             Message? response = unicaster.Receive();
 
-            return response != null &&
-                response.Header == Header.Acknowledge &&
-                response.Payload[0] == message.Header.ToString();
+            return IsValidResponse(response, message.Header);
         }
 
         internal string[]? PayloadRequest(Message message, Point point)
@@ -95,6 +90,19 @@ namespace Tron.Client.Application
             Message? response = unicaster.Receive();
 
             return response?.Payload;
+        }
+
+        internal bool StartGame()
+        {
+            _gameUnicaster!.Send(new Message(Header.StartGame, []));
+            Message? response = _gameUnicaster.Receive();
+
+            return IsValidResponse(response, Header.StartGame);
+        }
+
+        private bool IsValidResponse(Message? response, Header requestHeader)
+        {
+            return response != null && response.Header == Header.Acknowledge && response.Payload[0] == requestHeader.ToString();
         }
     }
 }
