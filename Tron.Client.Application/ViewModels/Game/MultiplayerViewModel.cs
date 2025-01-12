@@ -59,15 +59,17 @@ namespace Tron.Client.Application.ViewModels.Game
 
             if (_enteredAsHost)
             {
-                if (_app.AckRequest(new Message(Header.DeleteLobby, []), Point.Master))
+                if (_app.DeleteLobby())
                 {
                     _nav.Navigate(new CreateLobbyPage(_nav));
                 }
             }
             else
             {
-                _app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master);
-                _nav.Navigate(new JoinLobbyPage(_nav));
+                if (_app.LeaveLobby())
+                {
+                    _nav.Navigate(new JoinLobbyPage(_nav));
+                }
             }
         }
     }

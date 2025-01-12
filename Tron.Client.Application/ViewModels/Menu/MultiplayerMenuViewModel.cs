@@ -70,7 +70,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private async Task<bool> TryConnect()
         {
-            if (_app.AckRequest(new Message(Header.ConnectionCheck, []), Point.Server))
+            if (_app.CheckConnection())
             {
                 return true;
             }
@@ -82,7 +82,7 @@ namespace Tron.Client.Application.ViewModels.Menu
                 return false;
             }
 
-            if (_app.TryConnect(new Message(Header.LogIn, [_app.Username])))
+            if (_app.TryConnect(Header.LogIn, _app.Username))
             {
                 return true;
             }

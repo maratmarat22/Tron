@@ -259,20 +259,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
         }
 
-        private Dictionary<string, string?>? RefreshSessionState()
-        {
-            string[]? payload = _app.PayloadRequest(new Message(Header.SessionState, [.. _refreshArgs]), Point.Master);
-
-            if (payload != null && payload.Length > 0)
-            {
-                _refreshArgs = [];
-                return JsonSerializer.Deserialize<Dictionary<string, string?>>(payload[0])!;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        private Dictionary<string, string?>? RefreshSessionState() => _app.RefreshSessionState([.. _refreshArgs]);
 
         private void OnSwitchReadyStatus()
         {
@@ -294,15 +281,17 @@ namespace Tron.Client.Application.ViewModels.Menu
 
             if (_enteredAsHost)
             {
-                if (_app.AckRequest(new Message(Header.DeleteLobby, []), Point.Master))
+                if (_app.DeleteLobby())
                 {
                     _nav.GoBack();
                 }
             }
             else
             {
-                _app.AckRequest(new Message(Header.LeaveLobby, []), Point.Master);
-                _nav.GoBack();
+                if (_app.LeaveLobby())
+                {
+                    _nav.GoBack();
+                }
             }
         }
     }

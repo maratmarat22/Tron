@@ -23,7 +23,7 @@ namespace Tron.Server.Core.MessageProcessing
                 }
             }
 
-            return new Message(Header.SessionState, [JsonSerializer.Serialize(state)]);
+            return new Message(Header.Acknowledge, [message.Header.ToString(), JsonSerializer.Serialize(state)]);
         }
     }
 }

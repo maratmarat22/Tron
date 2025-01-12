@@ -95,14 +95,9 @@ namespace Tron.Client.Application.Services
         {
             base.SetDirection(player, direction);
 
-            if (_enteredAsHost)
-            {
-                _app.PayloadRequest(new Message(Header.SessionState, [$"HostDirection:{player.Direction}"]), Point.Master);
-            }
-            else
-            {
-                _app.PayloadRequest(new Message(Header.SessionState, [$"GuestDirection:{player.Direction}"]), Point.Master);
-            }
+            string role = _enteredAsHost ? "Host" : "Guest";
+
+            _provider.SetDirection("Host", direction);
         }
     }
 }

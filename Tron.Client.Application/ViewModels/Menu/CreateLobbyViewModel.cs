@@ -86,7 +86,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         {
             string password = PasswordTextBox!.Text;
 
-            if (_app.TryCreateLobby(new Message(Header.CreateLobby, [_app.Username!, _isPrivate.ToString(), password])))
+            if (_app.TryCreateLobby(_app.Username!, _isPrivate, password))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, true));
             }

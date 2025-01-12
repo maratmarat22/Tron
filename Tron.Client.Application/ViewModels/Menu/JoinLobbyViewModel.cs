@@ -65,7 +65,6 @@ namespace Tron.Client.Application.ViewModels.Menu
             JoinLobbyCommand = new RelayCommand(OnJoinLobby);
             PasswordSubmitCommand = new RelayCommand(OnPasswordSubmit);
             GoBackCommand = new RelayCommand(OnGoBack);
-            Lobbies = [];
 
             _app = (App)System.Windows.Application.Current;
 
@@ -75,12 +74,11 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnFetchLobbies()
         {
-            string[]? payload = _app.PayloadRequest(new Message(Header.FetchLobbies, []), Point.Server);
+            List<Lobby>? lobbies = _app.FetchLobbies();
 
-            if (payload != null)
+            if (lobbies != null)
             {
-                Lobbies = new ObservableCollection<Lobby>(JsonSerializer.Deserialize<List<Lobby>>(payload[1])!);
-                LobbiesGrid!.ItemsSource = Lobbies;
+                LobbiesGrid!.ItemsSource = new ObservableCollection<Lobby>(lobbies);
             }
         }
 
@@ -116,7 +114,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private async void TryJoinLobby(Lobby lobby)
         {
-            if (_app.TryJoinLobby(new Message(Header.JoinLobby, ["", lobby.Master])))
+            if (_app.TryJoinLobby(lobby.Master))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, false));
             }
