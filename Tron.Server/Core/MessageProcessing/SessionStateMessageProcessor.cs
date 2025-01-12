@@ -10,7 +10,7 @@ namespace Tron.Server.Core.MessageProcessing
         {
             if (message.Payload.Length == 0)
             {
-                return new Message(Header.SessionState, [JsonSerializer.Serialize(state)]);
+                return new Message(Header.SessionState, [message.Header.ToString(), JsonSerializer.Serialize(state)]);
             }
             else
             {

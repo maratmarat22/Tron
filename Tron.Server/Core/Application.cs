@@ -65,6 +65,9 @@ namespace Tron.Server.Core
 
                                 if (response != null)
                                 {
+                                    if (message.Header == Header.SessionState)
+                                    { }
+                                    
                                     if (message.Header == Header.JoinLobby)
                                     {
                                         if (unicaster.Local.TrySendTo(new Message(Header.AddRemote, [response.Payload[0]]), IPEndPoint.Parse(response.Payload[1])))

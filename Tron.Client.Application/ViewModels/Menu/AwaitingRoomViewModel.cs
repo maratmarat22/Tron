@@ -221,6 +221,9 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
+            if (_refreshArgs.Contains("HostReady:True"))
+            { }
+            
             _state = RefreshSessionState()!;
 
             if (_state == null)
@@ -256,6 +259,8 @@ namespace Tron.Client.Application.ViewModels.Menu
                         }
                     }
                 }
+
+                _refreshArgs.Clear();
             }
         }
 

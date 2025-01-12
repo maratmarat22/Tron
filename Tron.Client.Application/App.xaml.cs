@@ -98,6 +98,8 @@ namespace Tron.Client.Application
 
         internal bool CheckConnection()
         {
+            if (_unicaster == null) return false;
+            
             _unicaster!.Send(new Message(Header.ConnectionCheck, []));
             Message? response = _unicaster.Receive();
 
