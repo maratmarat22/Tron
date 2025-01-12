@@ -39,6 +39,21 @@ namespace Tron.Client.Application.Models
             _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), (state!["GuestDirection"]!));
         }
 
+        internal void SetState()
+        {
+            string[] changes =
+            [
+                $"HostX:{_players[0].Coordinates.Row}",
+                $"HostY:{_players[0].Coordinates.Column}",
+                $"HostDirection:{_players[0].Direction}",
+                $"GuestX:{_players[1].Coordinates.Row}",
+                $"GuestY:{_players[1].Coordinates.Column}",
+                $"GuestDirection:{_players[1].Direction}"
+            ];
+
+            FetchState(changes);
+        }
+
         internal void FetchDirections()
         {
             string[] payload = _app.PayloadRequest(new Message(Header.FetchDirections, []), Point.Master)!;

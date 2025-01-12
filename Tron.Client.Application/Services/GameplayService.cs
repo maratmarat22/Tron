@@ -147,9 +147,9 @@ namespace Tron.Client.Application.Services
                     Direction.RIGHT when player.Direction != Direction.LEFT => Direction.RIGHT,
                     _ => player.Direction
                 };
-            }
 
-            _lastDirectionChange[player] = DateTime.Now;
+                _lastDirectionChange[player] = DateTime.Now;
+            }
         }
 
         private bool MoveCooldownPassed(Player player)

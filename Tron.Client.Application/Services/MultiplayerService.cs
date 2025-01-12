@@ -1,12 +1,10 @@
-﻿using System.Numerics;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Tron.Client.Application.Models;
 using Tron.Client.Networking;
 using Tron.Common.Entities;
 using Tron.Common.Messages;
-using Tron.Common.Networking;
 
 namespace Tron.Client.Application.Services
 {
@@ -28,17 +26,8 @@ namespace Tron.Client.Application.Services
 
         internal override async void Run()
         {
-            string[] changes =
-            [
-                $"HostX:{_players[0].Coordinates.Row}",
-                $"HostY:{_players[0].Coordinates.Column}",
-                $"HostDirection:{_players[0].Direction}",
-                $"GuestX:{_players[1].Coordinates.Row}",
-                $"GuestY:{_players[1].Coordinates.Column}",
-                $"GuestDirection:{_players[1].Direction}"
-            ];
-
-            _provider.FetchState(changes);
+            _provider.SetState();
+            _provider.FetchState([]);
 
             int deadCount = 0;
             Player? loser = null;
@@ -76,16 +65,28 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
+            int i = 0;
             foreach (Player player in _players!)
             {
+                ++i;
+
                 if (GameTimer.IsEnabled)
                 {
-                    //_provider.FetchDirections();
-                    _provider.FetchState([]);
+                    if (i == 5)
+                    {
+                        _provider.FetchState([]);
+                        i = 0;
+                    }
+                    else
+                    {
+                        _provider.FetchDirections();
+                    }
 
                     SetTrail(player);
                     Move(player);
                     CheckCollisions(player);
+
+                    _provider.SetState();
                 }
             }
         }

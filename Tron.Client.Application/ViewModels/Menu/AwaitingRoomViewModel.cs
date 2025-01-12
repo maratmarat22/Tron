@@ -214,7 +214,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             GoBackCommand = new RelayCommand(OnGoBack);
             
             _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(10);
+            _timer.Interval = TimeSpan.FromMilliseconds(1);
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }

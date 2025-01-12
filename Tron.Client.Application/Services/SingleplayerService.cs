@@ -57,7 +57,10 @@ namespace Tron.Client.Application.Services
             {
                 if (GameTimer.IsEnabled)
                 {
-                    _provider.GetDirection();
+                    if (player.Name == "COMPUTER")
+                    {
+                        SetDirection(_players[1], _provider.GetDirection());
+                    }
 
                     SetTrail(player);
                     Move(player);

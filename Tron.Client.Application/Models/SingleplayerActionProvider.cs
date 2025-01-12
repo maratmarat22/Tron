@@ -12,6 +12,8 @@ namespace Tron.Client.Application.Models
 
         private Random _random;
 
+        private Direction[] _directions;
+
         internal SingleplayerActionProvider(Player player, bool[,] logicalArena, Func<PlayerCoordinates, bool> OutBounds, Action<Player, Direction> SetDirection)
         {
             _player = player;
@@ -21,18 +23,19 @@ namespace Tron.Client.Application.Models
             this.SetDirection = SetDirection;
 
             _random = new Random();
+
+            _directions = [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT];
         }
 
-        internal void GetDirection()
+        internal Direction GetDirection()
         {
-            Direction[] directions = [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT];
+            List<Direction> possibleDirections = [.. _directions];
 
-            List<Direction> possibleDirections = [];
-            possibleDirections.Add(_player.Direction);
-
-            foreach (Direction direction in directions)
+            while (possibleDirections.Count > 0)
             {
-                PlayerCoordinates possibleCoordinates = direction switch
+                Direction randomDirection = possibleDirections[_random.Next(possibleDirections.Count)];
+
+                PlayerCoordinates possibleCoordinates = randomDirection switch
                 {
                     Direction.UP => new PlayerCoordinates(_player.Coordinates.Row + 1, _player.Coordinates.Column),
                     Direction.DOWN => new PlayerCoordinates(_player.Coordinates.Row - 1, _player.Coordinates.Column),
@@ -41,14 +44,17 @@ namespace Tron.Client.Application.Models
                     _ => _player.Coordinates
                 };
 
-                if (!BadMove(possibleCoordinates))
+                if (BadMove(possibleCoordinates))
                 {
-                    possibleDirections.Add(direction);
-                    break;
+                    possibleDirections.Remove(randomDirection);
+                }
+                else
+                {
+                    return randomDirection;
                 }
             }
 
-            SetDirection(_player, possibleDirections[_random.Next(possibleDirections.Count)]);
+            return _player.Direction;
         }
 
         private bool BadMove(PlayerCoordinates coordinates)
