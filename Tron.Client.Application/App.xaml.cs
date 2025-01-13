@@ -88,6 +88,13 @@ namespace Tron.Client.Application
 
         internal bool StartGame() => AckRequest(new Message(Header.StartGame, []), _gameUnicaster!);
 
+        internal void AwaitStart()
+        {
+            _gameUnicaster!.Local.ReceiveTimeout = 0;
+            _gameUnicaster.Receive();
+            _gameUnicaster!.Local.ReceiveTimeout = 1000;
+        }
+
         internal Dictionary<string, string>? RefreshSessionState(string[] refreshArgs)
         {
             _gameUnicaster!.Send(new Message(Header.SessionState, [.. refreshArgs]));
@@ -111,8 +118,8 @@ namespace Tron.Client.Application
             {
                 directions =
                 [
-                    (Direction)Enum.Parse(typeof(Direction), response.Payload[0]),
                     (Direction)Enum.Parse(typeof(Direction), response.Payload[1]),
+                    (Direction)Enum.Parse(typeof(Direction), response.Payload[2]),
                 ];
             }
             catch (Exception)

@@ -83,7 +83,7 @@ namespace Tron.Client.Application.Services
 
             string role = _enteredAsHost ? "Host" : "Guest";
 
-            _provider.SetDirection("Host", direction);
+            _provider.SetDirection(role, direction);
         }
     }
 }

@@ -9,15 +9,25 @@ namespace Tron.Server.Networking
     {
         public Socket Local { get; }
 
-        private readonly EndPoint?[] _remotes;
+        internal EndPoint?[] Remotes { get; }
 
         internal Multicaster(Socket local, EndPoint remote)
         {
             Local = local;
             
-            _remotes = new EndPoint[2];
-            _remotes[0] = remote;
+            Remotes = new EndPoint[2];
+            Remotes[0] = remote;
         }
+
+        public void SendAll(Message message)
+        {
+            foreach (var remote in Remotes)
+            {
+                Local.TrySendTo(message, remote!);
+            }
+        }
+
+        public bool SendTo(Message message, EndPoint remote) => Local.TrySendTo(message, remote);
 
         public (Message?, EndPoint?) Receive()
         {
@@ -25,10 +35,7 @@ namespace Tron.Server.Networking
 
             Message? request = Local.TryReceiveFrom(ref anyPointOrServer);
 
-            if (request.Header == Header.AddRemote)
-            { }
-
-            if (_remotes.Contains(anyPointOrServer) || (anyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
+            if (Remotes.Contains(anyPointOrServer) || (anyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
             {
                 return (request, anyPointOrServer);
             }
@@ -36,23 +43,15 @@ namespace Tron.Server.Networking
             return (null, null);
         }
 
-        public bool SendTo(Message message, EndPoint remote)
-        {
-            return Local.TrySendTo(message, remote);
-        }
-
         public bool AddRemote(EndPoint remote)
         {
-            if (_remotes[1] != null) return false;
+            if (Remotes[1] != null) return false;
 
-            _remotes[1] = remote;
+            Remotes[1] = remote;
             
             return true;
         }
 
-        public void RemoveRemote()
-        {
-            _remotes[1] = null;
-        }
+        public void RemoveRemote() => Remotes[1] = null;
     }
 }

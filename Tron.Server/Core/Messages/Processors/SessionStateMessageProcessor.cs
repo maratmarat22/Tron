@@ -11,7 +11,7 @@ namespace Tron.Server.Core.Messages.Processors
         {
             if (request.Payload.Length != 0)
             {
-                string[] changes = request.Payload[0].Split(',');
+                string[] changes = request.Payload;
 
                 foreach (var change in changes)
                 {

@@ -230,24 +230,16 @@ namespace Tron.Client.Application.ViewModels.Menu
                 if (_state["GameStarted"] == "True")
                 {
                     _timer.Stop();
-                    
-                    long startTime = long.Parse(_state["StartTime"]!);
 
-                    while (true)
-                    {
-                        if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() == startTime)
-                        {
-                            _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
-                            break;
-                        }
-                    }
+                    _app.AwaitStart();
+                    _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
                 }
 
                 _refreshArgs.Clear();
             }
         }
 
-        private Dictionary<string, string?>? RefreshSessionState() => _app.RefreshSessionState([.. _refreshArgs]);
+        private Dictionary<string, string>? RefreshSessionState() => _app.RefreshSessionState([.. _refreshArgs]);
 
         private void OnSwitchReadyStatus()
         {

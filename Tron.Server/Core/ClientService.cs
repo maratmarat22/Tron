@@ -40,7 +40,7 @@ namespace Tron.Server.Core
             _pool = pool;
         }
 
-        internal void Run(bool runAsUnicaster)
+        internal async void Run(bool runAsUnicaster)
         {
             while (true)
             {
@@ -55,9 +55,6 @@ namespace Tron.Server.Core
                 {
                     (request, sender) = _multicaster.Receive();
                 }
-
-                if (request.Header == Header.Nok)
-                { }
 
                 if (request == null) break;
 
@@ -86,6 +83,11 @@ namespace Tron.Server.Core
                 if (request.Header == Header.DeleteLobby)
                 {
                     runAsUnicaster = true;
+                }
+                if (request.Header == Header.StartGame)
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(2));
+                    _multicaster.SendAll(new Message(Header.StartGame, []));
                 }
             }
         }
