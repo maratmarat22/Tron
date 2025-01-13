@@ -28,7 +28,7 @@ namespace Tron.Client.Application.Services
 
         internal override async void Run()
         {
-            _provider.SetState();
+            _provider.InitState();
 
             int deadCount = 0;
             Player? loser = null;
@@ -66,6 +66,8 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
+            _provider.RefreshState(_player, _enteredAsHost);
+            
             SetTrail(_player);
             Move(_player);
             CheckCollisions(_player);

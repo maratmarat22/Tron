@@ -34,7 +34,7 @@ namespace Tron.Client.Application.Models
             _players[1].Direction = guestDirection;
         }
 
-        internal void SetState()
+        internal void InitState()
         {
             string[] changes =
             [
@@ -44,6 +44,20 @@ namespace Tron.Client.Application.Models
                 $"GuestY:{_players[1].Coordinates.Column}",
                 $"HostDirection:{_players[0].Direction}",
                 $"GuestDirection:{_players[1].Direction}"
+            ];
+
+            FetchState(changes);
+        }
+
+        internal void RefreshState(Player player, bool enteredAsHost)
+        {
+            string role = enteredAsHost ? "Host" : "Guest";
+            
+            string[] changes =
+            [
+                $"{role}X: {player.Coordinates.Row}",
+                $"{role}Y: {player.Coordinates.Column}",
+                $"{role}Direction: {player.Direction}"
             ];
 
             FetchState(changes);
