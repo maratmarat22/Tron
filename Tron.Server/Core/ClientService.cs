@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text.Json;
 using Tron.Common.Messages;
 using Tron.Common.Networking;
 using Tron.Server.Core.Messages;
@@ -60,36 +61,34 @@ namespace Tron.Server.Core
 
                 (IMessageProcessor processor, bool stateRequired, bool unicasterRequired, bool multicasterRequired) = _pool.Acquire(request.Header);
 
-                Message response = processor.Process(
+                Message? response = processor.Process(
                     request,
                     stateRequired ? _state : null,
                     unicasterRequired ? _unicaster : null,
                     multicasterRequired ? _multicaster : null
                     );
 
-                if (runAsUnicaster)
-                {
-                    _unicaster.Send(response);
-                }
-                else
-                {
-                    _multicaster.SendTo(response, sender!);
-                }
-
-                if (request.Header == Header.CreateLobby)
-                {
-                    runAsUnicaster = false;
-                }
-                if (request.Header == Header.DeleteLobby)
-                {
-                    runAsUnicaster = true;
-                }
                 if (request.Header == Header.StartGame)
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(2));
-                    _multicaster.SendAll(new Message(Header.StartGame, []));
+                    await StartGame();
+                    continue;
                 }
+
+                if (runAsUnicaster) _unicaster.Send(response);
+                else _multicaster.SendTo(response, sender!);
+
+                if (request.Header == Header.CreateLobby) runAsUnicaster = false;
+                if (request.Header == Header.DeleteLobby) runAsUnicaster = true;
             }
+        }
+
+        private async Task StartGame()
+        {
+            var state = JsonSerializer.Serialize(_state);
+            _multicaster.SendAll(new Message(Header.SessionState, [state]));
+
+            await Task.Delay(TimeSpan.FromSeconds(3));
+            _multicaster.SendAll(new Message(Header.StartGame, []));
         }
     }
 }

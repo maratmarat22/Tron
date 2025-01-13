@@ -229,8 +229,6 @@ namespace Tron.Client.Application.ViewModels.Menu
 
                 if (_state["GameStarted"] == "True")
                 {
-                    _timer.Stop();
-
                     _app.AwaitStart();
                     _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
                 }
@@ -250,7 +248,10 @@ namespace Tron.Client.Application.ViewModels.Menu
             _refreshArgs.Add($"{role}Ready:{status}");
         }
 
-        private void OnStart() => _app.StartGame();
+        private void OnStart()
+        {
+            _app.StartGame();
+        }
 
         private void OnGoBack(object? hostLeft)
         {
