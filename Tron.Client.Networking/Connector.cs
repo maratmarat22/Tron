@@ -11,7 +11,7 @@ namespace Tron.Client.Networking
 
         public Unicaster? TryConnect(Message authRequest)
         {
-            int timeout = (int)Timeout.@short;
+            int timeout = (int)Timeout.Common;
 
             Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp)
             {

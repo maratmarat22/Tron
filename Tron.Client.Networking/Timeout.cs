@@ -1,7 +1,8 @@
 ﻿namespace Tron.Client.Networking
 {
-    internal enum Timeout
+    public enum Timeout
     {
-        @short = 0
+        Common = 1000,
+        Awaiting = 0
     }
 }

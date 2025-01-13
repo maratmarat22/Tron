@@ -68,24 +68,22 @@ namespace Tron.Server.Core
                     multicasterRequired ? _multicaster : null
                     );
 
-                if (request.Header == Header.StartGame)
-                {
-                    await StartGame();
-                    continue;
-                }
-
                 if (runAsUnicaster) _unicaster.Send(response);
                 else _multicaster.SendTo(response, sender!);
 
                 if (request.Header == Header.CreateLobby) runAsUnicaster = false;
                 if (request.Header == Header.DeleteLobby) runAsUnicaster = true;
+                if (request.Header == Header.StartGame) await StartGame();
             }
         }
 
         private async Task StartGame()
         {
+            var request = _multicaster.Receive();
+            var request1 = _multicaster.Receive();
+
             var state = JsonSerializer.Serialize(_state);
-            _multicaster.SendAll(new Message(Header.SessionState, [state]));
+            _multicaster.SendAll(new Message(Header.SessionState, ["", state]));
 
             await Task.Delay(TimeSpan.FromSeconds(3));
             _multicaster.SendAll(new Message(Header.StartGame, []));

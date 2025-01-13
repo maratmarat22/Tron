@@ -229,6 +229,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
                 if (_state["GameStarted"] == "True")
                 {
+                    _timer.Stop();
                     _app.AwaitStart();
                     _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
                 }

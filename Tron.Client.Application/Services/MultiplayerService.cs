@@ -66,7 +66,8 @@ namespace Tron.Client.Application.Services
             {
                 if (GameTimer.IsEnabled)
                 {
-                    _provider.FetchState([]);
+                    _provider.FetchDirections();
+                    //_provider.FetchState([]);
 
                     SetTrail(player);
                     Move(player);

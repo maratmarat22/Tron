@@ -90,9 +90,9 @@ namespace Tron.Client.Application
 
         internal void AwaitStart()
         {
-            _gameUnicaster!.Local.ReceiveTimeout = 0;
-            _gameUnicaster.Receive();
-            _gameUnicaster!.Local.ReceiveTimeout = 1000;
+            _gameUnicaster!.Local.ReceiveTimeout = (int)Networking.Timeout.Awaiting;
+            var req = _gameUnicaster.Receive();
+            _gameUnicaster!.Local.ReceiveTimeout = (int)Networking.Timeout.Common;
         }
 
         internal Dictionary<string, string>? RefreshSessionState(string[] refreshArgs)
