@@ -88,7 +88,7 @@ namespace Tron.Client.Application
 
         internal bool StartGame() => AckRequest(new Message(Header.StartGame, []), _gameUnicaster!);
 
-        internal Dictionary<string, string?>? RefreshSessionState(string[] refreshArgs)
+        internal Dictionary<string, string>? RefreshSessionState(string[] refreshArgs)
         {
             _gameUnicaster!.Send(new Message(Header.SessionState, [.. refreshArgs]));
             Message? response = _gameUnicaster.Receive();

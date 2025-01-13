@@ -25,7 +25,6 @@ namespace Tron.Client.Application.Services
         internal override async void Run()
         {
             _provider.SetState();
-            _provider.FetchState([]);
 
             int deadCount = 0;
             Player? loser = null;
@@ -63,22 +62,11 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
-            int i = 0;
             foreach (Player player in _players!)
             {
-                ++i;
-
                 if (GameTimer.IsEnabled)
                 {
-                    if (i == 5)
-                    {
-                        _provider.FetchState([]);
-                        i = 0;
-                    }
-                    else
-                    {
-                        _provider.FetchDirections();
-                    }
+                    _provider.FetchState([]);
 
                     SetTrail(player);
                     Move(player);

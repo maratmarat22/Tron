@@ -10,7 +10,7 @@ namespace Tron.Client.Application.Models
 
         internal MultiplayerActionProvider(Player[] players)
         {
-            _app = (App)(System.Windows.Application.Current);
+            _app = (App)System.Windows.Application.Current;
             _players = players;
         }
 
@@ -18,11 +18,20 @@ namespace Tron.Client.Application.Models
         {
             var state = _app.RefreshSessionState(changes);
 
-            _players[0].Coordinates = new(int.Parse(state!["HostX"]!), int.Parse(state!["HostY"]!));
-            _players[1].Coordinates = new(int.Parse(state!["GuestX"]!), int.Parse(state!["GuestY"]!));
+            int hostX = int.Parse(state["HostX"]);
+            int hostY = int.Parse(state["HostY"]);
+            
+            int guestX = int.Parse(state["GuestX"]);
+            int guestY = int.Parse(state["GuestY"]);
+            
+            Direction hostDirection = (Direction)Enum.Parse(typeof(Direction), (state["HostDirection"]));
+            Direction guestDirection = (Direction)Enum.Parse(typeof(Direction), (state["GuestDirection"]));
 
-            _players[0].Direction = (Direction)Enum.Parse(typeof (Direction), (state!["HostDirection"]!));
-            _players[1].Direction = (Direction)Enum.Parse(typeof(Direction), (state!["GuestDirection"]!));
+            _players[0].Coordinates = new(hostX, hostY);
+            _players[1].Coordinates = new(guestX, guestY);
+
+            _players[0].Direction = hostDirection;
+            _players[1].Direction = guestDirection;
         }
 
         internal void SetState()
@@ -31,9 +40,9 @@ namespace Tron.Client.Application.Models
             [
                 $"HostX:{_players[0].Coordinates.Row}",
                 $"HostY:{_players[0].Coordinates.Column}",
-                $"HostDirection:{_players[0].Direction}",
                 $"GuestX:{_players[1].Coordinates.Row}",
                 $"GuestY:{_players[1].Coordinates.Column}",
+                $"HostDirection:{_players[0].Direction}",
                 $"GuestDirection:{_players[1].Direction}"
             ];
 

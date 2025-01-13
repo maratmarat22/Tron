@@ -8,7 +8,7 @@ namespace Tron.Server.Core.Messages.Processors
     {
         public Message Process(Message request, Dictionary<string, string>? state, Unicaster? unicaster, Multicaster? multicaster)
         {
-            long startTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 5;
+            long startTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + 1;
 
             state!["GameStarted"] = "True";
             state["StartTime"] = startTime.ToString();

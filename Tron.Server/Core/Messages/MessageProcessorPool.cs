@@ -17,6 +17,7 @@ namespace Tron.Server.Core.Messages
         private LeaveLobbyMessageProcessor? _LL;
         private FetchDirectionsMessageProcessor? _FD;
         private FetchTopTenMessageProcessor? _FTT;
+        private StartGameMessageProcessor? _SG;
 
         private readonly List<Lobby> _lobbies;
         private readonly IDbQueryProcessor _queryProcessor;
@@ -41,6 +42,7 @@ namespace Tron.Server.Core.Messages
                 Header.LeaveLobby => (_LL ??= new LeaveLobbyMessageProcessor(), true, false, true),
                 Header.FetchDirections => (_FD ??= new FetchDirectionsMessageProcessor(), true, false, false),
                 Header.FetchTopTen => (_FTT ??= new FetchTopTenMessageProcessor(_queryProcessor), false, false, false),
+                Header.StartGame => (_SG ??= new StartGameMessageProcessor(), true, false, false),
                 _ => throw new NotImplementedException()
             };
         }
