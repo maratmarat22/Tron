@@ -3,41 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Tron.Client.Application"
              StartupUri="MainWindow.xaml">
-    
+
     <Application.Resources>
+        <!-- Определение шрифта -->
         <FontFamily x:Key="Tiny">pack://application:,,,/Resources/Fonts/#Tiny5</FontFamily>
+
+        <!-- Конвертер для видимости -->
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
 
+        <!-- Стиль для кнопок -->
         <Style TargetType="Button">
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="DarkGray"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding" Value="10"/>
+            <!-- Основные установки для кнопки -->
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="DarkGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10" />
+
+            <!-- Темплейт для кнопки -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" 
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
+                            <!-- Триггер для состояния "наведено" -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Gray"/>
-                                <Setter Property="BorderBrush" Value="DarkCyan"/>
+                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="BorderBrush" Value="DarkCyan" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
 
+            <!-- Триггеры для изменения стилей кнопки при наведении мыши -->
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <!-- Неоновая рамка -->
-                    <Setter Property="BorderBrush" Value="White"/>
-                    <!-- Цвет рамки (циан) -->
-                    <Setter Property="BorderThickness" Value="0"/>
+                    <!-- Изменение цвета рамки -->
+                    <Setter Property="BorderBrush" Value="White" />
+                    <Setter Property="BorderThickness" Value="0" />
 
                     <!-- Эффект свечения -->
                     <Setter Property="Effect">
@@ -45,7 +53,7 @@
                             <DropShadowEffect BlurRadius="50" 
                                               Color="HotPink" 
                                               Opacity="1" 
-                                              ShadowDepth="0"/>
+                                              ShadowDepth="0" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -53,5 +61,5 @@
         </Style>
 
     </Application.Resources>
-    
+
 </Application>

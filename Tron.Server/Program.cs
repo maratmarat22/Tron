@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Tron.Common.Config.Utilities;
+using Tron.Common.Persistence;
 using Tron.Server.Core;
 using Tron.Server.Persistence.QueryProcessing;
 
@@ -9,12 +9,12 @@ namespace Tron.Server
     {
         static void Main()
         {
-            FileProcessor reader = new();
-            (string address, int port) = reader.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+            FileProcessor fileProcessor = new();
+            (string address, int port) = fileProcessor.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
 
-            IDbQueryProcessor dbQueryProcessor = new SQLiteQueryProcessor(@"../../../Persistence/Data/tron.db");
+            IDbQueryProcessor queryProcessor = new SQLiteQueryProcessor(@"../../../Persistence/Data/tron.db");
 
-            Application application = new(dbQueryProcessor, IPAddress.Parse(address), port);
+            Application application = new(queryProcessor, IPAddress.Parse(address), port);
             application.Run();
         }
     }

@@ -17,9 +17,7 @@
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920">
 
         <!-- Заголовок -->
-        <Border Width="1100"
-                Height="170"
-                Margin="0,0,400,600">
+        <Border Width="1100" Height="170" Margin="0,0,400,600">
             <Border.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Border.Background>
@@ -30,45 +28,32 @@
                        Foreground="White"
                        HorizontalAlignment="Center">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Blue"
-                                      BlurRadius="50"
-                                      ShadowDepth="0"
-                                      Opacity="1" />
+                    <DropShadowEffect Color="Blue" BlurRadius="50" ShadowDepth="0" Opacity="1" />
                 </TextBlock.Effect>
             </TextBlock>
         </Border>
 
+        <!-- Ошибка подключения -->
         <Border Visibility="{Binding ConnectionAttemptFailed, Converter={StaticResource BoolToVisibility}}"
-        Width="600"
-        Height="100"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Margin="900,700,0,0">
+                Width="600" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="900,700,0,0">
             <Border.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Border.Background>
-
             <TextBlock Text="CONNECTION ATTEMPT FAILED"
-           FontSize="40"
-           Foreground="White"
-           FontFamily="{StaticResource Tiny}"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"
-           TextAlignment="Center"
-           >
+                       FontSize="40"
+                       Foreground="White"
+                       FontFamily="{StaticResource Tiny}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="HotPink"
-                              BlurRadius="20"
-                              ShadowDepth="0"
-                              Opacity="1"/>
+                    <DropShadowEffect Color="HotPink" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                 </TextBlock.Effect>
             </TextBlock>
         </Border>
 
-        <!-- PRIVATE -->
-        <Border Width="350"
-                Height="100"
-                Margin="0,0,800,230">
+        <!-- Приватность -->
+        <Border Width="350" Height="100" Margin="0,0,800,230">
             <Border.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Border.Background>
@@ -80,22 +65,16 @@
                        Foreground="White"
                        HorizontalAlignment="Center">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Violet"
-                                      BlurRadius="20"
-                                      ShadowDepth="0"
-                                      Opacity="1" />
+                    <DropShadowEffect Color="Violet" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                 </TextBlock.Effect>
             </TextBlock>
         </Border>
 
-        <Grid 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Margin="0,0,50,230" Height="100" Width="350">
+        <!-- Управление приватностью -->
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,50,230" Height="100" Width="350">
             <Grid.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Grid.Background>
-            <!-- Определяем три колонки: левая кнопка, число, правая кнопка -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="75" />
                 <ColumnDefinition Width="200" />
@@ -103,150 +82,84 @@
             </Grid.ColumnDefinitions>
 
             <!-- Кнопка уменьшения -->
-            <Button Grid.Column="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Width="75"
-                    BorderThickness="0"
-                    Height="100"
-                    FontSize="24"
+            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="75" Height="100" BorderThickness="0" FontSize="24"
                     Command="{Binding ChangePrivacyModeCommand}">
-
                 <Button.Background>
-                    <SolidColorBrush Color="#00000000"/>
+                    <SolidColorBrush Color="#00000000" />
                 </Button.Background>
-
                 <Button.Content>
-                    <TextBlock Text="&lt;"
-                               FontFamily="{StaticResource Tiny}"
-                               Foreground="White"
-                               FontSize="40">
-
+                    <TextBlock Text="&lt;" FontFamily="{StaticResource Tiny}" Foreground="White" FontSize="40">
                         <TextBlock.Effect>
-                            <DropShadowEffect Color="Violet"
-                                              BlurRadius="20"
-                                              ShadowDepth="0"
-                                              Opacity="1" />
+                            <DropShadowEffect Color="Violet" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                         </TextBlock.Effect>
                     </TextBlock>
                 </Button.Content>
             </Button>
 
             <!-- Текущее значение -->
-            <TextBlock Grid.Column="1"
-               Text="{Binding PrivacyMode}"
-               FontFamily="{StaticResource Tiny}"
-               FontSize="40"
-               Foreground="White"
-               TextAlignment="Center"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               Margin="20,0">
-
+            <TextBlock Grid.Column="1" Text="{Binding PrivacyMode}" FontFamily="{StaticResource Tiny}"
+                       FontSize="40" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" Margin="20,0">
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="Violet"
-                      BlurRadius="20"
-                      ShadowDepth="0"
-                      Opacity="1" />
+                    <DropShadowEffect Color="Violet" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                 </TextBlock.Effect>
             </TextBlock>
 
             <!-- Кнопка увеличения -->
-            <Button Grid.Column="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Width="75"
-                    BorderThickness="0"
-                    Height="100"
-                    FontSize="24"
+            <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="75" Height="100" BorderThickness="0" FontSize="24"
                     Command="{Binding ChangePrivacyModeCommand}">
-
                 <Button.Background>
-                    <SolidColorBrush Color="#00000000"/>
+                    <SolidColorBrush Color="#00000000" />
                 </Button.Background>
-
                 <Button.Content>
-                    <TextBlock Text="&gt;"
-                               FontFamily="{StaticResource Tiny}"
-                               Foreground="White"
-                               FontSize="40">
-
+                    <TextBlock Text="&gt;" FontFamily="{StaticResource Tiny}" Foreground="White" FontSize="40">
                         <TextBlock.Effect>
-                            <DropShadowEffect Color="Violet"
-                                              BlurRadius="20"
-                                              ShadowDepth="0"
-                                              Opacity="1" />
+                            <DropShadowEffect Color="Violet" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                         </TextBlock.Effect>
                     </TextBlock>
                 </Button.Content>
             </Button>
         </Grid>
 
-
+        <!-- Поле пароля -->
         <TextBox x:Name="PasswordTextBox"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"
-                 Width="350"
-                 Height="100"
-                 Margin="700,0,0,230"
-                 Foreground="White"
-                 FontFamily="{StaticResource Tiny}"
-                 FontSize="40"
-                 TextAlignment="Center"
-                 VerticalContentAlignment="Center"
+                 HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Width="350" Height="100" Margin="700,0,0,230"
+                 Foreground="White" FontFamily="{StaticResource Tiny}" FontSize="40"
+                 TextAlignment="Center" VerticalContentAlignment="Center"
                  Visibility="{Binding PasswordTextBoxVisibility, Converter={StaticResource BoolToVisibility}}">
-
             <TextBox.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </TextBox.Background>
-
         </TextBox>
 
         <!-- Кнопка CREATE -->
-        <Button Width="350"
-                Height="100"
-                Margin="0,0,800,-20"
-                BorderThickness="0"
-                BorderBrush="White"
+        <Button Width="350" Height="100" Margin="0,0,800,-20" BorderThickness="0"
                 Command="{Binding CreateLobbyCommand}">
             <Button.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
-                <TextBlock Text="CREATE"
-                           Foreground="White"
-                           FontFamily="{StaticResource Tiny}"
-                           FontSize="40">
+                <TextBlock Text="CREATE" Foreground="White" FontFamily="{StaticResource Tiny}" FontSize="40">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="LightGreen"
-                                          BlurRadius="20"
-                                          ShadowDepth="0"
-                                          Opacity="1" />
+                        <DropShadowEffect Color="LightGreen" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>
         </Button>
 
         <!-- Кнопка BACK -->
-        <Button Width="350"
-                Height="100"
-                Margin="0,0,800,-270"
-                BorderThickness="0"
-                BorderBrush="White"
+        <Button Width="350" Height="100" Margin="0,0,800,-270" BorderThickness="0"
                 Command="{Binding GoBackCommand}">
             <Button.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
-                <TextBlock Text="BACK"
-                           Foreground="White"
-                           FontFamily="{StaticResource Tiny}"
-                           FontSize="40">
+                <TextBlock Text="BACK" Foreground="White" FontFamily="{StaticResource Tiny}" FontSize="40">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="HotPink"
-                                          BlurRadius="20"
-                                          ShadowDepth="0"
-                                          Opacity="1" />
+                        <DropShadowEffect Color="HotPink" BlurRadius="20" ShadowDepth="0" Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>

@@ -1,4 +1,4 @@
-﻿namespace Tron.Common.Config.Utilities
+﻿namespace Tron.Common.Persistence
 {
     public class FileProcessor
     {
@@ -11,21 +11,23 @@
             return (ip, port);
         }
 
-        public string? TryReadUsername(string path)
+        public string? ReadUsername(string path)
         {
             string? username;
+            
             try
             {
                 username = File.ReadAllText(path);
             }
             catch (Exception)
             {
-                return null;
+                username = null;
             }
+
             return username;
         }
 
-        public void LogUsername(string path, string username)
+        public void WriteUsername(string path, string username)
         {
             File.WriteAllText(path, username);
         }

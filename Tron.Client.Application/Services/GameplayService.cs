@@ -1,10 +1,10 @@
-﻿using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Navigation;
 using System.Windows.Threading;
-using Tron.Client.Application.Models;
+using System.Windows.Controls;
+using System.Windows.Shapes;
+using System.Windows.Media;
 using Tron.Common.Entities;
+using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.Services
 {
@@ -46,8 +46,10 @@ namespace Tron.Client.Application.Services
                 _logicalArena[player.Coordinates.Row, player.Coordinates.Column] = true;
             }
 
-            GameTimer = new DispatcherTimer();
-            GameTimer.Interval = TimeSpan.FromMilliseconds((int)GameConstants.GAME_TICK);
+            GameTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds((int)Constants.GameTick)
+            };
             GameTimer.Tick += GameTimer_Tick;
 
             _lastDirectionChange = [];
@@ -94,7 +96,7 @@ namespace Tron.Client.Application.Services
             {
                 Player other = _players!.First(p => !p.Equals(player));
                 --player.Lives;
-                other.Score += (int)GameConstants.ALIVE_SCORE;
+                other.Score += (int)Constants.AliveScore;
                 Restart();
             }
             else
@@ -122,11 +124,11 @@ namespace Tron.Client.Application.Services
                     if (player.Equals(other))
                     {
                         Player alive = _players.First(p => !p.Equals(player));
-                        alive.Score += (int)GameConstants.ALIVE_SCORE;
+                        alive.Score += (int)Constants.AliveScore;
                     }
                     else
                     {
-                        other.Score += (int)GameConstants.KILL_SCORE;
+                        other.Score += (int)Constants.KillScore;
                     }
 
                     Restart();
@@ -158,7 +160,7 @@ namespace Tron.Client.Application.Services
             {
                 TimeSpan timeSinceLastChange = DateTime.Now - value;
 
-                return (timeSinceLastChange > TimeSpan.FromMilliseconds((int)GameConstants.MOVE_COOLDOWN));
+                return (timeSinceLastChange > TimeSpan.FromMilliseconds((int)Constants.MoveCooldown));
             }
 
             return true;
@@ -196,8 +198,8 @@ namespace Tron.Client.Application.Services
             {
                 player.Alive = true;
                 player.Trail.Clear();
-                player.Coordinates = player.StartingCoordinates;
-                player.Direction = player.StartingDirection;
+                player.Coordinates = player.InitialCoordinates;
+                player.Direction = player.InitialDirection;
 
                 _arena.SetCoordinates(player.Shape, player.Coordinates);
                 _arena.Children.Add(player.Shape);

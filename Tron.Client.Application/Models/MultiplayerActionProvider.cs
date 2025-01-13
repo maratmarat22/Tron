@@ -1,15 +1,12 @@
-﻿using System.Text.Json;
-using Tron.Client.Networking;
-using Tron.Common.Entities;
-using Tron.Common.Messages;
+﻿using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Models
 {
     internal class MultiplayerActionProvider
     {
-        private App _app;
+        private readonly App _app;
 
-        private Player[] _players;
+        private readonly Player[] _players;
 
         internal MultiplayerActionProvider(Player[] players)
         {

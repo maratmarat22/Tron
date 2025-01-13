@@ -1,28 +1,34 @@
 ﻿namespace Tron.Common.Entities
 {
-    public struct PlayerCoordinates
+    public struct PlayerCoordinates(int row, int column)
     {
-        public int Row { get; set; }
-        public int Column { get; set; }
+        public int Row { get; set; } = row;
 
-        public PlayerCoordinates(int row, int column)
-        {
-            Row = row;
-            Column = column;
-        }
+        public int Column { get; set; } = column;
 
-        public override bool Equals(object? obj)
+        public override readonly bool Equals(object? obj)
         {
             if (obj is PlayerCoordinates other)
             {
                 return Row == other.Row && Column == other.Column;
             }
+            
             return false;
         }
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             return Row.GetHashCode() ^ Column.GetHashCode();
+        }
+
+        public static bool operator ==(PlayerCoordinates left, PlayerCoordinates right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(PlayerCoordinates left, PlayerCoordinates right)
+        {
+            return !(left == right);
         }
     }
 }

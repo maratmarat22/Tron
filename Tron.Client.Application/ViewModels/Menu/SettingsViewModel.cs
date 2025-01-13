@@ -1,11 +1,11 @@
-﻿using System.Windows.Input;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
+using System.Windows.Input;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class SettingsViewModel : BaseViewModel
     {
-        private NavigationService _nav;
+        private readonly NavigationService _nav;
 
         private string? _volumeSetting;
 

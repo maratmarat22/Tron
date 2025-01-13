@@ -1,9 +1,9 @@
 ﻿namespace Tron.Client.Application.Models
 {
-    public enum GameMode
+    public enum Mode
     {
         Singleplayer,
-        Multiplayer,
-        Localplayer
+        Localplayer,
+        Multiplayer
     }
 }

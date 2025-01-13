@@ -9,134 +9,104 @@
       Title="MainMenuPage">
 
     <Page.Background>
-        <ImageBrush ImageSource="../Resources/Images/Background.jpg"/>
+        <ImageBrush ImageSource="../Resources/Images/Background.jpg" />
     </Page.Background>
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1080" Width="1920">
-        <Border Width="500"
-            Height="170"
-            Margin="0,0,800,600">
+        <Border Width="500" Height="170" Margin="0,0,800,600">
             <Border.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Border.Background>
-
             <TextBlock Text="TRON"
-                   FontFamily="{StaticResource Tiny}"
-                   TextAlignment="Center"
-                   FontSize="150"
-                   Foreground="White"
-                   HorizontalAlignment="Center">
+                       FontFamily="{StaticResource Tiny}"
+                       TextAlignment="Center"
+                       FontSize="150"
+                       Foreground="White"
+                       HorizontalAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect Color="HotPink"
-                                  BlurRadius="50"
-                                  ShadowDepth="0"
-                                  Opacity="1"/>
+                                      BlurRadius="50"
+                                      ShadowDepth="0"
+                                      Opacity="1" />
                 </TextBlock.Effect>
             </TextBlock>
         </Border>
 
         <!-- SINGLEPLAYER -->
-
-        <Button Width="350"
-            Height="100"
-            Margin="0,0,800,230"
-            BorderThickness="0"
-            BorderBrush="White"
-            Command="{Binding InitSpCommand}">
-
+        <Button Width="350" Height="100" Margin="0,0,800,230" BorderThickness="0" BorderBrush="White" Command="{Binding InitSpCommand}">
             <Button.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
                 <TextBlock Text="SINGLEPLAYER"
-                       Foreground="White"
-                       FontFamily="{StaticResource Tiny}"
-                       FontSize="40">
+                           Foreground="White"
+                           FontFamily="{StaticResource Tiny}"
+                           FontSize="40">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="Blue"
-                                      BlurRadius="20"
-                                      ShadowDepth="0"
-                                      Opacity="1"/>
+                                          BlurRadius="20"
+                                          ShadowDepth="0"
+                                          Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>
         </Button>
 
         <!-- MULTIPLAYER -->
-
-        <Button Width="350"
-            Height="100"
-            Margin="0,0,800,-20"
-            BorderThickness="0"
-            BorderBrush="White"
-            Command="{Binding NavToMpMenuCommand}">
-
+        <Button Width="350" Height="100" Margin="0,0,800,-20" BorderThickness="0" BorderBrush="White" Command="{Binding NavToMpMenuCommand}">
             <Button.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
                 <TextBlock Text="MULTIPLAYER"
-                       FontFamily="{StaticResource Tiny}"
-                       Foreground="White"
-                       FontSize="40">
+                           FontFamily="{StaticResource Tiny}"
+                           Foreground="White"
+                           FontSize="40">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="LightGreen"
-                                      BlurRadius="20"
-                                      ShadowDepth="0"
-                                      Opacity="1"/>
+                                          BlurRadius="20"
+                                          ShadowDepth="0"
+                                          Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>
         </Button>
 
         <!-- SETTINGS -->
-
-        <Button Width="350"
-            Height="100"
-            Margin="0,0,800,-270"
-            BorderThickness="0"
-            BorderBrush="White"
-            Command="{Binding NavToSettingsCommand}">
-
+        <Button Width="350" Height="100" Margin="0,0,800,-270" BorderThickness="0" BorderBrush="White" Command="{Binding NavToSettingsCommand}">
             <Button.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
                 <TextBlock Text="SETTINGS"
-                       FontFamily="{StaticResource Tiny}"
-                       Foreground="White"
-                       FontSize="40">
+                           FontFamily="{StaticResource Tiny}"
+                           Foreground="White"
+                           FontSize="40">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="LightYellow"
-                                      BlurRadius="20"
-                                      ShadowDepth="0"
-                                      Opacity="1"/>
+                                          BlurRadius="20"
+                                          ShadowDepth="0"
+                                          Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>
         </Button>
 
         <!-- EXIT -->
-
-        <Button Width="350"
-            Height="100"
-            Margin="0,0,800,-520"
-            BorderThickness="0"
-            BorderBrush="White"
-            Command="{Binding ExitCommand}">
+        <Button Width="350" Height="100" Margin="0,0,800,-520" BorderThickness="0" BorderBrush="White" Command="{Binding ExitCommand}">
             <Button.Background>
-                <SolidColorBrush Color="#BB000000"/>
+                <SolidColorBrush Color="#BB000000" />
             </Button.Background>
             <Button.Content>
                 <TextBlock Text="EXIT"
-                       FontFamily="{StaticResource Tiny}"
-                       Foreground="White"
-                       FontSize="40">
+                           FontFamily="{StaticResource Tiny}"
+                           Foreground="White"
+                           FontSize="40">
                     <TextBlock.Effect>
                         <DropShadowEffect Color="HotPink"
-                                      BlurRadius="20"
-                                      ShadowDepth="0"
-                                      Opacity="1"/>
+                                          BlurRadius="20"
+                                          ShadowDepth="0"
+                                          Opacity="1" />
                     </TextBlock.Effect>
                 </TextBlock>
             </Button.Content>

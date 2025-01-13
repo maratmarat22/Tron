@@ -12,16 +12,14 @@ namespace Tron.Server.Networking
         private readonly IPAddress _address;
         private int _availablePort;
 
-        private IDbQueryProcessor _queryProcessor;
+        private readonly IDbQueryProcessor _queryProcessor;
 
         internal Acceptor(IPEndPoint point, IDbQueryProcessor queryProcessor)
         {
             _acceptor = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             _acceptor.Bind(point);
 
-            //
             Console.WriteLine($"Acceptor: listening on port {point.Port}");
-            //
 
             _address = point.Address;
             _availablePort = point.Port + 1;
@@ -32,68 +30,48 @@ namespace Tron.Server.Networking
         internal Unicaster? Accept()
         {
             EndPoint remote = new IPEndPoint(IPAddress.Any, 0);
-            Message? auth = _acceptor.TryReceiveFrom(ref remote);
+            Message? authRequest = _acceptor.TryReceiveFrom(ref remote);
 
-            bool authorized = false;
+            if (authRequest == null) return null;
 
-            if (auth != null)
+            bool authorized = authRequest.Header switch
             {
-                authorized = auth.Header switch
-                {
-                    Header.Register => _queryProcessor.TryRegister(auth.Payload[0]),
-                    Header.LogIn => _queryProcessor.TryLogIn(auth.Payload[0]),
-                    _ => false
-                };
+                Header.Register => _queryProcessor.Register(authRequest.Payload[0]),
+                Header.LogIn => _queryProcessor.LogIn(authRequest.Payload[0]),
+                _ => false
+            };
+
+            if (!authorized) return null;
+
+            Unicaster? unicaster = TryRedirect(remote, authRequest.Header);
+
+            if (unicaster == null)
+            {
+                _acceptor.TrySendTo(new Message(Header.InternalServerError, []), remote);
             }
 
-            if (authorized)
-            {
-                Unicaster? unicaster = TryRedirect(remote, auth!.Header);
-
-                if (unicaster == null)
-                {
-                    _acceptor.TrySendTo(new Message(Header.INTERNAL_SERVER_ERROR, []), remote);
-                }
-
-                return unicaster;
-            }
-            
-            _acceptor.TrySendTo(new Message(Header.BAD_REQUEST, []), remote);
-            
-            return null;
+            return unicaster;
         }
 
-        private Unicaster? TryRedirect(EndPoint remote, Header prevHeader)
+        private Unicaster? TryRedirect(EndPoint remote, Header authHeader)
         {
             Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            if (!local.TryBind(_address, _availablePort)) return null;
 
-            if (local.TryBind(_address, _availablePort))
-            {
+            Console.WriteLine($"Server socket: listening on port {_availablePort}");
 
-                //
-                Console.WriteLine($"Server socket: listening on port {_availablePort}");
-                //
+            IPEndPoint localEndPoint = (local.LocalEndPoint as IPEndPoint)!;
+            _availablePort = localEndPoint.Port + 1;
 
-                IPEndPoint localPoint = ((IPEndPoint)local.LocalEndPoint!);
+            if (!_acceptor.TrySendTo(new Message(Header.Ok, [authHeader.ToString(), localEndPoint.ToString()]), remote)) return null;
 
-                _availablePort = localPoint.Port + 1;
+            Message? connect = local.TryReceiveFrom(ref remote);
 
-                if (_acceptor.TrySendTo(new Message(Header.Acknowledge, [prevHeader.ToString(), localPoint.ToString()]), remote))
-                {
-                    Message? connect = local.TryReceiveFrom(ref remote);
+            if (connect == null) return null;
 
-                    if (connect != null)
-                    {
-                        //
-                        Console.WriteLine($"{remote}: connected to {localPoint.Port}");
-                        //
+            Console.WriteLine($"{remote}: connected to {localEndPoint.Port}");
 
-                        return new Unicaster(local, (IPEndPoint)remote);
-                    }
-                }
-            }
-
-            return null;
+            return new Unicaster(local, (IPEndPoint)remote);
         }
     }
 }

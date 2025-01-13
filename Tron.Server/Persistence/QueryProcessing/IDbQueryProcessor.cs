@@ -2,12 +2,12 @@
 {
     internal interface IDbQueryProcessor
     {
-        internal bool TryRegister(string username);
+        internal bool Register(string username);
 
-        internal bool TryLogIn(string username);
+        internal bool LogIn(string username);
 
-        internal string[] ReadTopTen();
+        internal Dictionary<string, int> ReadTopTen();
 
-        internal void UpdatePlayer();
+        internal bool AddToScore(string username, int addition);
     }
 }

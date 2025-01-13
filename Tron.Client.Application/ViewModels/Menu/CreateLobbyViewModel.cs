@@ -1,16 +1,15 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows.Navigation;
+using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using Tron.Client.Application.Views;
-using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class CreateLobbyViewModel : BaseViewModel
     {
-        private NavigationService _nav;
+        private readonly NavigationService _nav;
 
-        private App _app;
+        private readonly App _app;
 
         public TextBox? PasswordTextBox { get; set; }
 
@@ -23,7 +22,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             get => _privacyMode;
             set
             {
-                _isPrivate = value == "PRIVATE" ? true : false;
+                _isPrivate = value == "PRIVATE";
                 SetProperty(ref _privacyMode, value);
             }
         }

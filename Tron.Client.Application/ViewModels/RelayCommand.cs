@@ -16,6 +16,7 @@ namespace Tron.Client.Application.ViewModels
         internal RelayCommand(Action execute, Func<object?, bool>? canExecute = null)
         {
             ArgumentNullException.ThrowIfNull(execute);
+            
             _execute = _ => execute();
             _canExecute = canExecute;
         }

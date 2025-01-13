@@ -20,11 +20,9 @@ namespace Tron.Common.Networking
         {
             byte[] byteData = new byte[1024];
             int bytesRead = local.ReceiveFrom(byteData, ref remote);
-
             string jsonData = Encoding.ASCII.GetString(byteData, 0, bytesRead);
-            Message message = JsonSerializer.Deserialize<Message>(jsonData)!;
-
-            return message;
+            
+            return JsonSerializer.Deserialize<Message>(jsonData)!;
         }
 
         public static bool TrySendTo(this Socket sender, Message message, EndPoint receiver)
@@ -38,24 +36,12 @@ namespace Tron.Common.Networking
                 return false;
             }
 
-            /*if (message.Header != Header.Acknowledge)
-            {
-                Message? ack = TryReceiveFrom(sender, ref receiver);
-
-                if (ack != null && ack.Header == Header.Acknowledge && ack.Payload[0] == message.Header.ToString())
-                {
-                    return true;
-                }
-
-                return false;
-            }*/
-
             return true;
         }
 
         public static Message? TryReceiveFrom(this Socket receiver, ref EndPoint sender)
         {
-            Message message;
+            Message? message;
 
             try
             {
@@ -63,19 +49,8 @@ namespace Tron.Common.Networking
             }
             catch (Exception)
             {
-                return null;
+                message = null;
             }
-
-            /*
-            if (message.Header != Header.Acknowledge)
-            {
-                if (receiver.TrySendTo(new Message(Header.Acknowledge, [message.Header.ToString()]), sender))
-                {
-                    return (message);
-                }
-
-                return null;
-            }*/
             
             return message;
         }

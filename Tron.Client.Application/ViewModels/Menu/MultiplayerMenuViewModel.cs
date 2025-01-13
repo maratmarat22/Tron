@@ -1,17 +1,16 @@
-﻿using System.Windows.Input;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
+using System.Windows.Input;
+using Tron.Common.Messages;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Views;
-using Tron.Client.Networking;
-using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class MultiplayerMenuViewModel : BaseViewModel
     {
-        private NavigationService _nav;
+        private readonly NavigationService _nav;
 
-        private App _app;
+        private readonly App _app;
 
         public ICommand CreateLobbyCommand { get; }
 
@@ -60,7 +59,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private void OnInitLocalMp()
         {
-            _nav.Navigate(new ArenaPage(_nav, GameMode.Localplayer));
+            _nav.Navigate(new ArenaPage(_nav, Mode.Localplayer));
         }
 
         private void OnGoBack()

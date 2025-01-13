@@ -4,17 +4,11 @@ using Tron.Common.Messages;
 
 namespace Tron.Common.Networking
 {
-    public class Unicaster
+    public class Unicaster(Socket local, EndPoint remote)
     {
-        public Socket Local { get; private set; }
+        public Socket Local { get; } = local;
 
-        public EndPoint Remote { get; private set; }
-
-        public Unicaster(Socket local, EndPoint remote)
-        {
-            Local = local;
-            Remote = remote;
-        }
+        public EndPoint Remote { get; } = remote;
 
         public bool Send(Message message)
         {
@@ -24,16 +18,6 @@ namespace Tron.Common.Networking
         public Message? Receive()
         {
             return Local.TryReceiveFrom(Remote);
-        }
-
-        public bool SendTo(Message message, EndPoint remote)
-        {
-            return Local.TrySendTo(message, remote);
-        }
-
-        public Message? ReceiveFrom(EndPoint remote)
-        {
-            return Local.TryReceiveFrom(remote);
         }
     }
 }

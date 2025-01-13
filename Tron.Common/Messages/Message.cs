@@ -2,21 +2,15 @@
 
 namespace Tron.Common.Messages
 {
-    public class Message
+    public class Message(Header header, string[] payload)
     {
-        public Header Header { get; set; }
+        public Header Header { get; set; } = header;
 
-        public string[] Payload { get; set; }
-
-        public Message(Header header, string[] payload)
-        {
-            Header = header;
-            Payload = payload;
-        }
+        public string[] Payload { get; set; } = payload;
 
         public override string ToString()
         {
-            StringBuilder message = new StringBuilder();
+            StringBuilder message = new();
 
             message.Append((int)Header);
 

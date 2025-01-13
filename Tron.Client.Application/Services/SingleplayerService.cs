@@ -1,13 +1,13 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows.Navigation;
+using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Navigation;
 using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.Services
 {
     internal class SingleplayerService : GameplayService
     {
-        private SingleplayerActionProvider _provider;
+        private readonly SingleplayerActionProvider _provider;
         
         internal SingleplayerService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner)
             : base(nav, players, playerData, arena, CountDown, UpdatePlayerData, DisplayWinner)

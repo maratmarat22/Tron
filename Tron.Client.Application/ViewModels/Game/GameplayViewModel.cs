@@ -1,12 +1,12 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media.Effects;
-using System.Windows.Media;
+﻿using System.Windows.Media.Effects;
 using System.Windows.Navigation;
 using System.Windows.Threading;
-using Tron.Client.Application.Models;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows;
 using Tron.Client.Application.Services;
+using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.ViewModels.Game
 {
@@ -76,8 +76,10 @@ namespace Tron.Client.Application.ViewModels.Game
 
             _players = [];
 
-            _countdownTimer = new DispatcherTimer();
-            _countdownTimer.Interval = TimeSpan.FromSeconds(1);
+            _countdownTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             _countdownTimer.Tick += CountdownTimer_Tick;
 
             _countdownTime = 3;
@@ -93,8 +95,8 @@ namespace Tron.Client.Application.ViewModels.Game
 
         protected void AllocatePlayers()
         {
-            _players![0].StartingCoordinates = new(Arena!.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 - 30);
-            _players[1].StartingCoordinates = new(Arena.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 + 29);
+            _players![0].InitialCoordinates = new(Arena!.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 - 30);
+            _players[1].InitialCoordinates = new(Arena.RowDefinitions.Count / 2, Arena.ColumnDefinitions.Count / 2 + 29);
 
             foreach (Player player in _players)
             {
@@ -109,11 +111,11 @@ namespace Tron.Client.Application.ViewModels.Game
             PlayerData.RowDefinitions.Add(new RowDefinition());
 
             FontFamily tiny = (FontFamily)((App)System.Windows.Application.Current).Resources["Tiny"];
-            SolidColorBrush white = new SolidColorBrush(Colors.White);
+            SolidColorBrush white = new(Colors.White);
 
             for (int i = 0; i < _players.Count; ++i)
             {
-                TextBlock name = new TextBlock
+                TextBlock name = new()
                 {
                     Text = _players[i].Name,
                     VerticalAlignment = VerticalAlignment.Center,
@@ -131,9 +133,9 @@ namespace Tron.Client.Application.ViewModels.Game
                     }
                 };
 
-                TextBlock lives = new TextBlock
+                TextBlock lives = new()
                 {
-                    Text = ((int)(GameConstants.LIVES)).ToString(),
+                    Text = ((int)(Constants.Lives)).ToString(),
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Foreground = white,
@@ -149,7 +151,7 @@ namespace Tron.Client.Application.ViewModels.Game
                     }
                 };
 
-                TextBlock score = new TextBlock
+                TextBlock score = new()
                 {
                     Text = "0pts",
                     VerticalAlignment = VerticalAlignment.Center,

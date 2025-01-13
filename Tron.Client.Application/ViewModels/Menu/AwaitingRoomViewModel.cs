@@ -1,19 +1,16 @@
-﻿using System.Text.Json;
+﻿using System.Windows.Navigation;
+using System.Windows.Threading;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
-using System.Windows.Threading;
 using Tron.Client.Application.Models;
 using Tron.Client.Application.Views;
-using Tron.Client.Networking;
-using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class AwaitingRoomViewModel : BaseViewModel
     {
         private readonly NavigationService _nav;
-        private bool _enteredAsHost;
+        private readonly bool _enteredAsHost;
         private readonly App _app;
         private Dictionary<string, string?> _state;
 
@@ -176,9 +173,9 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         public ICommand GoBackCommand { get; }
 
-        private List<string> _refreshArgs;
+        private readonly List<string> _refreshArgs;
 
-        private DispatcherTimer _timer;
+        private readonly DispatcherTimer _timer;
 
         internal AwaitingRoomViewModel(NavigationService nav, bool enteredAsHost)
         {
@@ -212,9 +209,11 @@ namespace Tron.Client.Application.ViewModels.Menu
             SwitchReadyStatusCommand = new RelayCommand(OnSwitchReadyStatus);
             StartCommand = new RelayCommand(OnStart);
             GoBackCommand = new RelayCommand(OnGoBack);
-            
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(100);
+
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
             _timer.Tick += Timer_Tick;
             _timer.Start();
         }
@@ -255,7 +254,7 @@ namespace Tron.Client.Application.ViewModels.Menu
                     {
                         if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() != startTime)
                         {
-                            _nav.Navigate(new ArenaPage(_nav, GameMode.Multiplayer, HostName, GuestName, _enteredAsHost));
+                            _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
                         }
                     }
                 }

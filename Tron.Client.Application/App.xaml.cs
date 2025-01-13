@@ -1,20 +1,20 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Tron.Client.Networking;
-using Tron.Common.Config.Utilities;
 using Tron.Common.Entities;
 using Tron.Common.Messages;
 using Tron.Common.Networking;
+using Tron.Common.Persistence;
 
 namespace Tron.Client.Application
 {
     public partial class App : System.Windows.Application
     {
-        private FileProcessor _processor;
+        private readonly FileProcessor _processor;
 
         private (string address, int port) _acceptor;
 
-        private Connector _connector;
+        private readonly Connector _connector;
 
         private Unicaster? _unicaster;
 
@@ -30,11 +30,11 @@ namespace Tron.Client.Application
             _acceptor = _processor.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
             _connector = new Connector(IPAddress.Parse(_acceptor.address), _acceptor.port);
 
-            Username = _processor.TryReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
+            Username = _processor.ReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
             Volume = true;
         }
 
-        internal void LogUsername() => _processor.LogUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
+        internal void LogUsername() => _processor.WriteUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
 
         internal bool TryConnect(Header connectionHeader, string username)
         {
@@ -45,7 +45,7 @@ namespace Tron.Client.Application
 
         internal bool TryCreateLobby(string username, bool isPrivate, string password)
         {
-            Message request = new Message(Header.CreateLobby, [username, isPrivate.ToString(), password]);
+            Message request = new(Header.CreateLobby, [username, isPrivate.ToString(), password]);
             
             if (AckRequest(request, Point.Server))
             {
@@ -59,7 +59,7 @@ namespace Tron.Client.Application
         internal bool TryJoinLobby(string master)
         {
             string local = _unicaster!.Local.LocalEndPoint!.ToString()!;
-            Message request = new Message(Header.JoinLobby, [local, master]);
+            Message request = new(Header.JoinLobby, [local, master]);
             
             if (AckRequest(request, Point.Server))
             {
@@ -93,7 +93,7 @@ namespace Tron.Client.Application
 
         private bool IsValidResponse(Message? response, Header requestHeader)
         {
-            return response != null && response.Header == Header.Acknowledge && response.Payload[0] == requestHeader.ToString();
+            return response != null && response.Header == Header.Ok && response.Payload[0] == requestHeader.ToString();
         }
 
         internal bool CheckConnection()
@@ -136,11 +136,11 @@ namespace Tron.Client.Application
             _gameUnicaster!.Send(new Message(Header.FetchDirections, []));
             Message? response = _gameUnicaster.Receive();
 
-            Direction[] directions = new Direction[2];
-
-            directions[0] = (Direction)Enum.Parse(typeof(Direction), response.Payload[0]);
-            directions[1] = (Direction)Enum.Parse(typeof(Direction), response.Payload[1]);
-
+            Direction[] directions =
+            [
+                (Direction)Enum.Parse(typeof(Direction), response.Payload[0]),
+                (Direction)Enum.Parse(typeof(Direction), response.Payload[1]),
+            ];
             return directions;
         }
 

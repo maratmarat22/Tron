@@ -1,8 +1,8 @@
-﻿using System.Windows.Media;
-using System.Windows.Navigation;
-using Tron.Client.Application.Models;
-using Tron.Client.Application.Services;
+﻿using System.Windows.Navigation;
+using System.Windows.Media;
 using Tron.Common.Entities;
+using Tron.Client.Application.Services;
+using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.ViewModels.Game
 {

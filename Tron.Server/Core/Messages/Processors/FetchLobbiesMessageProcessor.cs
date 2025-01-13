@@ -1,9 +1,10 @@
 ﻿using Tron.Common.Messages;
 using Tron.Common.Entities;
 using System.Text.Json;
+using Tron.Server.Networking;
 using Tron.Common.Networking;
 
-namespace Tron.Server.Core.MessageProcessing
+namespace Tron.Server.Core.Messages.Processors
 {
     internal class FetchLobbiesMessageProcessor : IMessageProcessor
     {
@@ -14,9 +15,11 @@ namespace Tron.Server.Core.MessageProcessing
             _lobbies = lobbies;
         }
 
-        public Message Process(Message message, Dictionary<string, string?> state, object caster)
+        public Message Process(Message request, Dictionary<string, string>? state, Unicaster? unicaster, Multicaster? multicaster)
         {
-            return new Message(Header.Acknowledge, [message.Header.ToString(), JsonSerializer.Serialize(_lobbies)]);
+            var lobbies = JsonSerializer.Serialize(_lobbies);
+
+            return new Message(Header.Ok, [request.Header.ToString(), lobbies]);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Tron.Client.Application.Models;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.Services
 {

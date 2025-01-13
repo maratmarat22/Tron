@@ -1,25 +1,23 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows.Navigation;
+using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Navigation;
-using Tron.Client.Application.Models;
-using Tron.Client.Networking;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
+using Tron.Client.Application.Models;
 
 namespace Tron.Client.Application.Services
 {
     internal class MultiplayerService : GameplayService
     {
-        MultiplayerActionProvider _provider;
+        private readonly MultiplayerActionProvider _provider;
 
-        private bool _enteredAsHost;
+        private readonly bool _enteredAsHost;
 
-        private App _app;
+        private readonly App _app;
 
         internal MultiplayerService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner, bool enteredAsHost)
             : base(nav, players, playerData, arena, CountDown, UpdatePlayerData, DisplayWinner)
         {
-            _provider = new MultiplayerActionProvider(_players.ToArray());
+            _provider = new MultiplayerActionProvider([.. _players]);
             _enteredAsHost = enteredAsHost;
             _app = (App)System.Windows.Application.Current;
         }

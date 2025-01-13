@@ -11,68 +11,98 @@ namespace Tron.Server.Persistence.QueryProcessing
             _connectionString = "Data Source=" + path + ";";
         }
 
-        public bool TryRegister(string username)
+        public bool Register(string username)
         {
-            using (SqliteConnection connection = new(_connectionString))
+            using SqliteConnection connection = new(_connectionString);
+            connection.Open();
+
+            string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
+
+            using (SqliteCommand command = new(query, connection))
             {
-                connection.Open();
+                command.Parameters.AddWithValue("@username", username);
 
-                string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
-
-                using (SqliteCommand command = new(query, connection))
+                if (Convert.ToInt32(command.ExecuteScalar()) > 0)
                 {
-                    command.Parameters.AddWithValue("@username", username);
-
-                    if (Convert.ToInt32(command.ExecuteScalar()) > 0)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
+            }
 
-                query = $"INSERT INTO players (username) VALUES (@username)";
+            query = $"INSERT INTO players (username) VALUES (@username)";
 
-                using (SqliteCommand command = new(query, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-                    command.ExecuteNonQuery();
+            using (SqliteCommand command = new(query, connection))
+            {
+                command.Parameters.AddWithValue("@username", username);
+                command.ExecuteNonQuery();
 
-                    return true;
-                }
+                return true;
             }
         }
 
-        public bool TryLogIn(string username)
+        public bool LogIn(string username)
         {
-            using (SqliteConnection connection = new(_connectionString))
+            using SqliteConnection connection = new(_connectionString);
+            connection.Open();
+
+            string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
+
+            using SqliteCommand command = new(query, connection);
+            
+            command.Parameters.AddWithValue("@username", username);
+
+            if (Convert.ToInt32(command.ExecuteScalar()) == 1)
             {
-                connection.Open();
-
-                string query = $"SELECT COUNT(*) FROM players WHERE username = @username";
-
-                using (SqliteCommand command = new(query, connection))
-                {
-                    command.Parameters.AddWithValue("@username", username);
-
-                    if (Convert.ToInt32(command.ExecuteScalar()) == 1)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public string[] ReadTopTen()
+        public Dictionary<string, int> ReadTopTen()
         {
-            return new string[0];
+            Dictionary<string, int> topTen = [];
+            
+            using SqliteConnection connection = new(_connectionString);
+            connection.Open();
+
+            string query = $"SELECT username, score FROM players ORDER BY score DESC LIMIT 10";
+
+            using SqliteCommand command = new(query, connection);
+            using SqliteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string username = reader.GetString(0);
+                int score = reader.GetInt32(1);
+
+                topTen.Add(username, score);
+            }
+
+            return topTen;
         }
 
-        public void UpdatePlayer()
+        public bool AddToScore(string username, int addition)
         {
+            using SqliteConnection connection = new(_connectionString);
+            connection.Open();
 
+            string query = $"UPDATE players SET score = score + @addition WHERE username = @username";
+
+            using SqliteCommand command = new(query, connection);
+            try
+            {
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@addition", addition);
+                command.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

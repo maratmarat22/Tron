@@ -5,52 +5,43 @@ using Tron.Common.Networking;
 
 namespace Tron.Client.Networking
 {
-    public class Connector
+    public class Connector(IPAddress address, int port)
     {
-        private EndPoint _acceptor;
+        private EndPoint _acceptor = new IPEndPoint(address, port);
 
-        public Connector(IPAddress address, int port)
+        public Unicaster? TryConnect(Message authRequest)
         {
-            _acceptor = new IPEndPoint(address, port);
-        }
+            int timeout = (int)Timeout.@short;
 
-        public Unicaster? TryConnect(Message auth)
-        {
             Socket local = new(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp)
             {
-                ReceiveTimeout = 1000,
-                SendTimeout = 1000
+                ReceiveTimeout = timeout,
+                SendTimeout = timeout
             };
 
-            bool connected = false;
+            IPAddress? address = IPv4Provider.GetActiveIPv4Address();
 
-            if (local.TryBind(IPv4Provider.GetActiveIPv4Address()!, 5000))
-            {
-                if (local.TrySendTo(auth, _acceptor))
-                {
-                    Message? redirect = local.TryReceiveFrom(ref _acceptor);
+            if (address == null) return null;
+            if (!local.TryBind(address, 5000)) return null;
+            if (!local.TrySendTo(authRequest, _acceptor)) return Disconnect(local);
 
-                    if (redirect != null)
-                    {
-                        IPEndPoint? remote;
+            Message? authResponse = local.TryReceiveFrom(ref _acceptor);
 
-                        if (redirect.Payload.Length != 0 && IPEndPoint.TryParse(redirect.Payload[1], out remote))
-                        {
-                            if (local.TrySendTo(new Message(Header.Connect, []), remote))
-                            {
-                                connected = true;
-                                return new Unicaster(local, remote);
-                            }
-                        }
-                    }
-                }
+            if (authResponse == null) return Disconnect(local);
 
-                if (!connected)
-                {
-                    local.Close();
-                    local.Dispose();
-                }
-            }
+            string serverEndPoint = authResponse.Payload[1];
+
+            if (authResponse.Payload.Length == 0 || !IPEndPoint.TryParse(serverEndPoint, out IPEndPoint? remote)) return Disconnect(local);
+
+            if (!local.TrySendTo(new Message(Header.Connect, []), remote)) return Disconnect(local);
+
+            return new Unicaster(local, remote);
+        }
+
+        private Unicaster? Disconnect(Socket local)
+        {
+            local.Close();
+            local.Dispose();
 
             return null;
         }

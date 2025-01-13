@@ -1,8 +1,7 @@
 ﻿using System.Net;
-using Tron.Server.Core.MessageProcessing;
 using Tron.Server.Networking;
 using Tron.Server.Persistence.QueryProcessing;
-using Tron.Common.Messages;
+using Tron.Server.Core.Messages;
 using Tron.Common.Networking;
 using Tron.Common.Entities;
 
@@ -24,7 +23,7 @@ namespace Tron.Server.Core
             _acceptor = new Acceptor((IPEndPoint)_point, _queryProcessor);
 
             _lobbies = [];
-            _pool = new(_lobbies);
+            _pool = new(_lobbies, queryProcessor);
         }
 
         internal void Run()
@@ -35,72 +34,9 @@ namespace Tron.Server.Core
 
                 if (unicaster != null)
                 {
-                    Task.Run(() =>
-                    {
-                        Dictionary<string, string?> state = new()
-                        {
-                            { "Server", unicaster.Local.LocalEndPoint!.ToString()! },
-                            { "HostName", null },
-                            { "GuestName", null },
-                            { "HostReady", "False" },
-                            { "GuestReady", "False" },
-                            { "GameStarted", "False" },
-                            { "HostX", null },
-                            { "HostY", null },
-                            { "GuestX", null },
-                            { "GuestY", null },
-                            { "HostDirection", null },
-                            { "GuestDirection", null },
-                        };
+                    ClientService service = new(unicaster, _pool);
 
-                        while (true)
-                        {
-                            Message? message = unicaster.Receive();
-
-                            if (message != null)
-                            {
-                                IMessageProcessor processor = _pool.Acquire(message.Header);
-
-                                Message? response = processor.Process(message, state, unicaster);
-
-                                if (response != null)
-                                {
-                                    if (message.Header == Header.SessionState)
-                                    { }
-                                    
-                                    if (message.Header == Header.JoinLobby)
-                                    {
-                                        if (unicaster.Local.TrySendTo(new Message(Header.AddRemote, [response.Payload[0]]), IPEndPoint.Parse(response.Payload[1])))
-                                        {
-                                            if (unicaster.Local.TryReceiveFrom(IPEndPoint.Parse(response.Payload[1])) != null)
-                                            {
-                                                unicaster.Send(new Message(Header.Acknowledge, [message.Header.ToString()]));
-                                            }
-                                        }
-                                    }
-                                    else if (message.Header == Header.CreateLobby)
-                                    {
-                                        unicaster.Send(response);
-                                        Multicaster multicaster = new(unicaster.Local, unicaster.Remote);
-                                        MulticastService service = new(multicaster, state, _pool);
-                                        service.Run();
-                                    }
-                                    else
-                                    {
-                                        unicaster.Send(response);
-                                    }
-                                }
-                                else
-                                {
-                                    unicaster.Send(new Message(Header.Resend, []));
-                                }
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                    });
+                    Task.Run(() => service.Run(true));
                 }
             }
         }

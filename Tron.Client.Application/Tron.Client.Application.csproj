@@ -21,12 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Audio\" />
+    <ProjectReference Include="..\Tron.Client.Networking\Tron.Client.Networking.csproj" />
+    <ProjectReference Include="..\Tron.Common\Tron.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tron.Client.Networking\Tron.Client.Networking.csproj" />
-    <ProjectReference Include="..\Tron.Common\Tron.Common.csproj" />
+    <Folder Include="Resources\Audio\" />
   </ItemGroup>
 
 </Project>

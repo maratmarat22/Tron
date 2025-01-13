@@ -1,14 +1,9 @@
-﻿using System.Net;
-using System.Collections.ObjectModel;
-using System.Text.Json;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Navigation;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
-using Tron.Client.Application.Views;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
-using Tron.Common.Networking;
-using Tron.Client.Networking;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {

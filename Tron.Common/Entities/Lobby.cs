@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace Tron.Common.Entities
+﻿namespace Tron.Common.Entities
 {
     public class Lobby
     {

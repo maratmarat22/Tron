@@ -4,15 +4,15 @@ namespace Tron.Client.Application.Models
 {
     internal class SingleplayerActionProvider
     {
-        private Player _player;
-        private bool[,] _logicalArena;
+        private readonly Player _player;
+        private readonly bool[,] _logicalArena;
 
-        private Func<PlayerCoordinates, bool> OutBounds;
-        private Action<Player, Direction> SetDirection;
+        private readonly Func<PlayerCoordinates, bool> OutBounds;
+        private readonly Action<Player, Direction> SetDirection;
 
-        private Random _random;
+        private readonly Random _random;
 
-        private Direction[] _directions;
+        private readonly Direction[] _directions;
 
         internal SingleplayerActionProvider(Player player, bool[,] logicalArena, Func<PlayerCoordinates, bool> OutBounds, Action<Player, Direction> SetDirection)
         {

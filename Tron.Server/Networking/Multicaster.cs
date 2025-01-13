@@ -9,39 +9,25 @@ namespace Tron.Server.Networking
     {
         public Socket Local { get; }
 
-        private List<EndPoint> _remotes;
+        private readonly EndPoint?[] _remotes;
 
-        internal Multicaster(Socket local, EndPoint points)
+        internal Multicaster(Socket local, EndPoint remote)
         {
             Local = local;
-            _remotes = [];
-            _remotes.Add(points);
-        }
-
-        public bool Send(Message message)
-        {
-            List<bool> allSent = [];
             
-            foreach (EndPoint point in _remotes)
-            {
-                if (Local.TrySendTo(message, point))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            _remotes = new EndPoint[2];
+            _remotes[0] = remote;
         }
 
         public (Message?, EndPoint?) Receive()
         {
-            EndPoint AnyPointOrServer = new IPEndPoint(IPAddress.Any, 0);
+            EndPoint anyPointOrServer = new IPEndPoint(IPAddress.Any, 0);
 
-            Message? message = Local.TryReceiveFrom(ref AnyPointOrServer);
+            Message? message = Local.TryReceiveFrom(ref anyPointOrServer);
 
-            if (_remotes.Contains(AnyPointOrServer) || (AnyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
+            if (_remotes.Contains(anyPointOrServer) || (anyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
             {
-                return (message, AnyPointOrServer);
+                return (message, anyPointOrServer);
             }
 
             return (null, null);
@@ -54,18 +40,16 @@ namespace Tron.Server.Networking
 
         public bool AddRemote(EndPoint remote)
         {
-            if (_remotes.Count() < 2)
-            {
-                _remotes.Add(remote);
-                return true;
-            }
+            if (_remotes[1] != null) return false;
 
-            return false;
+            _remotes[1] = remote;
+            
+            return true;
         }
 
-        public void RemoveRemote(EndPoint remote)
+        public void RemoveRemote()
         {
-            _remotes.Remove(remote);
+            _remotes[1] = null;
         }
     }
 }

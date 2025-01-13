@@ -1,19 +1,17 @@
-﻿using System.Windows.Media;
-using System.Windows.Navigation;
-using Tron.Client.Application.Models;
-using Tron.Client.Application.Services;
-using Tron.Client.Application.Views;
-using Tron.Client.Networking;
+﻿using System.Windows.Navigation;
+using System.Windows.Media;
 using Tron.Common.Entities;
-using Tron.Common.Messages;
+using Tron.Client.Application.Services;
+using Tron.Client.Application.Models;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.ViewModels.Game
 {
     internal class MultiplayerViewModel : GameplayViewModel
     {
-        private bool _enteredAsHost;
+        private readonly bool _enteredAsHost;
 
-        private App _app;
+        private readonly App _app;
 
         internal MultiplayerViewModel(NavigationService nav, string hostName, string guestName, bool enteredAsHost) : base(nav)
         {

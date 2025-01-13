@@ -13,13 +13,13 @@ namespace Tron.Client.Application.Views
     /// </summary>
     public partial class ArenaPage : Page
     {
-        public ArenaPage(NavigationService nav, GameMode mode, string? hostName = null, string? guestName = null, bool enteredAsHost = false)
+        public ArenaPage(NavigationService nav, Mode mode, string? hostName = null, string? guestName = null, bool enteredAsHost = false)
         {
             DataContext = mode switch
             {
-                GameMode.Singleplayer => new SingleplayerViewModel(nav),
-                GameMode.Multiplayer => new MultiplayerViewModel(nav, hostName!, guestName!, enteredAsHost),
-                GameMode.Localplayer => new LocalplayerViewModel(nav),
+                Mode.Singleplayer => new SingleplayerViewModel(nav),
+                Mode.Multiplayer => new MultiplayerViewModel(nav, hostName!, guestName!, enteredAsHost),
+                Mode.Localplayer => new LocalplayerViewModel(nav),
                 _ => throw new Exception()
             };
 

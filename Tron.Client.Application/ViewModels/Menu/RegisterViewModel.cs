@@ -1,15 +1,15 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows.Navigation;
+using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using Tron.Common.Messages;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class RegisterViewModel : BaseViewModel
     {
-        private NavigationService _nav;
+        private readonly NavigationService _nav;
 
-        private App _app;
+        private readonly App _app;
 
         public ICommand GoBackCommand { get; }
 

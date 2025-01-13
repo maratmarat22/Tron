@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Media;
 using Tron.Common.Entities;
 
 namespace Tron.Client.Application.Models
@@ -15,42 +15,42 @@ namespace Tron.Client.Application.Models
 
         public bool Alive { get; set; }
 
-        private PlayerCoordinates _startingCoordinates;
+        private PlayerCoordinates _initialCoordinates;
 
-        public PlayerCoordinates StartingCoordinates
+        public PlayerCoordinates InitialCoordinates
         {
-            get => _startingCoordinates;
+            get => _initialCoordinates;
             set
             {
-                _startingCoordinates = value;
+                _initialCoordinates = value;
                 Coordinates = value;
             }
         }
 
         public PlayerCoordinates Coordinates { get; set; }
 
-        public System.Windows.Media.Color PlayerColor { get; private set; }
+        public Color PlayerColor { get; private set; }
 
         public Rectangle Shape { get; private set; }
 
         public List<PlayerCoordinates> Trail { get; private set; }
 
-        public System.Windows.Media.Color TrailColor { get; private set; }
+        public Color TrailColor { get; private set; }
 
-        public Direction StartingDirection { get; set; }
+        public Direction InitialDirection { get; set; }
 
         public Direction Direction { get; set; }
 
         internal Player(string name, PlayerCoordinates coordinates, System.Windows.Media.Color color, Direction direction)
         {
             Name = name;
-            Lives = (int)GameConstants.LIVES;
+            Lives = (int)Constants.Lives;
             Score = 0;
 
-            StartingCoordinates = coordinates;
-            Coordinates = StartingCoordinates;
+            InitialCoordinates = coordinates;
+            Coordinates = InitialCoordinates;
+            
             PlayerColor = color;
-
             Shape = new Rectangle
             {
                 Width = 5,
@@ -61,10 +61,10 @@ namespace Tron.Client.Application.Models
             Panel.SetZIndex(Shape, 2);
 
             Trail = [];
-            TrailColor = System.Windows.Media.Color.FromArgb((byte)(PlayerColor.A / 2), PlayerColor.R, PlayerColor.G, PlayerColor.B);
+            TrailColor = Color.FromArgb((byte)(PlayerColor.A / 2), PlayerColor.R, PlayerColor.G, PlayerColor.B);
 
-            StartingDirection = direction;
-            Direction = StartingDirection;
+            InitialDirection = direction;
+            Direction = InitialDirection;
         }
 
         public override bool Equals(object? obj)
