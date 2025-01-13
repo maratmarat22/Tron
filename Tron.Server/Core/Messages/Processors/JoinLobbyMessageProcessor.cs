@@ -18,7 +18,7 @@ namespace Tron.Server.Core.Messages.Processors
             {
                 Message? subResponse = unicaster.Local.TryReceiveFrom(master);
 
-                if (subResponse != null && subResponse.Header == Header.Ok && subResponse.Payload[1] == subRequest.Header.ToString())
+                if (subResponse != null && subResponse.Header == Header.Ok && subResponse.Payload[0] == subRequest.Header.ToString())
                 {
                     return new Message(Header.Ok, [request.Header.ToString()]);
                 }

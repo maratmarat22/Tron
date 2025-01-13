@@ -219,15 +219,12 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
-        {
-            if (_refreshArgs.Contains("HostReady:True"))
-            { }
-            
+        {            
             _state = RefreshSessionState()!;
 
             if (_state == null)
             {
-                OnGoBack();
+                OnGoBack(true);
             }
             else
             {
@@ -279,7 +276,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             _app.StartGame();
         }
 
-        private void OnGoBack()
+        private void OnGoBack(object hostLeft)
         {
             _timer.Stop();
 
@@ -292,7 +289,11 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
             else
             {
-                if (_app.LeaveLobby())
+                if (Convert.ToBoolean(hostLeft))
+                {
+                    _nav.GoBack();
+                }
+                else if(_app.LeaveLobby())
                 {
                     _nav.GoBack();
                 }

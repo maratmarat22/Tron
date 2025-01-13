@@ -38,7 +38,7 @@ namespace Tron.Server.Core.Messages
                 Header.DeleteLobby => (_DL ??= new DeleteLobbyMessageProcessor(_lobbies), true, false, true),
                 Header.SessionState => (_SS ??= new SessionStateMessageProcessor(), true, false, false),
                 Header.AddRemote => (_AR ??= new AddRemoteMessageProcessor(), false, false, true),
-                Header.LeaveLobby => (_LL ??= new LeaveLobbyMessageProcessor(), true, false, false),
+                Header.LeaveLobby => (_LL ??= new LeaveLobbyMessageProcessor(), true, false, true),
                 Header.FetchDirections => (_FD ??= new FetchDirectionsMessageProcessor(), true, false, false),
                 Header.FetchTopTen => (_FTT ??= new FetchTopTenMessageProcessor(_queryProcessor), false, false, false),
                 _ => throw new NotImplementedException()

@@ -26,9 +26,9 @@ namespace Tron.Server.Core
                 { "ServerEndPoint", serverEndPoint! },
                 { "HostName", "" },
                 { "GuestName", "" },
-                { "HostReady", "False" },
-                { "GuestReady", "False" },
-                { "GameStarted", "False" },
+                { "HostReady", "false" },
+                { "GuestReady", "false" },
+                { "GameStarted", "false" },
                 { "HostX", "" },
                 { "HostY", "" },
                 { "GuestX", "" },
@@ -56,6 +56,9 @@ namespace Tron.Server.Core
                     (request, sender) = _multicaster.Receive();
                 }
 
+                if (request.Header == Header.DeleteLobby)
+                { }
+
                 if (request == null) break;
 
                 (IMessageProcessor processor, bool stateRequired, bool unicasterRequired, bool multicasterRequired) = _pool.Acquire(request.Header);
@@ -80,7 +83,7 @@ namespace Tron.Server.Core
                 {
                     runAsUnicaster = false;
                 }
-                if (request.Header == Header.DeleteLobby || request.Header == Header.LeaveLobby)
+                if (request.Header == Header.DeleteLobby)
                 {
                     runAsUnicaster = true;
                 }

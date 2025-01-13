@@ -27,14 +27,14 @@ namespace Tron.Client.Application
         internal App()
         {
             _processor = new();
-            _acceptor = _processor.ReadSocket(@"../../../../Tron.Common/Persistence/Data/ServerSocket.txt");
+            _acceptor = _processor.ReadSocket(@"../../../../Tron.Common/Persistence/ServerSocket.txt");
             _connector = new Connector(IPAddress.Parse(_acceptor.address), _acceptor.port);
 
-            Username = _processor.ReadUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt");
+            Username = _processor.ReadUsername(@"../../../../Tron.Client.Application/Resources/Username.txt");
             Volume = true;
         }
 
-        internal void LogUsername() => _processor.WriteUsername(@"../../../../Tron.Client.Application/Persistence/Username.txt", Username!);
+        internal void LogUsername() => _processor.WriteUsername(@"../../../../Tron.Client.Application/Resources/Username.txt", Username!);
 
         internal bool TryConnect(Header connectionHeader, string username)
         {
@@ -58,8 +58,7 @@ namespace Tron.Client.Application
 
         internal bool TryJoinLobby(string master)
         {
-            string local = _unicaster!.Local.LocalEndPoint!.ToString()!;
-            Message request = new(Header.JoinLobby, [local, master]);
+            Message request = new(Header.JoinLobby, [master]);
             
             if (AckRequest(request, Point.Server))
             {

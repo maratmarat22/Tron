@@ -23,11 +23,14 @@ namespace Tron.Server.Networking
         {
             EndPoint anyPointOrServer = new IPEndPoint(IPAddress.Any, 0);
 
-            Message? message = Local.TryReceiveFrom(ref anyPointOrServer);
+            Message? request = Local.TryReceiveFrom(ref anyPointOrServer);
+
+            if (request.Header == Header.AddRemote)
+            { }
 
             if (_remotes.Contains(anyPointOrServer) || (anyPointOrServer as IPEndPoint)!.Address.Equals((Local.LocalEndPoint as IPEndPoint)!.Address))
             {
-                return (message, anyPointOrServer);
+                return (request, anyPointOrServer);
             }
 
             return (null, null);

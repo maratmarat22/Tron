@@ -18,8 +18,8 @@ namespace Tron.Server.Core.Messages.Processors
         {
             _lobbies.RemoveAll(lobby => lobby.Master.Equals(state!["ServerEndPoint"]));
 
-            state!["HostName"] = "null";
-            state["GuestName"] = "null";
+            state!["HostName"] = "";
+            state["GuestName"] = "";
             state["HostReady"] = "false";
             state["GuestReady"] = "false";
             state["GameStarted"] = "false";

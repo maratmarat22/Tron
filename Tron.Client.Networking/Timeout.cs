@@ -2,6 +2,6 @@
 {
     internal enum Timeout
     {
-        @short = 1000
+        @short = 0
     }
 }
