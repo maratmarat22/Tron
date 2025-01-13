@@ -14,12 +14,16 @@ namespace Tron.Client.Application.Services
 
         private readonly App _app;
 
+        private readonly Player _player;
+
         internal MultiplayerService(NavigationService nav, List<Player> players, Grid playerData, Grid arena, Func<Task> CountDown, Action UpdatePlayerData, Action<string?, Color> DisplayWinner, bool enteredAsHost)
             : base(nav, players, playerData, arena, CountDown, UpdatePlayerData, DisplayWinner)
         {
             _provider = new MultiplayerActionProvider([.. _players]);
             _enteredAsHost = enteredAsHost;
             _app = (App)System.Windows.Application.Current;
+
+            _player = _enteredAsHost ? _players[0] : _players[1];
         }
 
         internal override async void Run()
@@ -62,20 +66,9 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
-            foreach (Player player in _players!)
-            {
-                if (GameTimer.IsEnabled)
-                {
-                    _provider.FetchDirections();
-                    //_provider.FetchState([]);
-
-                    SetTrail(player);
-                    Move(player);
-                    CheckCollisions(player);
-
-                    _provider.SetState();
-                }
-            }
+            SetTrail(_player);
+            Move(_player);
+            CheckCollisions(_player);
         }
 
         internal override void SetDirection(Player player, Direction direction)
