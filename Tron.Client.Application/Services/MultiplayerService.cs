@@ -24,6 +24,8 @@ namespace Tron.Client.Application.Services
             _app = (App)System.Windows.Application.Current;
 
             _player = _enteredAsHost ? _players[0] : _players[1];
+
+            Task.Run(() => Refresh());
         }
 
         internal override async void Run()
@@ -66,11 +68,20 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
-            _provider.RefreshState(_player, _enteredAsHost);
-            
-            SetTrail(_player);
-            Move(_player);
-            CheckCollisions(_player);
+            foreach (var player in _players)
+            {
+                SetTrail(player);
+                Move(player);
+                if (CheckCollisions(player)) break;
+            }
+        }
+
+        private void Refresh()
+        {
+            while (true)
+            {
+                _provider.RefreshState(_player, _enteredAsHost);
+            }
         }
 
         internal override void SetDirection(Player player, Direction direction)

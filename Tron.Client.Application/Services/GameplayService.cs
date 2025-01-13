@@ -106,7 +106,7 @@ namespace Tron.Client.Application.Services
             }
         }
 
-        protected void CheckCollisions(Player player)
+        protected bool CheckCollisions(Player player)
         {
             foreach (Player other in _players)
             {
@@ -115,7 +115,8 @@ namespace Tron.Client.Application.Services
                     --player.Lives;
                     --other.Lives;
                     Restart();
-                    break;
+
+                    return true;
                 }
                 else if (OnTrail(player, other))
                 {
@@ -132,9 +133,10 @@ namespace Tron.Client.Application.Services
                     }
 
                     Restart();
-                    break;
+                    return true;
                 }
             }
+            return false;
         }
 
         internal virtual void SetDirection(Player player, Direction direction)
