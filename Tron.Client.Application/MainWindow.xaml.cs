@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
+using System.Windows;
 using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application

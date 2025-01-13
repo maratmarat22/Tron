@@ -33,7 +33,7 @@
         </Border>
 
         <!-- SINGLEPLAYER -->
-        <Button Width="350" Height="100" Margin="0,0,800,230" BorderThickness="0" BorderBrush="White" Command="{Binding InitSpCommand}">
+        <Button Width="350" Height="100" Margin="0,0,800,230" BorderThickness="0" BorderBrush="White" Command="{Binding InitSingleplayerCommand}">
             <Button.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Button.Background>
@@ -53,7 +53,7 @@
         </Button>
 
         <!-- MULTIPLAYER -->
-        <Button Width="350" Height="100" Margin="0,0,800,-20" BorderThickness="0" BorderBrush="White" Command="{Binding NavToMpMenuCommand}">
+        <Button Width="350" Height="100" Margin="0,0,800,-20" BorderThickness="0" BorderBrush="White" Command="{Binding NavToMultiplayerMenuCommand}">
             <Button.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Button.Background>

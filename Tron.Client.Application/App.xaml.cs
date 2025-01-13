@@ -1,17 +1,15 @@
-﻿using System.Net;
-using System.Text.Json;
-using Tron.Client.Networking;
+﻿using System.Text.Json;
+using System.Net;
+using Tron.Common.Persistence;
+using Tron.Common.Networking;
 using Tron.Common.Entities;
 using Tron.Common.Messages;
-using Tron.Common.Networking;
-using Tron.Common.Persistence;
+using Tron.Client.Networking;
 
 namespace Tron.Client.Application
 {
     public partial class App : System.Windows.Application
     {
-        private readonly FileProcessor _processor;
-
         private (string address, int port) _acceptor;
 
         private readonly Connector _connector;
@@ -22,129 +20,121 @@ namespace Tron.Client.Application
 
         internal string? Username { get; set; }
 
-        internal bool Volume { get; set; }
+        //internal bool Volume { get; set; }
 
         internal App()
         {
-            _processor = new();
-            _acceptor = _processor.ReadSocket(@"../../../../Tron.Common/Persistence/ServerSocket.txt");
+            _acceptor = FileProcessor.ReadSocket(@"../../../../Tron.Common/Persistence/ServerSocket.txt");
             _connector = new Connector(IPAddress.Parse(_acceptor.address), _acceptor.port);
 
-            Username = _processor.ReadUsername(@"../../../../Tron.Client.Application/Resources/Username.txt");
-            Volume = true;
+            Username = FileProcessor.ReadUsername(@"../../../../Tron.Client.Application/Resources/Username.txt");
+            //Volume = true;
         }
 
-        internal void LogUsername() => _processor.WriteUsername(@"../../../../Tron.Client.Application/Resources/Username.txt", Username!);
+        internal void WriteUsername() => FileProcessor.WriteUsername(@"../../../../Tron.Client.Application/Resources/Username.txt", Username!);
 
-        internal bool TryConnect(Header connectionHeader, string username)
+        internal bool Connect(Header connectionHeader, string username)
         {
             Message request = new(connectionHeader, [username]);
+            
             _unicaster = _connector.TryConnect(request);
+            
             return _unicaster != null;
-        }
-
-        internal bool TryCreateLobby(string username, bool isPrivate, string password)
-        {
-            Message request = new(Header.CreateLobby, [username, isPrivate.ToString(), password]);
-            
-            if (AckRequest(request, Point.Server))
-            {
-                _gameUnicaster = _unicaster;
-                return true;
-            }
-
-            return false;
-        }
-
-        internal bool TryJoinLobby(string master)
-        {
-            Message request = new(Header.JoinLobby, [master]);
-            
-            if (AckRequest(request, Point.Server))
-            {
-                _gameUnicaster = new Unicaster(_unicaster!.Local, IPEndPoint.Parse(master));
-                return true;
-            }
-
-            return false;
-        }
-
-        internal List<Lobby>? FetchLobbies()
-        {
-            _unicaster!.Send(new Message(Header.FetchLobbies, []));
-            Message? response = _unicaster.Receive();
-
-            if (response != null)
-            {
-                return JsonSerializer.Deserialize<List<Lobby>>(response.Payload[1]);
-            }
-
-            return null;
-        }
-
-        internal bool StartGame()
-        {
-            _gameUnicaster!.Send(new Message(Header.StartGame, []));
-            Message? response = _gameUnicaster.Receive();
-
-            return IsValidResponse(response, Header.StartGame);
-        }
-
-        private bool IsValidResponse(Message? response, Header requestHeader)
-        {
-            return response != null && response.Header == Header.Ok && response.Payload[0] == requestHeader.ToString();
         }
 
         internal bool CheckConnection()
         {
             if (_unicaster == null) return false;
-            
-            _unicaster!.Send(new Message(Header.ConnectionCheck, []));
+
+            return AckRequest(new Message(Header.ConnectionCheck, []), _unicaster);
+        }
+
+        internal bool CreateLobby(string username, bool isPrivate, string password)
+        {
+            Message request = new(Header.CreateLobby, [username, isPrivate.ToString(), password]);
+
+            if (!AckRequest(request, _unicaster!)) return false;
+
+            _gameUnicaster = _unicaster;
+            return true;
+        }
+
+        internal bool JoinLobby(string master)
+        {
+            Message request = new(Header.JoinLobby, [master]);
+
+            if (!AckRequest(request, _unicaster!)) return false;
+
+            _gameUnicaster = new Unicaster(_unicaster!.Local, IPEndPoint.Parse(master));
+            return true;
+        }
+
+        internal List<Lobby>? FetchLobbies()
+        {
+            Message request = new(Header.FetchLobbies, []);
+
+            _unicaster!.Send(request);
+
             Message? response = _unicaster.Receive();
 
-            return IsValidResponse(response, Header.ConnectionCheck);
+            if (response == null) return null;
+
+            return JsonSerializer.Deserialize<List<Lobby>>(response.Payload[1]);
         }
+
+        internal bool DeleteLobby() => AckRequest(new Message(Header.DeleteLobby, []), _gameUnicaster!);
+
+        internal bool LeaveLobby() => AckRequest(new Message(Header.LeaveLobby, []), _gameUnicaster!);
+
+        internal bool StartGame() => AckRequest(new Message(Header.StartGame, []), _gameUnicaster!);
 
         internal Dictionary<string, string?>? RefreshSessionState(string[] refreshArgs)
         {
             _gameUnicaster!.Send(new Message(Header.SessionState, [.. refreshArgs]));
             Message? response = _gameUnicaster.Receive();
 
-            if (response != null && response.Payload != null)
+            if (response == null || response.Payload == null) return null;
+
+            return JsonSerializer.Deserialize<Dictionary<string, string?>>(response.Payload[1])!;
+        }
+
+        internal Direction[]? FetchDirections()
+        {
+            _gameUnicaster!.Send(new Message(Header.FetchDirections, []));
+            Message? response = _gameUnicaster.Receive();
+
+            Direction[] directions;
+
+            if (response == null) return null;
+
+            try
             {
-                return JsonSerializer.Deserialize<Dictionary<string, string?>>(response.Payload[1])!;
+                directions =
+                [
+                    (Direction)Enum.Parse(typeof(Direction), response.Payload[0]),
+                    (Direction)Enum.Parse(typeof(Direction), response.Payload[1]),
+                ];
             }
-            else
+            catch (Exception)
             {
                 return null;
             }
+
+            return directions;
         }
 
-        private bool AckRequest(Message request, Point point)
+        private static bool AckRequest(Message request, Unicaster unicaster)
         {
-            Unicaster unicaster = point == Point.Server ? _unicaster : _gameUnicaster;
-
             unicaster!.Send(request);
+
             Message? response = unicaster.Receive();
 
             return IsValidResponse(response, request.Header);
         }
 
-        internal Direction[] FetchDirections()
+        private static bool IsValidResponse(Message? response, Header requestHeader)
         {
-            _gameUnicaster!.Send(new Message(Header.FetchDirections, []));
-            Message? response = _gameUnicaster.Receive();
-
-            Direction[] directions =
-            [
-                (Direction)Enum.Parse(typeof(Direction), response.Payload[0]),
-                (Direction)Enum.Parse(typeof(Direction), response.Payload[1]),
-            ];
-            return directions;
+            return response != null && response.Header == Header.Ok && response.Payload[0] == requestHeader.ToString();
         }
-
-        internal bool DeleteLobby() => AckRequest(new Message(Header.DeleteLobby, []), Point.Master);
-
-        internal bool LeaveLobby() => AckRequest(new Message(Header.LeaveLobby, [_gameUnicaster!.Local.ToString()!]), Point.Master);
     }
 }

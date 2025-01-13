@@ -2,23 +2,24 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using Tron.Common.Messages;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class RegisterViewModel : BaseViewModel
     {
+        // NAV & APP
         private readonly NavigationService _nav;
-
         private readonly App _app;
 
+        // COMMANDS
         public ICommand GoBackCommand { get; }
-
         public ICommand RegisterCommand { get; }
 
+        // ELEMENTS & ERRORS
         internal TextBox? RegisterTextBox { get; set; }
 
         private bool _tryAgainVisibility;
-
         public bool TryAgainVisibility
         {
             get => _tryAgainVisibility;
@@ -36,32 +37,28 @@ namespace Tron.Client.Application.ViewModels.Menu
             TryAgainVisibility = false;
         }
 
-        private void OnGoBack()
-        {
-            _nav.GoBack();
-        }
-
         private void OnRegister()
         {
             string username = RegisterTextBox!.Text;
 
-            if (!string.IsNullOrWhiteSpace(username) && !username.Contains('/'))
+            if (string.IsNullOrWhiteSpace(username) || username.Contains('/'))
             {
-                if (_app.TryConnect(Header.Register, username))
-                {
-                    _app.Username = username;
-                    _app.LogUsername();
-                    OnGoBack();
-                }
-                else
-                {
-                    TryAgainVisibility = true;
-                }
+                TryAgainVisibility = true;
+                return;
+            }
+
+            if (_app.Connect(Header.Register, username))
+            {
+                _app.Username = username;
+                _app.WriteUsername();
+                OnGoBack();
             }
             else
             {
                 TryAgainVisibility = true;
             }
         }
+
+        private void OnGoBack() => _nav.Navigate(new MultiplayerMenuPage(_nav));
     }
 }

@@ -9,14 +9,16 @@ namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class AwaitingRoomViewModel : BaseViewModel
     {
+        // NAV, APP, STATE, HOSTFLAG, ARGS, TIMER
         private readonly NavigationService _nav;
-        private readonly bool _enteredAsHost;
         private readonly App _app;
-        private Dictionary<string, string?> _state;
+        private Dictionary<string, string> _state;
+        private readonly bool _enteredAsHost;
+        private readonly List<string> _refreshArgs;
+        private readonly DispatcherTimer _timer;
 
         // NAMES
         private string? _hostName;
-
         public string? HostName
         {
             get => _hostName;
@@ -24,15 +26,14 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private string? _guestName;
-
         public string? GuestName
         {
             get => _guestName;
             set => SetProperty(ref _guestName, value);
         }
 
+        // READINESS
         private bool _hostReady;
-
         internal bool HostReady
         {
             get => _hostReady;
@@ -66,7 +67,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private bool _guestReady;
-
         internal bool GuestReady
         {
             get => _guestReady;
@@ -101,7 +101,6 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         // READY CHARS
         private char _hostReadyChar;
-
         public char HostReadyChar
         {
             get => _hostReadyChar;
@@ -109,7 +108,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private char _guestReadyChar;
-
         public char GuestReadyChar
         {
             get => _guestReadyChar;
@@ -117,7 +115,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private bool _guestReadyCharVisibility;
-        
         public bool GuestReadyCharVisibility
         {
             get => _guestReadyCharVisibility;
@@ -126,7 +123,6 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         // READY CHAR COLORS
         private Color _hostReadyCharColor;
-
         public Color HostReadyCharColor
         {
             get => _hostReadyCharColor;
@@ -134,7 +130,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private Color _guestReadyCharColor;
-
         public Color GuestReadyCharColor
         {
             get => _guestReadyCharColor;
@@ -142,9 +137,8 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
 
-        // OTHER
+        // ELEMENTS
         private bool _startButtonVisibility;
-
         public bool StartButtonVisibility
         {
             get => _startButtonVisibility;
@@ -152,7 +146,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private string? _readyButtonText;
-
         public string? ReadyButtonText
         {
             get => _readyButtonText;
@@ -160,38 +153,34 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private Color _readyButtonColor;
-
         public Color ReadyButtonColor
         {
             get => _readyButtonColor;
             set => SetProperty(ref _readyButtonColor, value);
         }
 
+        //COMMANDS
         public ICommand SwitchReadyStatusCommand { get; }
-
         public ICommand StartCommand { get; }
-
         public ICommand GoBackCommand { get; }
-
-        private readonly List<string> _refreshArgs;
-
-        private readonly DispatcherTimer _timer;
 
         internal AwaitingRoomViewModel(NavigationService nav, bool enteredAsHost)
         {
             _nav = nav;
+            _app = (App)System.Windows.Application.Current;
             _enteredAsHost = enteredAsHost;
-            _app = ((App)(System.Windows.Application.Current));
             _refreshArgs = [];
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(200)
+            };
+            _timer.Tick += Timer_Tick;
 
-            if (_enteredAsHost)
-            {
-                _refreshArgs.Add($"HostName:{_app.Username}");
-            }
-            else
-            {
-                _refreshArgs.Add($"GuestName:{_app.Username}");
-            }
+            string change;
+            if (_enteredAsHost) change = $"HostName:{_app.Username}";
+            else change = $"GuestName:{_app.Username}";
+
+            _refreshArgs.Add(change);
 
             while (_state == null)
             {
@@ -200,9 +189,8 @@ namespace Tron.Client.Application.ViewModels.Menu
 
             HostName = _state["HostName"];
             GuestName = _state["GuestName"];
-            HostReady = bool.Parse(_state["HostReady"]!);
-            GuestReady = bool.Parse(_state["GuestReady"]!);
-            GuestReadyCharVisibility = false;
+            HostReady = bool.Parse(_state["HostReady"]);
+            GuestReady = bool.Parse(_state["GuestReady"]);
 
             StartButtonVisibility = false;
 
@@ -210,16 +198,11 @@ namespace Tron.Client.Application.ViewModels.Menu
             StartCommand = new RelayCommand(OnStart);
             GoBackCommand = new RelayCommand(OnGoBack);
 
-            _timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromMilliseconds(100)
-            };
-            _timer.Tick += Timer_Tick;
             _timer.Start();
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
-        {            
+        {
             _state = RefreshSessionState()!;
 
             if (_state == null)
@@ -230,8 +213,10 @@ namespace Tron.Client.Application.ViewModels.Menu
             {
                 HostReady = bool.Parse(_state["HostReady"]!);
                 GuestReady = bool.Parse(_state["GuestReady"]!);
+                
                 GuestName = _state["GuestName"];
-                GuestReadyCharVisibility = GuestName != null;
+                
+                GuestReadyCharVisibility = GuestName != string.Empty;
 
                 if (HostReady && GuestReady && _enteredAsHost)
                 {
@@ -245,13 +230,15 @@ namespace Tron.Client.Application.ViewModels.Menu
                 if (_state["GameStarted"] == "True")
                 {
                     _timer.Stop();
-                    long startTime = long.Parse(_state["StartTime"]!);
                     
+                    long startTime = long.Parse(_state["StartTime"]!);
+
                     while (true)
                     {
-                        if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() != startTime)
+                        if (DateTimeOffset.UtcNow.ToUnixTimeSeconds() == startTime)
                         {
                             _nav.Navigate(new ArenaPage(_nav, Mode.Multiplayer, HostName, GuestName, _enteredAsHost));
+                            break;
                         }
                     }
                 }
@@ -271,12 +258,9 @@ namespace Tron.Client.Application.ViewModels.Menu
             _refreshArgs.Add($"{role}Ready:{status}");
         }
 
-        private void OnStart()
-        {
-            _app.StartGame();
-        }
+        private void OnStart() => _app.StartGame();
 
-        private void OnGoBack(object hostLeft)
+        private void OnGoBack(object? hostLeft)
         {
             _timer.Stop();
 
@@ -284,18 +268,19 @@ namespace Tron.Client.Application.ViewModels.Menu
             {
                 if (_app.DeleteLobby())
                 {
-                    _nav.GoBack();
+                    _nav.Navigate(new MultiplayerMenuPage(_nav));
                 }
             }
             else
             {
                 if (Convert.ToBoolean(hostLeft))
                 {
-                    _nav.GoBack();
+                    _nav.Navigate(new MultiplayerMenuPage(_nav));
                 }
-                else if(_app.LeaveLobby())
+                else
                 {
-                    _nav.GoBack();
+                    _app.LeaveLobby();
+                    _nav.Navigate(new MultiplayerMenuPage(_nav));
                 }
             }
         }

@@ -1,10 +1,11 @@
-﻿using System.Windows;
+﻿using System.Windows.Navigation;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tron.Client.Application.Models;
+using System.Windows.Media;
+using System.Windows;
 using Tron.Client.Application.ViewModels.Game;
+using Tron.Client.Application.Models;
+
 
 namespace Tron.Client.Application.Views
 {
@@ -55,7 +56,7 @@ namespace Tron.Client.Application.Views
 
             for (int i = 0; i < rows; i += cellSize)
             {
-                Line line = new Line
+                Line line = new()
                 {
                     X1 = 0,
                     Y1 = i * cellSize,
@@ -70,7 +71,7 @@ namespace Tron.Client.Application.Views
 
             for (int i = 0; i < columns; i += cellSize)
             {
-                Line line = new Line
+                Line line = new()
                 {
                     X1 = i * cellSize,
                     Y1 = 0,

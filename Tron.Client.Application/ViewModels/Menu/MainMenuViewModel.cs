@@ -7,44 +7,28 @@ namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class MainMenuViewModel : BaseViewModel
     {
+        // NAV
         private readonly NavigationService _nav;
 
-        public ICommand InitSpCommand { get; }
-
-        public ICommand NavToMpMenuCommand { get; }
-
+        // COMMANDS
+        public ICommand InitSingleplayerCommand { get; }
+        public ICommand NavToMultiplayerMenuCommand { get; }
         public ICommand NavToSettingsCommand { get; }
-
         public ICommand ExitCommand { get; }
 
         internal MainMenuViewModel(NavigationService nav)
         {
             _nav = nav;
 
-            InitSpCommand = new RelayCommand(OnInitSp);
-            NavToMpMenuCommand = new RelayCommand(OnNavToMpMenu);
+            InitSingleplayerCommand = new RelayCommand(OnInitSingleplayer);
+            NavToMultiplayerMenuCommand = new RelayCommand(OnNavToMultiplayerMenu);
             NavToSettingsCommand = new RelayCommand(OnNavToSettings);
             ExitCommand = new RelayCommand(OnExit);
         }
 
-        private void OnInitSp()
-        {
-            _nav.Navigate(new ArenaPage(_nav, Mode.Singleplayer));
-        }
-
-        private void OnNavToMpMenu()
-        {
-            _nav.Navigate(new MultiplayerMenuPage(_nav));
-        }
-
-        private void OnNavToSettings()
-        {
-            _nav.Navigate(new SettingsPage(_nav));
-        }
-
-        private void OnExit()
-        {
-            System.Windows.Application.Current.Shutdown();
-        }
+        private void OnInitSingleplayer() => _nav.Navigate(new ArenaPage(_nav, Mode.Singleplayer));
+        private void OnNavToMultiplayerMenu() => _nav.Navigate(new MultiplayerMenuPage(_nav));
+        private void OnNavToSettings() => _nav.Navigate(new SettingsPage(_nav));
+        private void OnExit() => System.Windows.Application.Current.Shutdown();
     }
 }

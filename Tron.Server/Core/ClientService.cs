@@ -56,7 +56,7 @@ namespace Tron.Server.Core
                     (request, sender) = _multicaster.Receive();
                 }
 
-                if (request.Header == Header.DeleteLobby)
+                if (request.Header == Header.Nok)
                 { }
 
                 if (request == null) break;

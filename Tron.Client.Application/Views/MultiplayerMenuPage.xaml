@@ -99,7 +99,7 @@
         </Button>
 
         <!-- LOCAL CO-OP -->
-        <Button Width="500" Height="100" Margin="0,0,800,-270" BorderThickness="0" BorderBrush="White" Command="{Binding InitLocalMpCommand}">
+        <Button Width="500" Height="100" Margin="0,0,800,-270" BorderThickness="0" BorderBrush="White" Command="{Binding InitLocalplayerCommand}">
             <Button.Background>
                 <SolidColorBrush Color="#BB000000" />
             </Button.Background>

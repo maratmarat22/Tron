@@ -7,16 +7,20 @@ namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class CreateLobbyViewModel : BaseViewModel
     {
+        // NAV & APP
         private readonly NavigationService _nav;
-
         private readonly App _app;
 
-        public TextBox? PasswordTextBox { get; set; }
+        // COMMANDS
+        public ICommand ChangePrivacyModeCommand { get; }
+        public ICommand CreateLobbyCommand { get; }
+        public ICommand GoBackCommand { get; }
 
+        // ELEMENTS
+        public TextBox? PasswordTextBox { get; set; }
         private bool _isPrivate;
 
         private string _privacyMode;
-
         public string PrivacyMode
         {
             get => _privacyMode;
@@ -28,7 +32,6 @@ namespace Tron.Client.Application.ViewModels.Menu
         }
 
         private bool _passwordTextBoxVisibility;
-
         public bool PasswordTextBoxVisibility
         {
             get => _passwordTextBoxVisibility;
@@ -38,32 +41,26 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
         }
 
+        // ERRORS
         private bool _connectionAttemptFailed;
-
         public bool ConnectionAttemptFailed
         {
             get => _connectionAttemptFailed;
             set => SetProperty(ref _connectionAttemptFailed, value);
         }
 
-        public ICommand ChangePrivacyModeCommand { get; }
-
-        public ICommand CreateLobbyCommand { get; }
-
-        public ICommand GoBackCommand { get; }
-
         internal CreateLobbyViewModel(NavigationService nav)
         {
             _nav = nav;
-            _app = (App)(System.Windows.Application.Current);
-
-            _privacyMode = "PUBLIC";
-
-            ConnectionAttemptFailed = false;
+            _app = (App)System.Windows.Application.Current;
 
             ChangePrivacyModeCommand = new RelayCommand(OnChangePrivacyMode);
             CreateLobbyCommand = new RelayCommand(OnCreateLobby);
             GoBackCommand = new RelayCommand(OnGoBack);
+
+            _privacyMode = "PUBLIC";
+
+            ConnectionAttemptFailed = false;
         }
 
         private void OnChangePrivacyMode()
@@ -77,7 +74,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             {
                 PrivacyMode = "PUBLIC";
                 PasswordTextBoxVisibility = false;
-                PasswordTextBox!.Text = null;
+                PasswordTextBox!.Text = string.Empty;
             }
         }
 
@@ -85,7 +82,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         {
             string password = PasswordTextBox!.Text;
 
-            if (_app.TryCreateLobby(_app.Username!, _isPrivate, password))
+            if (_app.CreateLobby(_app.Username!, _isPrivate, password))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, true));
             }
@@ -94,13 +91,10 @@ namespace Tron.Client.Application.ViewModels.Menu
                 ConnectionAttemptFailed = true;
                 await Task.Delay(TimeSpan.FromSeconds(2));
                 ConnectionAttemptFailed = false;
-                _nav.GoBack();
+                OnGoBack();
             }
         }
 
-        private void OnGoBack()
-        {
-            _nav.GoBack();
-        }
+        private void OnGoBack() => _nav.Navigate(new MultiplayerMenuPage(_nav));
     }
 }

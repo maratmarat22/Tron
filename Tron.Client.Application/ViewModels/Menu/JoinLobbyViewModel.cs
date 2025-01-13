@@ -9,26 +9,24 @@ namespace Tron.Client.Application.ViewModels.Menu
 {
     internal class JoinLobbyViewModel : BaseViewModel
     {
+        // NAV & APP
         private readonly NavigationService _nav;
-
         private readonly App _app;
 
+        // LOBBIES
         public DataGrid? LobbiesGrid { get; set; }
+        public ObservableCollection<Lobby>? Lobbies { get; set; }
 
-        public ObservableCollection<Lobby> Lobbies { get; set; }
-
-        public ICommand FetchLobbiesCommand { get; set; }
-
-        public ICommand JoinLobbyCommand { get; set; }
-
-        public ICommand PasswordSubmitCommand { get; set; }
-
+        // COMMANDS
+        public ICommand FetchLobbiesCommand { get; }
+        public ICommand JoinLobbyCommand { get; }
+        public ICommand PasswordSubmitCommand { get; }
         public ICommand GoBackCommand { get; }
 
+        // ELEMENTS
         public TextBox? PasswordTextBox { get; set; }
 
         private bool _passwordTextBoxVisibility;
-        
         public bool PasswordTextBoxVisibility
         {
             get => _passwordTextBoxVisibility;
@@ -37,34 +35,33 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         private Lobby? _currentPrivateLobby;
 
-        private bool _errorBlockVisibility;
-
-        public bool ErrorBlockVisibility
-        {
-            get => _errorBlockVisibility;
-            set => SetProperty(ref _errorBlockVisibility, value);
-        }
-
+        // ERRORS
         private string _errorBlockText;
-
         public string ErrorBlockText
         {
             get => _errorBlockText;
             set => SetProperty(ref _errorBlockText, value);
         }
 
+        private bool _errorBlockVisibility;
+        public bool ErrorBlockVisibility
+        {
+            get => _errorBlockVisibility;
+            set => SetProperty(ref _errorBlockVisibility, value);
+        }
+
         internal JoinLobbyViewModel(NavigationService nav)
         {
             _nav = nav;
+            _app = (App)System.Windows.Application.Current;
+
             FetchLobbiesCommand = new RelayCommand(OnFetchLobbies);
             JoinLobbyCommand = new RelayCommand(OnJoinLobby);
             PasswordSubmitCommand = new RelayCommand(OnPasswordSubmit);
             GoBackCommand = new RelayCommand(OnGoBack);
 
-            _app = (App)System.Windows.Application.Current;
-
-            _errorBlockVisibility = false;
             _errorBlockText = string.Empty;
+            _errorBlockVisibility = false;
         }
 
         private void OnFetchLobbies()
@@ -88,7 +85,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
             else
             {
-                TryJoinLobby(l);
+                TryJoinLobby(l.Master);
             }
         }
 
@@ -98,7 +95,7 @@ namespace Tron.Client.Application.ViewModels.Menu
 
             if (password == _currentPrivateLobby!.Password)
             {
-                TryJoinLobby(_currentPrivateLobby);
+                TryJoinLobby(_currentPrivateLobby.Master);
             }
             else
             {
@@ -107,9 +104,9 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
         }
 
-        private async void TryJoinLobby(Lobby lobby)
+        private async void TryJoinLobby(string master)
         {
-            if (_app.TryJoinLobby(lobby.Master))
+            if (_app.JoinLobby(master))
             {
                 _nav.Navigate(new AwaitingRoomPage(_nav, false));
             }
@@ -122,9 +119,6 @@ namespace Tron.Client.Application.ViewModels.Menu
             }
         }
 
-        private void OnGoBack()
-        {
-            _nav.GoBack();
-        }
+        private void OnGoBack() => _nav.Navigate(new MultiplayerMenuPage(_nav));
     }
 }

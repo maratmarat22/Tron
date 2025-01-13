@@ -2,7 +2,7 @@
 {
     public class FileProcessor
     {
-        public (string, int) ReadSocket(string path)
+        public static (string, int) ReadSocket(string path)
         {
             string[] socket = File.ReadAllText(path).Split('/');
             string ip = socket[0];
@@ -11,7 +11,7 @@
             return (ip, port);
         }
 
-        public string? ReadUsername(string path)
+        public static string? ReadUsername(string path)
         {
             string? username;
             
@@ -27,7 +27,7 @@
             return username;
         }
 
-        public void WriteUsername(string path, string username)
+        public static void WriteUsername(string path, string username)
         {
             File.WriteAllText(path, username);
         }
