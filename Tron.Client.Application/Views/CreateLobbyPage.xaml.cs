@@ -18,7 +18,7 @@ namespace Tron.Client.Application.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ((CreateLobbyViewModel)DataContext).PasswordTextBox = PasswordTextBox;
+            (DataContext as CreateLobbyViewModel)!.PasswordTextBox = PasswordTextBox;
         }
     }
 }

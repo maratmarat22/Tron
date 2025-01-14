@@ -19,9 +19,9 @@ namespace Tron.Client.Application.Views
             DataContext = mode switch
             {
                 Mode.Singleplayer => new SingleplayerViewModel(nav),
-                Mode.Multiplayer => new MultiplayerViewModel(nav, hostName!, guestName!, enteredAsHost),
                 Mode.Localplayer => new LocalplayerViewModel(nav),
-                _ => throw new Exception()
+                Mode.Multiplayer => new MultiplayerViewModel(nav, hostName!, guestName!, enteredAsHost),
+                _ => throw new NotImplementedException()
             };
 
             InitializeComponent();
@@ -31,9 +31,10 @@ namespace Tron.Client.Application.Views
         {
             CreateArenaGrid();
             Focus();
-            ((GameplayViewModel)DataContext).PlayerData = PlayersGrid;
-            ((GameplayViewModel)DataContext).Arena = ArenaGrid;
-            ((GameplayViewModel)DataContext).InitGameCommand.Execute(null);
+            var context = (DataContext as GameplayViewModel)!;
+            context.PlayerData = PlayersGrid;
+            context.Arena = ArenaGrid;
+            context.InitGameCommand.Execute(null);
         }
 
         private void CreateArenaGrid()
@@ -42,13 +43,11 @@ namespace Tron.Client.Application.Views
             int rows = (int)ArenaGrid.Height / cellSize;
             int columns = (int)ArenaGrid.Width / cellSize;
 
-            // Создание строк
             for (int i = 0; i < rows; ++i)
             {
                 ArenaGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(cellSize) });
             }
 
-            // Создание столбцов
             for (int i = 0; i < columns; ++i)
             {
                 ArenaGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(cellSize) });

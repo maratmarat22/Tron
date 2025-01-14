@@ -76,10 +76,11 @@ namespace Tron.Client.Application.Services
             }
         }
 
-        private void Refresh()
+        private async void Refresh()
         {
             while (true)
             {
+                await Task.Delay(TimeSpan.FromMilliseconds(30));
                 _provider.RefreshState(_player, _enteredAsHost);
             }
         }

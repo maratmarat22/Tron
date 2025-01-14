@@ -18,9 +18,10 @@ namespace Tron.Client.Application.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ((JoinLobbyViewModel)DataContext).LobbiesGrid = lobbiesGrid;
-            ((JoinLobbyViewModel)DataContext).FetchLobbiesCommand.Execute(null);
-            ((JoinLobbyViewModel)DataContext).PasswordTextBox = PasswordTextBox;
+            var context = (DataContext as JoinLobbyViewModel)!;
+            context.LobbiesGrid = LobbiesGrid;
+            context.FetchLobbiesCommand.Execute(null);
+            context.PasswordTextBox = PasswordTextBox;
         }
     }
 }

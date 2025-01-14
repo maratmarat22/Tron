@@ -16,6 +16,7 @@ namespace Tron.Client.Application.ViewModels.Menu
         public ICommand CreateLobbyCommand { get; }
         public ICommand JoinLobbyCommand { get; }
         public ICommand InitLocalplayerCommand { get; }
+        public ICommand TopTenCommand { get; }
         public ICommand GoBackCommand { get; }
 
         // ERRORS
@@ -34,6 +35,7 @@ namespace Tron.Client.Application.ViewModels.Menu
             CreateLobbyCommand = new RelayCommand(OnCreateLobby);
             JoinLobbyCommand = new RelayCommand(OnJoinLobby);
             InitLocalplayerCommand = new RelayCommand(OnInitLocalplayer);
+            TopTenCommand = new RelayCommand(OnNavToTopTen);
             GoBackCommand = new RelayCommand(OnGoBack);
 
             ConnectionAttemptFailed = false;
@@ -71,6 +73,14 @@ namespace Tron.Client.Application.ViewModels.Menu
             if (await Connect())
             {
                 _nav.Navigate(new JoinLobbyPage(_nav));
+            }
+        }
+
+        private async void OnNavToTopTen()
+        {
+            if (await Connect())
+            {
+                _nav.Navigate(new TopTenPage(_nav));
             }
         }
 

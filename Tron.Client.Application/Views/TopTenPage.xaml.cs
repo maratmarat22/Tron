@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tron.Client.Application.ViewModels.Menu;
 
 namespace Tron.Client.Application.Views
 {
@@ -20,9 +21,17 @@ namespace Tron.Client.Application.Views
     /// </summary>
     public partial class TopTenPage : Page
     {
-        public TopTenPage()
+        public TopTenPage(NavigationService nav)
         {
+            DataContext = new TopTenViewModel(nav);
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var context = (DataContext as TopTenViewModel)!;
+            context.TopTenGrid = TopTenGrid;
+            context.FetchTopTenCommand.Execute(null);
         }
     }
 }

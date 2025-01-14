@@ -6,7 +6,7 @@
         KillScore = 200,
         AliveScore = 100,
         
-        GameTick = 150,
+        GameTick = 100,
         MoveCooldown = 5,
     }
 }

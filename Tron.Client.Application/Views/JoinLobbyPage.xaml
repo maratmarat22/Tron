@@ -34,8 +34,7 @@
         </Border>
 
         <!-- Таблица лобби -->
-        <DataGrid x:Name="lobbiesGrid"
-                  ItemsSource="{Binding Lobbies}"
+        <DataGrid x:Name="LobbiesGrid"
                   Margin="400,20,0,0"
                   Height="350"
                   MaxWidth="800"

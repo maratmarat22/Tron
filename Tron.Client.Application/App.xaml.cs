@@ -86,12 +86,24 @@ namespace Tron.Client.Application
 
         internal bool LeaveLobby() => AckRequest(new Message(Header.LeaveLobby, []), _gameUnicaster!);
 
+        internal Dictionary<string, int>? FetchTopTen()
+        {
+            Message request = new(Header.FetchTopTen, []);
+            _unicaster!.Send(request);
+            
+            Message? response = _unicaster.Receive();
+
+            if (response == null) return null;
+
+            return JsonSerializer.Deserialize<Dictionary<string, int>>(response.Payload[1]);
+        }
+
         internal bool StartGame() => AckRequest(new Message(Header.StartGame, []), _gameUnicaster!);
 
         internal void AwaitStart()
         {
             _gameUnicaster!.Local.ReceiveTimeout = (int)Networking.Timeout.Awaiting;
-            var req = _gameUnicaster.Receive();
+            _gameUnicaster.Receive();
             _gameUnicaster!.Local.ReceiveTimeout = (int)Networking.Timeout.Common;
         }
 

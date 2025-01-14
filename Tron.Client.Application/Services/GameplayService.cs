@@ -198,7 +198,6 @@ namespace Tron.Client.Application.Services
 
             foreach (Player player in _players!)
             {
-                player.Alive = true;
                 player.Trail.Clear();
                 player.Coordinates = player.InitialCoordinates;
                 player.Direction = player.InitialDirection;

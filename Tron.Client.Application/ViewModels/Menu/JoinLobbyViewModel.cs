@@ -15,7 +15,6 @@ namespace Tron.Client.Application.ViewModels.Menu
 
         // LOBBIES
         public DataGrid? LobbiesGrid { get; set; }
-        public ObservableCollection<Lobby>? Lobbies { get; set; }
 
         // COMMANDS
         public ICommand FetchLobbiesCommand { get; }

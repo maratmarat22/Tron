@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:Tron.Client.Application.Views"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="TopTenPage">
+      Title="TopTenPage"
+      Loaded="Page_Loaded">
 
     <Page.Background>
         <ImageBrush ImageSource="../Resources/Images/Background.jpg" />
@@ -31,5 +32,81 @@
                 </TextBlock.Effect>
             </TextBlock>
         </Border>
+
+        <DataGrid x:Name="TopTenGrid"
+            Margin="400,120,0,0"
+                    Height="500"
+                    MaxWidth="800"
+                    BorderThickness="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    AutoGenerateColumns="False"
+                    VerticalScrollBarVisibility="Hidden"
+                    HorizontalScrollBarVisibility="Hidden"
+                    IsReadOnly="True"
+                    RowHeight="50"
+                    HeadersVisibility="None"
+                    GridLinesVisibility="None">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username" Binding="{Binding Key}" Width="400" />
+                <DataGridTextColumn Header="Score" Binding="{Binding Value}" Width="150" />
+            </DataGrid.Columns>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#00000000" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="#00000000" />
+                    <Setter Property="FontFamily" Value="{StaticResource Tiny}" />
+                    <Setter Property="FontSize" Value="30" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Background>
+                <SolidColorBrush Color="#BB000000" />
+            </DataGrid.Background>
+
+        </DataGrid>
+
+        <Button Width="350"
+        Height="100"
+        Margin="0,0,800,230"
+        BorderThickness="0"
+        BorderBrush="White"
+        Command="{Binding GoBackCommand}">
+            <Button.Background>
+                <SolidColorBrush Color="#BB000000" />
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="BACK"
+                   Foreground="White"
+                   FontFamily="{StaticResource Tiny}"
+                   FontSize="40">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="HotPink" BlurRadius="20" ShadowDepth="0" Opacity="1" />
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Button.Content>
+        </Button>
+
     </Grid>
 </Page>

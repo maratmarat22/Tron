@@ -18,7 +18,7 @@ namespace Tron.Client.Application.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ((RegisterViewModel)DataContext).RegisterTextBox = RegisterTextBox;
+            (DataContext as RegisterViewModel)!.RegisterTextBox = RegisterTextBox;
         }
     }
 }

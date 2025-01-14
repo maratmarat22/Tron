@@ -13,8 +13,6 @@ namespace Tron.Client.Application.Models
 
         public int Score { get; set; }
 
-        public bool Alive { get; set; }
-
         private PlayerCoordinates _initialCoordinates;
 
         public PlayerCoordinates InitialCoordinates
