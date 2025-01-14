@@ -31,8 +31,6 @@ namespace Tron.Client.Application.Services
 
         internal override async void Run()
         {
-            _provider.InitState();
-
             int losers = 0;
             Player? loser = null;
 
@@ -58,11 +56,16 @@ namespace Tron.Client.Application.Services
                 }
 
                 _app.AddScore(_player.Name, _player.Score);
+
+                if (_enteredAsHost) _app.DeleteLobby();
+                else _app.LeaveLobby();
+
                 await Task.Delay(TimeSpan.FromSeconds(2));
                 _nav.Navigate(new MultiplayerMenuPage(_nav));
             }
             else
             {
+                _provider.InitState();
                 await CountDown();
                 GameTimer.Start();
             }
@@ -70,11 +73,14 @@ namespace Tron.Client.Application.Services
 
         protected override void GameTimer_Tick(object? sender, EventArgs e)
         {
-            foreach (var player in _players)
+            if (GameTimer.IsEnabled)
             {
-                SetTrail(player);
-                Move(player);
-                if (CheckCollisions(player)) break;
+                foreach (var player in _players)
+                {
+                    SetTrail(player);
+                    Move(player);
+                    if (CheckCollisions(player)) break;
+                }
             }
         }
 
@@ -82,8 +88,11 @@ namespace Tron.Client.Application.Services
         {
             while (true)
             {
-                await Task.Delay(TimeSpan.FromMilliseconds(30));
-                _provider.RefreshState(_player, _enteredAsHost);
+                if (GameTimer.IsEnabled)
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(30));
+                    _provider.RefreshState(_player, _enteredAsHost);
+                }
             }
         }
 
