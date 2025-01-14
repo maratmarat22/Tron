@@ -142,6 +142,13 @@ namespace Tron.Client.Application
             return directions;
         }
 
+        internal bool AddScore(string username, int addition)
+        {
+            Message request = new(Header.AddScore, [username, addition.ToString()]);
+            
+            return AckRequest(request, _gameUnicaster!);
+        }
+
         private static bool AckRequest(Message request, Unicaster unicaster)
         {
             unicaster!.Send(request);

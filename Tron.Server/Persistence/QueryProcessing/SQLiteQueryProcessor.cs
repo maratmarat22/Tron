@@ -83,7 +83,7 @@ namespace Tron.Server.Persistence.QueryProcessing
             return topTen;
         }
 
-        public bool AddToScore(string username, int addition)
+        public bool AddScore(string username, int addition)
         {
             using SqliteConnection connection = new(_connectionString);
             connection.Open();

@@ -19,7 +19,7 @@ namespace Tron.Server.Core.Messages.Processors
             var username = request.Payload[0];
             var score = int.Parse(request.Payload[1]);
 
-            bool succeed = _queryProcessor.AddToScore(username, score);
+            bool succeed = _queryProcessor.AddScore(username, score);
             Message response;
 
             if (succeed)

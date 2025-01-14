@@ -174,12 +174,12 @@ namespace Tron.Client.Application.Services
                    coordinates.Row >= _arena.RowDefinitions.Count || coordinates.Column >= _arena.ColumnDefinitions.Count;
         }
 
-        protected bool OnTrail(Player victim, Player killer)
+        protected static bool OnTrail(Player victim, Player killer)
         {
             return killer.Trail.Contains(victim.Coordinates) && !victim.Coordinates.Equals(victim.Trail.Last());
         }
 
-        protected bool Accident(Player player1, Player player2)
+        protected static bool Accident(Player player1, Player player2)
         {
             return player1.Coordinates.Equals(player2.Coordinates) && !player1.Equals(player2);
         }

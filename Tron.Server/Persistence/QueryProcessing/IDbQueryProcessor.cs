@@ -8,6 +8,6 @@
 
         internal Dictionary<string, int> ReadTopTen();
 
-        internal bool AddToScore(string username, int addition);
+        internal bool AddScore(string username, int addition);
     }
 }

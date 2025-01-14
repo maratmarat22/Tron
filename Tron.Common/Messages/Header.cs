@@ -21,6 +21,7 @@
         StartGame,
         SessionState,
         FetchDirections,
+        AddScore,
 
         // Status
         Ok,

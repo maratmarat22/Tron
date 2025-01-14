@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Tron.Common.Entities;
 using Tron.Client.Application.Models;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.Services
 {
@@ -32,21 +33,21 @@ namespace Tron.Client.Application.Services
         {
             _provider.InitState();
 
-            int deadCount = 0;
+            int losers = 0;
             Player? loser = null;
 
             foreach (Player player in _players)
             {
                 if (player.Lives == 0)
                 {
-                    ++deadCount;
+                    ++losers;
                     loser = player;
                 }
             }
 
-            if (deadCount > 0)
+            if (losers > 0)
             {
-                if (deadCount == 1)
+                if (losers == 1)
                 {
                     Player winner = _players.First(p => !p.Equals(loser));
                     DisplayWinner(winner.Name, winner.PlayerColor);
@@ -56,8 +57,9 @@ namespace Tron.Client.Application.Services
                     DisplayWinner(null, Colors.Violet);
                 }
 
+                _app.AddScore(_player.Name, _player.Score);
                 await Task.Delay(TimeSpan.FromSeconds(2));
-                _nav.GoBack();
+                _nav.Navigate(new MultiplayerMenuPage(_nav));
             }
             else
             {

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tron.Client.Application.Models;
+using Tron.Client.Application.Views;
 
 namespace Tron.Client.Application.Services
 {
@@ -17,23 +18,23 @@ namespace Tron.Client.Application.Services
 
         internal override async void Run()
         {
-            int deadCount = 0;
-            Player? looser = null;
+            int losers = 0;
+            Player? loser = null;
 
             foreach (Player player in _players)
             {
                 if (player.Lives == 0)
                 {
-                    ++deadCount;
-                    looser = player;
+                    ++losers;
+                    loser = player;
                 }
             }
 
-            if (deadCount > 0)
+            if (losers > 0)
             {
-                if (deadCount == 1)
+                if (losers == 1)
                 {
-                    Player winner = _players.First(p => !p.Equals(looser));
+                    Player winner = _players.First(p => !p.Equals(loser));
                     DisplayWinner(winner.Name, winner.PlayerColor);
                 }
                 else
@@ -42,7 +43,7 @@ namespace Tron.Client.Application.Services
                 }
 
                 await Task.Delay(TimeSpan.FromSeconds(2));
-                _nav.GoBack();
+                _nav.Navigate(new MainMenuPage(_nav));
             }
             else
             {
